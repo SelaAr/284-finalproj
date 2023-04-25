@@ -1,19 +1,20 @@
-#ifndef POINTMASS_H
-#define POINTMASS_H
+#ifndef PARTICLE_H
+#define PARTICLE_H
 
 #include "CGL/CGL.h"
 #include "CGL/misc.h"
 #include "CGL/vector3D.h"
+#include "misc/sphere_drawing.h"
 
 using namespace CGL;
 
 // Forward declarations
 class Halfedge;
 
-struct PointMass {
-  PointMass(Vector3D position, bool pinned)
-      : pinned(pinned), start_position(position), position(position),
-        last_position(position) {}
+struct Particle {
+  Particle(Vector3D position)
+      : start_position(position), position(position),
+        last_position(position){}
 
   Vector3D normal();
   Vector3D velocity(double delta_t) {
@@ -21,16 +22,27 @@ struct PointMass {
   }
 
   // static values
-  bool pinned;
   Vector3D start_position;
+  double density;
 
   // dynamic values
   Vector3D position;
   Vector3D last_position;
   Vector3D forces;
+  Vector3D vorticity;
+  Vector3D viscosity;
 
-  // mesh reference
-  Halfedge *halfedge;
+    //since it is a sphere
+    double radius;
+    int sphere_num_lat;
+    int sphere_num_lon;
+
+    // mesh reference
+    Misc::SphereMesh mesh;
+
+    // collisions with other water particles
+    // vector<WaterParticle *> objects;
+    std::vector<Particle> neighbors;
 };
 
-#endif /* POINTMASS_H */
+#endif /* PARTICLE_H */

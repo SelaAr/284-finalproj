@@ -1114,6 +1114,14 @@ build src/CMakeFiles/clothsim.dir/camera.cpp.o: CXX_COMPILER__clothsim_Debug /Us
   OBJECT_DIR = src/CMakeFiles/clothsim.dir
   OBJECT_FILE_DIR = src/CMakeFiles/clothsim.dir
 
+build src/CMakeFiles/clothsim.dir/CubeMesh.cpp.o: CXX_COMPILER__clothsim_Debug /Users/selaroach/Desktop/cs184/284-finalproj/src/CubeMesh.cpp || cmake_object_order_depends_target_clothsim
+  DEFINES = -DGLAD_GLAPI_EXPORT -DNANOGUI_GLAD -DNANOGUI_SHARED -DNVG_SHARED
+  DEP_FILE = src/CMakeFiles/clothsim.dir/CubeMesh.cpp.o.d
+  FLAGS = -std=c++11 -m64 -g -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk -fcolor-diagnostics -Wno-deprecated-declarations -Wno-c++11-extensions
+  INCLUDES = -I/Users/selaroach/Desktop/cs184/284-finalproj/ext/nanogui/include -I/Users/selaroach/Desktop/cs184/284-finalproj/CGL/include -I/usr/local/include/freetype2 -I/Users/selaroach/Desktop/cs184/284-finalproj/ext/nanogui/ext/glad/include -I/Users/selaroach/Desktop/cs184/284-finalproj/ext/nanogui/ext/glfw/include -I/Users/selaroach/Desktop/cs184/284-finalproj/ext/nanogui/ext/nanovg/src -I/Users/selaroach/Desktop/cs184/284-finalproj/ext/nanogui/ext/eigen
+  OBJECT_DIR = src/CMakeFiles/clothsim.dir
+  OBJECT_FILE_DIR = src/CMakeFiles/clothsim.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target clothsim
@@ -1122,7 +1130,7 @@ build src/CMakeFiles/clothsim.dir/camera.cpp.o: CXX_COMPILER__clothsim_Debug /Us
 #############################################
 # Link the executable clothsim
 
-build clothsim: CXX_EXECUTABLE_LINKER__clothsim_Debug src/CMakeFiles/clothsim.dir/waterCube.cpp.o src/CMakeFiles/clothsim.dir/collision/sphere.cpp.o src/CMakeFiles/clothsim.dir/collision/plane.cpp.o src/CMakeFiles/clothsim.dir/main.cpp.o src/CMakeFiles/clothsim.dir/waterSimulator.cpp.o src/CMakeFiles/clothsim.dir/misc/sphere_drawing.cpp.o src/CMakeFiles/clothsim.dir/misc/file_utils.cpp.o src/CMakeFiles/clothsim.dir/camera.cpp.o | CGL/src/libCGL.a ext/nanogui/libnanogui.dylib /usr/local/lib/libfreetype.dylib || CGL/src/libCGL.a ext/nanogui/libnanogui.dylib
+build clothsim: CXX_EXECUTABLE_LINKER__clothsim_Debug src/CMakeFiles/clothsim.dir/waterCube.cpp.o src/CMakeFiles/clothsim.dir/collision/sphere.cpp.o src/CMakeFiles/clothsim.dir/collision/plane.cpp.o src/CMakeFiles/clothsim.dir/main.cpp.o src/CMakeFiles/clothsim.dir/waterSimulator.cpp.o src/CMakeFiles/clothsim.dir/misc/sphere_drawing.cpp.o src/CMakeFiles/clothsim.dir/misc/file_utils.cpp.o src/CMakeFiles/clothsim.dir/camera.cpp.o src/CMakeFiles/clothsim.dir/CubeMesh.cpp.o | CGL/src/libCGL.a ext/nanogui/libnanogui.dylib /usr/local/lib/libfreetype.dylib || CGL/src/libCGL.a ext/nanogui/libnanogui.dylib
   FLAGS = -std=c++11 -m64 -g -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk
   LINK_LIBRARIES = -Wl,-rpath,/Users/selaroach/Desktop/cs184/284-finalproj/cmake-build-debug/ext/nanogui  CGL/src/libCGL.a  ext/nanogui/libnanogui.dylib  -Xlinker -framework -Xlinker Cocoa  -Xlinker -framework -Xlinker OpenGL  -Xlinker -framework -Xlinker CoreVideo  -Xlinker -framework -Xlinker IOKit  /usr/local/lib/libfreetype.dylib
   OBJECT_DIR = src/CMakeFiles/clothsim.dir

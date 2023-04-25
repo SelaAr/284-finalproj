@@ -15,8 +15,8 @@
 #include "CGL/CGL.h"
 #include "collision/plane.h"
 #include "collision/sphere.h"
-#include "cloth.h"
-#include "clothSimulator.h"
+#include "waterCube.h"
+#include "waterSimulator.h"
 #include "json.hpp"
 #include "misc/file_utils.h"
 
@@ -27,15 +27,15 @@ using namespace nanogui;
 
 using json = nlohmann::json;
 
-#define msg(s) cerr << "[ClothSim] " << s << endl;
+#define msg(s) cerr << "[WaterCubeSim] " << s << endl;
 
 const string SPHERE = "sphere";
 const string PLANE = "plane";
-const string CLOTH = "cloth";
+const string WCUBE = "wcube";
 
-const unordered_set<string> VALID_KEYS = {SPHERE, PLANE, CLOTH};
+const unordered_set<string> VALID_KEYS = {SPHERE, PLANE, WCUBE};
 
-ClothSimulator *app = nullptr;
+WaterSimulator *app = nullptr;
 GLFWwindow *window = nullptr;
 Screen *screen = nullptr;
 
@@ -65,7 +65,7 @@ void createGLContexts() {
   glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);
 
   // Create a GLFWwindow object
-  window = glfwCreateWindow(800, 800, "Cloth Simulator", nullptr, nullptr);
+  window = glfwCreateWindow(800, 800, "WaterCube Simulator", nullptr, nullptr);
   if (window == nullptr) {
     std::cout << "Failed to create GLFW window" << std::endl;
     glfwTerminate();
@@ -156,7 +156,7 @@ void incompleteObjectError(const char *object, const char *attribute) {
   exit(-1);
 }
 
-bool loadObjectsFromFile(string filename, Cloth *cloth, ClothParameters *cp, vector<CollisionObject *>* objects, int sphere_num_lat, int sphere_num_lon) {
+bool loadObjectsFromFile(string filename, WaterCube *waterCube, WaterCubeParameters *cp, vector<CollisionObject *>* objects, int sphere_num_lat, int sphere_num_lon) {
   // Read JSON from file
   ifstream i(filename);
   if (!i.good()) {
@@ -179,127 +179,64 @@ bool loadObjectsFromFile(string filename, Cloth *cloth, ClothParameters *cp, vec
     // Retrieve object
     json object = it.value();
 
-    // Parse object depending on type (cloth, sphere, or plane)
-    if (key == CLOTH) {
-      // Cloth
+    // Parse object depending on type (waterCube, sphere, or plane)
+  if (key == WCUBE) {
       double width, height;
-      int num_width_points, num_height_points;
-      float thickness;
-      e_orientation orientation;
-      vector<vector<int>> pinned;
+      int num_particles;
 
       auto it_width = object.find("width");
       if (it_width != object.end()) {
-        width = *it_width;
+          width = *it_width;
       } else {
-        incompleteObjectError("cloth", "width");
+          incompleteObjectError("wcube", "width");
       }
 
       auto it_height = object.find("height");
       if (it_height != object.end()) {
-        height = *it_height;
+          height = *it_height;
       } else {
-        incompleteObjectError("cloth", "height");
+          incompleteObjectError("wcube", "height");
       }
 
-      auto it_num_width_points = object.find("num_width_points");
-      if (it_num_width_points != object.end()) {
-        num_width_points = *it_num_width_points;
+      auto it_num_particles = object.find("num_particles");
+      if (it_num_particles != object.end()) {
+          num_particles = *it_num_particles;
       } else {
-        incompleteObjectError("cloth", "num_width_points");
+          incompleteObjectError("wcube", "num_particles");
       }
 
-      auto it_num_height_points = object.find("num_height_points");
-      if (it_num_height_points != object.end()) {
-        num_height_points = *it_num_height_points;
-      } else {
-        incompleteObjectError("cloth", "num_height_points");
-      }
 
-      auto it_thickness = object.find("thickness");
-      if (it_thickness != object.end()) {
-        thickness = *it_thickness;
-      } else {
-        incompleteObjectError("cloth", "thickness");
-      }
-
-      auto it_orientation = object.find("orientation");
-      if (it_orientation != object.end()) {
-        orientation = *it_orientation;
-      } else {
-        incompleteObjectError("cloth", "orientation");
-      }
-
-      auto it_pinned = object.find("pinned");
-      if (it_pinned != object.end()) {
-        vector<json> points = *it_pinned;
-        for (auto pt : points) {
-          vector<int> point = pt;
-          pinned.push_back(point);
-        }
-      }
-
-      cloth->width = width;
-      cloth->height = height;
-      cloth->num_width_points = num_width_points;
-      cloth->num_height_points = num_height_points;
-      cloth->thickness = thickness;
-      cloth->orientation = orientation;
-      cloth->pinned = pinned;
+      waterCube->width = width;
+      waterCube->height = height;
+      waterCube->num_particles = num_particles;
 
       // Cloth parameters
-      bool enable_structural_constraints, enable_shearing_constraints, enable_bending_constraints;
       double damping, density, ks;
-
-      auto it_enable_structural = object.find("enable_structural");
-      if (it_enable_structural != object.end()) {
-        enable_structural_constraints = *it_enable_structural;
-      } else {
-        incompleteObjectError("cloth", "enable_structural");
-      }
-
-      auto it_enable_shearing = object.find("enable_shearing");
-      if (it_enable_shearing != object.end()) {
-        enable_shearing_constraints = *it_enable_shearing;
-      } else {
-        incompleteObjectError("cloth", "it_enable_shearing");
-      }
-
-      auto it_enable_bending = object.find("enable_bending");
-      if (it_enable_bending != object.end()) {
-        enable_bending_constraints = *it_enable_bending;
-      } else {
-        incompleteObjectError("cloth", "it_enable_bending");
-      }
 
       auto it_damping = object.find("damping");
       if (it_damping != object.end()) {
-        damping = *it_damping;
+          damping = *it_damping;
       } else {
-        incompleteObjectError("cloth", "damping");
+          incompleteObjectError("wcube", "damping");
       }
 
       auto it_density = object.find("density");
       if (it_density != object.end()) {
-        density = *it_density;
+          density = *it_density;
       } else {
-        incompleteObjectError("cloth", "density");
+          incompleteObjectError("wcube", "density");
       }
 
       auto it_ks = object.find("ks");
       if (it_ks != object.end()) {
-        ks = *it_ks;
+          ks = *it_ks;
       } else {
-        incompleteObjectError("cloth", "ks");
+          incompleteObjectError("wcube", "ks");
       }
-
-      cp->enable_structural_constraints = enable_structural_constraints;
-      cp->enable_shearing_constraints = enable_shearing_constraints;
-      cp->enable_bending_constraints = enable_bending_constraints;
       cp->density = density;
       cp->damping = damping;
       cp->ks = ks;
-    } else if (key == SPHERE) {
+  }else if (key == SPHERE) {
       Vector3D origin;
       double radius, friction;
 
@@ -396,8 +333,8 @@ int main(int argc, char **argv) {
   std::string project_root;
   bool found_project_root = find_project_root(search_paths, project_root);
   
-  Cloth cloth;
-  ClothParameters cp;
+  WaterCube waterCube;
+  WaterCubeParameters cp;
   vector<CollisionObject *> objects;
   
   int c;
@@ -460,7 +397,7 @@ int main(int argc, char **argv) {
     file_to_load_from = def_fname.str();
   }
   
-  bool success = loadObjectsFromFile(file_to_load_from, &cloth, &cp, &objects, sphere_num_lat, sphere_num_lon);
+  bool success = loadObjectsFromFile(file_to_load_from, &waterCube, &cp, &objects, sphere_num_lat, sphere_num_lon);
   if (!success) {
     std::cout << "Warn: Unable to load from file: " << file_to_load_from << std::endl;
   }
@@ -469,14 +406,14 @@ int main(int argc, char **argv) {
 
   createGLContexts();
 
-  // Initialize the Cloth object
-  cloth.buildGrid();
-  cloth.buildClothMesh();
+  // Initialize the WaterCube object
+  waterCube.buildGrid();
+  waterCube.buildWaterCubeMesh();
 
-  // Initialize the ClothSimulator object
-  app = new ClothSimulator(project_root, screen);
-  app->loadCloth(&cloth);
-  app->loadClothParameters(&cp);
+  // Initialize the WaterSimulator object
+  app = new WaterSimulator(project_root, screen);
+  app->loadWaterCube(&waterCube);
+  app->loadWaterCubeParameters(&cp);
   app->loadCollisionObjects(&objects);
   app->init();
 
@@ -496,6 +433,7 @@ int main(int argc, char **argv) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     app->drawContents();
+
 
     // Draw nanogui
     screen->drawContents();

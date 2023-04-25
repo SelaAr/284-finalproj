@@ -1,11 +1,11 @@
-#ifndef CGL_CLOTH_SIMULATOR_H
-#define CGL_CLOTH_SIMULATOR_H
+#ifndef CGL_WaterCube_SIMULATOR_H
+#define CGL_WaterCube_SIMULATOR_H
 
 #include <nanogui/nanogui.h>
 #include <memory>
 
 #include "camera.h"
-#include "cloth.h"
+#include "waterCube.h"
 #include "collision/collisionObject.h"
 
 using namespace nanogui;
@@ -13,15 +13,15 @@ using namespace nanogui;
 struct UserShader;
 enum ShaderTypeHint { WIREFRAME = 0, NORMALS = 1, PHONG = 2 };
 
-class ClothSimulator {
+class WaterSimulator {
 public:
-  ClothSimulator(std::string project_root, Screen *screen);
-  ~ClothSimulator();
+  WaterSimulator(std::string project_root, Screen *screen);
+  ~WaterSimulator();
 
   void init();
 
-  void loadCloth(Cloth *cloth);
-  void loadClothParameters(ClothParameters *cp);
+  void loadWaterCube(WaterCube *waterCube);
+  void loadWaterCubeParameters(WaterCubeParameters *cp);
   void loadCollisionObjects(vector<CollisionObject *> *objects);
   virtual bool isAlive();
   virtual void drawContents();
@@ -62,8 +62,8 @@ private:
   CGL::Vector3D gravity = CGL::Vector3D(0, -9.8, 0);
   nanogui::Color color = nanogui::Color(1.0f, 1.0f, 1.0f, 1.0f);
 
-  Cloth *cloth;
-  ClothParameters *cp;
+  WaterCube *waterCube;
+  WaterCubeParameters *cp;
   vector<CollisionObject *> *collision_objects;
 
   // OpenGL attributes
@@ -149,4 +149,4 @@ struct UserShader {
   
 };
 
-#endif // CGL_CLOTH_SIM_H
+#endif // CGL_WaterCube_SIM_H

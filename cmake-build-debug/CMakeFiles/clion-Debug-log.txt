@@ -7,18 +7,6 @@ CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
   CMake that the project does not need compatibility with older versions.
 
 
--- The C compiler identification is AppleClang 14.0.0.14000029
--- The CXX compiler identification is AppleClang 14.0.0.14000029
--- Detecting C compiler ABI info
--- Detecting C compiler ABI info - done
--- Check for working C compiler: /Library/Developer/CommandLineTools/usr/bin/cc - skipped
--- Detecting C compile features
--- Detecting C compile features - done
--- Detecting CXX compiler ABI info
--- Detecting CXX compiler ABI info - done
--- Check for working CXX compiler: /Library/Developer/CommandLineTools/usr/bin/c++ - skipped
--- Detecting CXX compile features
--- Detecting CXX compile features - done
 CMake Deprecation Warning at ext/nanogui/ext/glfw/CMakeLists.txt:5 (cmake_minimum_required):
   Compatibility with CMake < 2.8.12 will be removed from a future version of
   CMake.
@@ -27,17 +15,8 @@ CMake Deprecation Warning at ext/nanogui/ext/glfw/CMakeLists.txt:5 (cmake_minimu
   CMake that the project does not need compatibility with older versions.
 
 
--- Performing Test CMAKE_HAVE_LIBC_PTHREAD
--- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
--- Found Threads: TRUE  
 -- Using Cocoa for window creation
--- Performing Test HAS_CPP14_FLAG
--- Performing Test HAS_CPP14_FLAG - Success
--- Performing Test HAS_CPP11_FLAG
--- Performing Test HAS_CPP11_FLAG - Success
 -- NanoGUI: using libc++ and libc++abi.
--- Found OpenGL: /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/System/Library/Frameworks/OpenGL.framework   
--- Found Freetype: /usr/local/lib/libfreetype.dylib (found version "2.13.0") 
 CMake Deprecation Warning at CGL/CMakeLists.txt:1 (cmake_minimum_required):
   Compatibility with CMake < 2.8.12 will be removed from a future version of
   CMake.
