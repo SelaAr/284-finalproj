@@ -181,8 +181,9 @@ bool loadObjectsFromFile(string filename, WaterCube *waterCube, WaterCubeParamet
 
     // Parse object depending on type (waterCube, sphere, or plane)
   if (key == WCUBE) {
-      double width, height;
+      double width, height, cube_width, cube_height;
       int num_particles;
+      Vector3D cube_origin;
 
       auto it_width = object.find("width");
       if (it_width != object.end()) {
@@ -205,13 +206,41 @@ bool loadObjectsFromFile(string filename, WaterCube *waterCube, WaterCubeParamet
           incompleteObjectError("wcube", "num_particles");
       }
 
+      auto it_cube_origin = object.find("cube_origin");
+      if (it_cube_origin != object.end()) {
+          vector<double> vec_origin = *it_cube_origin;
+          cube_origin = Vector3D(vec_origin[0], vec_origin[1], vec_origin[2]);
+      } else {
+          incompleteObjectError("wcube", "cube_origin");
+      }
+
+      auto it_cube_width = object.find("cube_width");
+      if (it_cube_width != object.end()) {
+          cube_width = *it_cube_width;
+      } else {
+          incompleteObjectError("wcube", "cube_width");
+      }
+
+      auto it_cube_height = object.find("cube_height");
+      if (it_cube_height != object.end()) {
+          cube_height = *it_cube_height;
+      } else {
+          incompleteObjectError("wcube", "cube_height");
+      }
+
 
       waterCube->width = width;
       waterCube->height = height;
       waterCube->num_particles = num_particles;
+      waterCube->cube_origin = cube_origin;
+      waterCube->cube_width = cube_width;
+      waterCube->cube_height = cube_height;
+      waterCube->wCube = Cube();
+      std::vector<Plane *> * vec = new std::vector<Plane*>();
+      waterCube->borders = vec;
 
       // Cloth parameters
-      double damping, density, ks;
+      double damping, density, ks, relaxation_e, rest_density, smoothing_length;
 
       auto it_damping = object.find("damping");
       if (it_damping != object.end()) {
@@ -233,9 +262,37 @@ bool loadObjectsFromFile(string filename, WaterCube *waterCube, WaterCubeParamet
       } else {
           incompleteObjectError("wcube", "ks");
       }
+
+
+      auto it_relaxation_e = object.find("relaxation_e");
+      if (it_relaxation_e != object.end()) {
+          relaxation_e = *it_relaxation_e;
+      } else {
+          incompleteObjectError("wcube", "relaxation_e");
+      }
+
+
+      auto it_rest_density = object.find("rest_density");
+      if (it_rest_density != object.end()) {
+          rest_density = *it_rest_density;
+      } else {
+          incompleteObjectError("wcube", "rest_density");
+      }
+
+
+      auto it_smoothing_length = object.find("smoothing_length");
+      if (it_smoothing_length != object.end()) {
+          smoothing_length = *it_smoothing_length;
+      } else {
+          incompleteObjectError("wcube", "smoothing_length");
+      }
       cp->density = density;
       cp->damping = damping;
       cp->ks = ks;
+      cp->relaxation_e = relaxation_e;
+      cp->rest_density = rest_density;
+      cp->smoothing_length = smoothing_length;
+
   }else if (key == SPHERE) {
       Vector3D origin;
       double radius, friction;
@@ -406,16 +463,25 @@ int main(int argc, char **argv) {
 
   createGLContexts();
 
+//  //Add plane borders into collision objects
+//  for(int i = 0; i < waterCube.borders->size(); i++){
+//      Plane *p = waterCube.borders->at(i);
+//      objects.push_back(p);
+//  }
+
   // Initialize the WaterCube object
-  waterCube.buildGrid();
+  waterCube.generateParticles();
+
+
   std::cout << "POINTS GENERATED" << std::endl;
-  //waterCube.buildWaterCubeMesh();
+
 
   // Initialize the WaterSimulator object
   app = new WaterSimulator(project_root, screen);
   app->loadWaterCube(&waterCube);
   app->loadWaterCubeParameters(&cp);
   app->loadCollisionObjects(&objects);
+//  app->loadCube(&cubeW);
   app->init();
 
   // Call this after all the widgets have been defined
