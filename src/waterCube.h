@@ -40,7 +40,7 @@ struct WaterCube {
 
   void simulate(double frames_per_sec, double simulation_steps, WaterCubeParameters *cp,
                 vector<Vector3D> external_accelerations,
-                vector<CollisionObject *> *collision_objects);
+                vector<CollisionObject *> *collision_objects, double e, double rho_0, double h);
 
   void reset();
   void buildWaterCubeMesh();
@@ -72,6 +72,10 @@ struct WaterCube {
 
     //Tensile Instability
     double artificialPressure(Particle pi, Particle pj, double k, int n, Vector3D delta_q, double h);
+
+    void explicitEuler(Particle pi, double delta_t);
+    //Vorticity Confinement & Viscosity
+    Vector3D vorticity(Particle pi, double h);
 
   // WaterCube properties
   double width;

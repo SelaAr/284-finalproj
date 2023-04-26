@@ -243,9 +243,32 @@ void WaterSimulator::drawContents() {
 
   if (!is_paused) {
     vector<Vector3D> external_accelerations = {gravity};
+    double mass =  waterCube->width *  waterCube->height * cp->density;
+    double delta_t = 1.0f / frames_per_sec / simulation_steps;
+
+    /* For all particles i, apply forces and predict position*/
+    Vector3D extern_forces = Vector3D(0.0,0.0,0.0);
+    for (int i = 0; i < external_accelerations.size(); i++) {
+      extern_forces += external_accelerations[i] * mass;
+    }
+    for (int i = 0; i <  waterCube->water_particles.size(); i++) {
+      Particle *pm = & waterCube->water_particles[i];
+      pm->forces = extern_forces;
+    }
+      std::cout << "FORCES APPLIED" << std::endl;
+    for(int i = 0; i <  waterCube->water_particles.size(); i++) {
+      Particle *pm = & waterCube->water_particles[i];
+      Vector3D last_pos = pm->position;
+      pm->position = pm->position + (delta_t * pm->velocity(delta_t));
+      pm->last_position = last_pos;
+    }
+      std::cout << "EULER POSITION UPDATES" << std::endl;
+      /* For all particles i, find neighboring particles */
+      waterCube->build_spatial_map();
+      std::cout << "SPATIAL MAP BUILT" << std::endl;
 
     for (int i = 0; i < simulation_steps; i++) {
-      waterCube->simulate(frames_per_sec, simulation_steps, cp, external_accelerations, collision_objects);
+      waterCube->simulate(frames_per_sec, simulation_steps, cp, external_accelerations, collision_objects, 1.0, 998.20, 1.0);
     }
   }
 

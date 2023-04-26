@@ -408,7 +408,8 @@ int main(int argc, char **argv) {
 
   // Initialize the WaterCube object
   waterCube.buildGrid();
-  waterCube.buildWaterCubeMesh();
+  std::cout << "POINTS GENERATED" << std::endl;
+  //waterCube.buildWaterCubeMesh();
 
   // Initialize the WaterSimulator object
   app = new WaterSimulator(project_root, screen);

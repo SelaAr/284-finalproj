@@ -21,16 +21,22 @@ struct Particle {
     return (position - last_position) / delta_t;
   }
 
+  //TODO: change doubles to float?
+
   // static values
   Vector3D start_position;
-  double density;
+  double mass;
+
 
   // dynamic values
   Vector3D position;
   Vector3D last_position;
   Vector3D forces;
-  Vector3D vorticity;
-  Vector3D viscosity;
+
+  double density;
+  double pressure;
+  double viscosity;
+  double vorticity;
 
     //since it is a sphere
     double radius;
@@ -42,7 +48,7 @@ struct Particle {
 
     // collisions with other water particles
     // vector<WaterParticle *> objects;
-    std::vector<Particle> neighbors;
+    std::vector<Particle *> neighbors;
 };
 
 #endif /* PARTICLE_H */

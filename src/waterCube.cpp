@@ -42,8 +42,8 @@ void WaterCube::buildGrid() {
 //    }
 
 
-    for (double y = 0; y < 40; y++) {
-        for (double x = 0; x < 40; x++) {
+    for (double y = 0; y < 9; y++) {
+        for (double x = 0; x < 9; x++) {
             Vector3D pos;
             //Set the y coordinate for all point masses to 1 while varying positions over the xz plane
             double ranX = (double) std::rand();
@@ -85,49 +85,53 @@ void WaterCube::buildGrid() {
 
 void WaterCube::simulate(double frames_per_sec, double simulation_steps, WaterCubeParameters *cp,
                      vector<Vector3D> external_accelerations,
-                     vector<CollisionObject *> *collision_objects) {
+                     vector<CollisionObject *> *collision_objects, double e, double rho_0, double h) {
   double mass = width * height * cp->density;
   double delta_t = 1.0f / frames_per_sec / simulation_steps;
 
-  // TODO (Part 2): Compute total force acting on each point mass.
-
-    Vector3D extern_forces = Vector3D(0.0,0.0,0.0);
-    for (int i = 0; i < external_accelerations.size(); i++) {
-        extern_forces += external_accelerations[i] * mass;
-    }
-
-    for (int i = 0; i < water_particles.size(); i++) {
-        Particle *pm = &water_particles[i];
-        pm->forces = extern_forces;
-    }
-
-
-  // TODO (Part 2): Use Verlet integration to compute new point mass positions
-    for(int i = 0; i < water_particles.size(); i++){
-        Particle *pm = &water_particles[i];
-
-            Vector3D curr_position = pm->position;
-            pm->position = curr_position + ((1.00 - (cp->damping / 100.00)) * (curr_position - pm->last_position)) +
-                           ((pm->forces/mass) * (delta_t * delta_t));
-            pm->last_position = curr_position;
-
-    }
-
-
-  // TODO (Part 4): Handle self-collisions.
-
-
-  // TODO (Part 3): Handle collisions with other primitives.
+    //For all particles i, calculate lambda i
+    std::vector<double> * lambdas = new std::vector<double>();
     for(int i = 0; i < water_particles.size(); i++) {
         Particle *pm = &water_particles[i];
-        for (CollisionObject *co: *collision_objects) {
-            co->collide(*pm);
+        double li = calcuateLambdaI(*pm, e,rho_0, h);
+        lambdas->push_back(li);
+    }
+    std::cout << "LAMBDAS CALCULATED" << std::endl;
+
+    //For all particles i, calculate delta_pi & perform collision detection and response
+    std::vector<Vector3D> * new_positions = new std::vector<Vector3D>();
+    for(int i = 0; i < water_particles.size(); i++) {
+        Particle *pi = &water_particles[i];
+        double lambdaI = lambdas->at(i);
+        double sumJ = 0.0;
+        for(int j = 0; j < pi->neighbors.size(); j++) {
+            Particle pj = *pi->neighbors[j];
+            double lambdaJ =lambdas->at(j);
+            double sCorr = artificialPressure(*pi, pj, 0.1, 4, Vector3D(1,1,1), h);
+            sumJ = (lambdaI + lambdaJ + sCorr) * spikyKernel(pi->position - pj.position, h);
         }
+        Vector3D delta_pi = (1/rho_0) * sumJ;
+        new_positions->push_back(delta_pi);
+        std::cout << "DELTA PI CALCULATED" << std::endl;
+
+
+        //perform collision detection and response
+        for (CollisionObject *co: *collision_objects) {
+            co->collide(*pi);
+        }
+        std::cout << "COLLISIONS HANDLED" << std::endl;
     }
 
-
-  // TODO (Part 2): Constrain the changes to be such that the spring does not change
-  // in length more than 10% per timestep [Provot 1995].
+    //for all particles i, update the position
+    for(int i = 0; i < water_particles.size(); i++){
+        Particle *pm = &water_particles[i];
+        assert(water_particles.size() == new_positions->size());
+        Vector3D delta_pi = new_positions->at(i);
+        Vector3D last_pos = pm->position;
+        pm->last_position = last_pos;
+        pm->position = delta_pi;
+    }
+    std::cout << "DELTA PI POSITION UPDATES" << std::endl;
 
 }
 
@@ -149,6 +153,8 @@ void WaterCube::build_spatial_map() {
             vec->push_back(pm);
             map[box] = vec;
         }
+        std::vector<Particle *> * n = map[box];
+        pm->neighbors = *n;
     }
 
 }
@@ -176,10 +182,16 @@ void isotropicKernel(){
 
 //For density estimation
 //r is the offset from the kernel center
+
+
+//smoothing length as 1 double
+
+//where h is the smoothing length
+//r is the square magnitude of distance vector
 double WaterCube::poly6Kernel(Vector3D r, double h){
     double r_norm = r.norm();
     if(r_norm >= 0 && r_norm <= h){
-        return std::pow(std::pow(h, 2) - std::pow(r_norm, 2), 3);
+        return (315/(64 * M_PI * std::pow(h, 9))) * std::pow(std::pow(h, 2) - std::pow(r_norm, 2), 3);
     }else{
         return 0.0;
     }
@@ -189,7 +201,7 @@ double WaterCube::poly6Kernel(Vector3D r, double h){
 double WaterCube::spikyKernel(Vector3D r, double h){
     double r_norm = r.norm();
     if(r_norm >= 0 && r_norm <= h){
-        return std::pow(h -r_norm, 3);
+        return (15/M_PI * std::pow(h, 6)) * std::pow(h - r_norm, 3);
     }else{
         return 0.0;
     }
@@ -199,8 +211,8 @@ double WaterCube::spikyKernel(Vector3D r, double h){
 double WaterCube::sphDensityEstimatorPoly(Particle pi, double h){
     double sum = 0.0;
     for(int i = 0; i < pi.neighbors.size(); i++){
-        Particle *pj = &pi.neighbors[i];
-        Vector3D diff = pi.position - pj->position;
+        Particle pj = *pi.neighbors[i];
+        Vector3D diff = pi.position - pj.position;
         sum += poly6Kernel(diff, h);
     }
     return sum;
@@ -209,8 +221,8 @@ double WaterCube::sphDensityEstimatorPoly(Particle pi, double h){
 double WaterCube::sphDensityEstimatorSpiky(Particle pi, double h){
     double sum = 0.0;
     for(int i = 0; i < pi.neighbors.size(); i++){
-        Particle *pj = &pi.neighbors[i];
-        Vector3D diff = pi.position - pj->position;
+        Particle pj = *pi.neighbors[i];
+        Vector3D diff = pi.position - pj.position;
         sum += spikyKernel(diff, h);
     }
     return sum;
@@ -221,8 +233,8 @@ double WaterCube::gradientOfConstraint(Particle pi, double h, Particle pk, doubl
     //See if k is a neighboring particle
     bool kIsNeighbor = false;
     for(int i = 0; i < pi.neighbors.size(); i++){
-        Particle *neighbor = &pi.neighbors[i];
-        if(neighbor->position == pk.position){
+        Particle neighbor = *pi.neighbors[i];
+        if(neighbor.position == pk.position){
             kIsNeighbor = true;
             break;
         }
@@ -259,17 +271,37 @@ Vector3D WaterCube::positionUpdate(Particle pi, double e, double rho_0, double h
     double lambdaI = calcuateLambdaI(pi, e, rho_0, h);
     double sumJ = 0.0;
     for(int i = 0; i < pi.neighbors.size(); i++) {
-        Particle *pj = &pi.neighbors[i];
-        double lambdaJ = calcuateLambdaI(*pj, e, rho_0, h);
-        double sCorr = artificialPressure(pi, *pj, 0.1, 4, Vector3D(1,1,1), h);
-        sumJ = (lambdaI + lambdaJ + sCorr) * spikyKernel(pi.position - pj->position, h);
+        Particle pj = *pi.neighbors[i];
+        double lambdaJ = calcuateLambdaI(pj, e, rho_0, h);
+        double sCorr = artificialPressure(pi, pj, 0.1, 4, Vector3D(1,1,1), h);
+        sumJ = (lambdaI + lambdaJ + sCorr) * spikyKernel(pi.position - pj.position, h);
     }
     return (1/rho_0) * sumJ;
 }
 
-//Vector3D WaterCube::vorticity(Particle pi, double h){
+void WaterCube::explicitEuler(Particle pi, double delta_t){
+    Vector3D last_pos = pi.position;
+    pi.position = pi.position + (delta_t * pi.velocity(delta_t));
+    pi.last_position = last_pos;
+    //velocity already calulated properly
+}
+
+Vector3D WaterCube::vorticity(Particle pi, double h){
+//    Vector3D v_sum = 0.0;
+//    for(int i = 0; i < pi.neighbors.size(); i++) {
+//        Particle *pj = &pi.neighbors[i];
+//        v_sum += (pj->vorticity - pi.vorticity);
+//        Vector3D wi = cross(v_sum, spikyKernel(pi.position - pj->position, h));
+//        Vector3D n = spikyKernel(std::abs(wi),h);
+//    }
 //
-//}
+//
+//    for(int i = 0; i < pi.neighbors.size(); i++) {
+//        Particle *pj = &pi.neighbors[i];
+//    }
+
+
+}
 
 ///////////////////////////////////////////////////////
 /// YOU DO NOT NEED TO REFER TO ANY CODE BELOW THIS ///
