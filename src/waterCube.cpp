@@ -9,6 +9,7 @@
 #include "CubeMesh.h"
 #include "misc/sphere_drawing.h"
 
+
 using namespace std;
 
 WaterCube::WaterCube(Vector3D cube_origin, double cube_width, double cube_height, int num_particles, Cube wCube, std::vector<Plane *> * borders) {
@@ -35,6 +36,7 @@ double generateRanBetween(double min, double max){
 }
 
 void WaterCube::generateParticles() {
+
     for(int i = 0; i < num_particles; i++){
         //x needs to be in the range from origin.x to origin.x + cube_width
         double x = generateRanBetween(cube_origin.x, cube_origin.x + cube_width);
@@ -43,7 +45,8 @@ void WaterCube::generateParticles() {
         //z needs to be in the range from origin.z to origin.z + cube_height
         double z = generateRanBetween(cube_origin.z, cube_origin.z + cube_height);
         Vector3D pos = Vector3D(x, y, z);
-        Particle particle = Particle(pos);
+        Vector3D vel = Vector3D(0,0,0);
+        Particle particle = Particle(pos, vel);
         water_particles.push_back(particle);
     }
 }
@@ -55,11 +58,55 @@ Vector3D getNormalOfPlane(Vector3D p1, Vector3D p2, Vector3D p3){
     return normal;
 }
 
+void WaterCube::handleCollision(Particle p){
+    Vector3D pos = p.position;
+    double elasticity = 0.5;
+    if(pos.x < cube_origin.x){
+        //Crosses left side of the cube
+        p.velocity.x = p.velocity.x * -1 * elasticity;
+        p.position.x = p.position.x + (cube_origin.x - p.position.x) + 2 * 0.005;
+    }
+    if(pos.x > (cube_origin.x + cube_width)){
+        //Crosses right side of the cube
+        p.velocity.x = p.velocity.x * -1 * elasticity;
+        p.position.x = p.position.x - (p.position.x - (cube_origin.x + cube_width)) - 2 * 0.005;
+    }
+    if(pos.y < cube_origin.y){
+        //Crosses front side of the cube
+        p.velocity.y = p.velocity.y * -1 * elasticity;
+        p.position.y = p.position.y + (cube_origin.y - p.position.y) + 2 * 0.005;
+    }
+    if(pos.y > (cube_origin.y + cube_width)){
+        //Crosses back side of the cube
+        p.velocity.y = p.velocity.y * -1 * elasticity;
+        p.position.y = p.position.y - (p.position.y - (cube_origin.y + cube_width)) - 2 * 0.005;
+    }
+    if(pos.z > (cube_origin.z + cube_height)){
+        //Crosses top
+        p.velocity.z = p.velocity.z * -1 * elasticity;
+        p.position.z = p.position.z - (p.position.z - (cube_origin.z + cube_height)) - 2 * 0.005;
+    }
+    if(pos.z < cube_origin.z){
+        //Crosses bottom
+        p.velocity.z = p.velocity.z * -1 * elasticity;
+        p.position.z = p.position.z + (cube_origin.z - p.position.z) + 2 * 0.005;
+    }
+}
+
+//h is the smoothing length
+//H is the subdivision factor
+void WaterCube::getNeighbors(double h, int H){
+    //Partition space equally into bins
+    //EX. Cube is 0.5 by 0.5
+
+}
+
 void WaterCube::simulate(double frames_per_sec, double simulation_steps, WaterCubeParameters *cp,
                      vector<Vector3D> external_accelerations,
                      vector<CollisionObject *> *collision_objects) {
-  double mass = width * height * cp->density;
-  double delta_t = 1.0f / frames_per_sec / simulation_steps;
+    double volume = std::pow(cube_width, 3);
+    double mass = (cp->rest_density *  volume) / num_particles;
+    double delta_t = 1.0f / frames_per_sec / simulation_steps;
 
     Vector3D extern_forces = Vector3D(0.0,0.0,0.0);
     for (int i = 0; i < external_accelerations.size(); i++) {
@@ -73,11 +120,25 @@ void WaterCube::simulate(double frames_per_sec, double simulation_steps, WaterCu
 
     for(int i = 0; i < water_particles.size(); i++){
         Particle *pm = &water_particles[i];
+        //Update velocity
+        Vector3D acc = (pm->forces/mass);
+        pm->velocity = pm->velocity + (acc * delta_t);
+
+        // Update position
         Vector3D curr_position = pm->position;
-        pm->position = curr_position + ((1.00 - (cp->damping / 100.00)) * (curr_position - pm->last_position)) +
-                       ((pm->forces/mass) * (delta_t * delta_t));
+        pm->position = curr_position + (pm->velocity * delta_t);
         pm->last_position = curr_position;
     }
+
+
+
+//    build_spatial_map();
+//
+//    for(int i = 0; i < water_particles.size(); i++) {
+//        Particle *pm = &water_particles[i];
+//        self_collide(*pm, simulation_steps);
+//    }
+
 
     //Handle collisions with plane
     for(int i = 0; i < water_particles.size(); i++) {
@@ -88,12 +149,13 @@ void WaterCube::simulate(double frames_per_sec, double simulation_steps, WaterCu
     }
 
     // Handle collisions with other primitives.
-    for(int i = 0; i < water_particles.size(); i++) {
-        Particle *pm = &water_particles[i];
-        for (CollisionObject *co: *collision_objects) {
-            co->collide(*pm);
-        }
-    }
+//    for(int i = 0; i < water_particles.size(); i++) {
+//        Particle *pm = &water_particles[i];
+//        for (CollisionObject *co: *collision_objects) {
+//            co->collide(*pm);
+//        }
+//    }
+
 }
 
 void WaterCube::build_spatial_map() {
@@ -122,6 +184,33 @@ void WaterCube::build_spatial_map() {
 
 void WaterCube::self_collide(Particle &pm, double simulation_steps) {
   // TODO (Part 4): Handle self-collision for a given point mass.
+    //Determine whether the point mass, and candidates (excluding point mass)
+    //is within 2 * thickness distance apart
+    Vector3D correction = Vector3D(0.0, 0.0, 0.0);
+    Vector3D pair_correction;
+    float thickness = 0.0095;
+    int count = 0;
+    bool collision = false;
+    std::vector<Particle *> neighbors = pm.neighbors;
+    for(int i = 0; i < neighbors.size(); i++){
+        Particle *n = neighbors[i];
+        double distance = (pm.position - n->position).norm();
+        if(pm.position.x == n->position.x && pm.position.y == n->position.y && pm.position.z == n->position.z){
+            continue;
+        }else if(distance < (2 * thickness)){
+            pair_correction = ((2 * thickness) - distance) * (pm.position - n->position).unit();
+            correction += pair_correction;
+            count += 1;
+            collision = true;
+        }
+    }
+
+    //Apply correction
+    if(collision){
+        correction = (correction/count)/simulation_steps;
+        pm.position = pm.position + correction;
+    }
+
 
 }
 

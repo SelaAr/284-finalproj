@@ -88,6 +88,8 @@ struct WaterCube {
   void build_spatial_map();
   void self_collide(Particle &pm, double simulation_steps);
   float hash_position(Vector3D pos);
+  void handleCollision(Particle p);
+  void getNeighbors(double h, int H);
 
   // Cube
   Cube wCube;

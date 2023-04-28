@@ -13,9 +13,24 @@ out vec4 out_color;
 
 void main() {
   // YOUR CODE HERE
-  
   // (Placeholder code. You will want to replace it.)
-  out_color = (vec4(1, 1, 1, 0) + v_normal) / 2;
-  out_color.a = 1;
+    float r2 = pow(distance(v_position, vec4(u_light_pos, 1)), 2);
+    vec4 falloff = vec4(u_light_intensity/r2, 1);
+
+    vec4 light_diff = vec4(u_light_pos, 1) - v_position;
+    vec4 l = normalize(light_diff);
+
+    vec4 Ia = vec4(1,1,1,1);
+    vec3 kd = u_color.xyz;
+    float ka =  0.1;
+    float ks = 0.9;
+
+  //viewer direction
+    vec4 v = normalize(vec4(u_cam_pos, 1) - v_position);
+
+    vec4 h = (v + l)/length(v + l);
+
+    out_color = ((ka * Ia) + (vec4(kd, 1) * falloff * max(0, dot(normalize(v_normal), l))) + (ks * (falloff) * pow(max(0, dot(normalize(v_normal),h)), 25)));
+    out_color.a = 1;
 }
 
