@@ -254,7 +254,8 @@
 			"name" : "Header Files",
 			"sourceIndexes" : 
 			[
-				9
+				9,
+				10
 			]
 		}
 	],
@@ -317,6 +318,11 @@
 		{
 			"backtrace" : 1,
 			"path" : "src/CubeMesh.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "flann/src/cpp/flann/flann.hpp",
 			"sourceGroupIndex" : 1
 		}
 	],

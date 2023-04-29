@@ -20,7 +20,7 @@ set(CLOTHSIM_VIEWER_SOURCE
 
     # Camera
     camera.cpp
-        CubeMesh.cpp CubeMesh.h)
+        CubeMesh.cpp CubeMesh.h ../flann/src/cpp/flann/flann.hpp)
 
 # Windows-only sources
 if(WIN32)
