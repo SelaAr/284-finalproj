@@ -1,9 +1,9 @@
 [submodule "ext/nanogui"]
 	path = ext/nanogui
 	url = https://github.com/wjakob/nanogui.git
-[submodule "flann"]
-	path = flann
-	url = https://github.com/SelaAr/flann.git
 [submodule "lz4"]
 	path = lz4
 	url = https://github.com/SelaAr/lz4.git
+[submodule "flann"]
+	path = flann
+	url = https://github.com/SelaAr/flann.git
