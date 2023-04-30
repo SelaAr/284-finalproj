@@ -1,8 +1,8 @@
-# Install script for directory: /Users/selaroach/Desktop/cs184/284-finalproj
+# Install script for directory: /Users/riddhibagadiaa/Documents/CS284A/final_proj
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/Users/selaroach/Desktop/cs184/284-finalproj/")
+  set(CMAKE_INSTALL_PREFIX "/Users/riddhibagadiaa/Documents/CS284A/final_proj/")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -39,9 +39,9 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/Users/selaroach/Desktop/cs184/284-finalproj/cmake-build-debug/ext/nanogui/cmake_install.cmake")
-  include("/Users/selaroach/Desktop/cs184/284-finalproj/cmake-build-debug/CGL/cmake_install.cmake")
-  include("/Users/selaroach/Desktop/cs184/284-finalproj/cmake-build-debug/src/cmake_install.cmake")
+  include("/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/ext/nanogui/cmake_install.cmake")
+  include("/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/CGL/cmake_install.cmake")
+  include("/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/src/cmake_install.cmake")
 
 endif()
 
@@ -53,5 +53,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/selaroach/Desktop/cs184/284-finalproj/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

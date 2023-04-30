@@ -1,8 +1,8 @@
 #include "iostream"
 #include <nanogui/nanogui.h>
 
-
-#include "../waterSimulator.h"
+#include "../clothMesh.h"
+#include "../clothSimulator.h"
 #include "plane.h"
 
 using namespace std;
@@ -10,9 +10,15 @@ using namespace CGL;
 
 #define SURFACE_OFFSET 0.0001
 
-void Plane::collide(Particle &pm) {
+void Plane::collide(PointMass &pm) {
   // TODO (Part 3): Handle collisions with planes.
-
+  Vector3D tangent = pm.position - (dot(pm.position - point, normal) * normal);
+  Vector3D direction = pm.last_position - tangent;
+  double t = dot((point - pm.position), normal)/(dot(direction, normal));
+  if(t >= 0){
+    Vector3D correction = (tangent + (SURFACE_OFFSET * normal)) - pm.last_position;
+    pm.position = pm.last_position + (correction * (1 - friction));
+  }
 }
 
 void Plane::render(GLShader &shader) {

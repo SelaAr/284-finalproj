@@ -1,4 +1,4 @@
-/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/Applications/CLion.app/Contents/bin/ninja/mac/ninja -G Ninja -S /Users/selaroach/Desktop/cs184/284-finalproj -B /Users/selaroach/Desktop/cs184/284-finalproj/cmake-build-debug
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" -S /Users/riddhibagadiaa/Documents/CS284A/final_proj -B /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug
 CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
   Compatibility with CMake < 2.8.12 will be removed from a future version of
   CMake.
@@ -43,4 +43,4 @@ CMake Deprecation Warning at src/CMakeLists.txt:1 (cmake_minimum_required):
 
 -- Configuring done
 -- Generating done
--- Build files have been written to: /Users/selaroach/Desktop/cs184/284-finalproj/cmake-build-debug
+-- Build files have been written to: /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug

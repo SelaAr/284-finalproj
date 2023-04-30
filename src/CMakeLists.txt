@@ -3,15 +3,16 @@ cmake_minimum_required(VERSION 2.8)
 # Cloth simulation source
 set(CLOTHSIM_VIEWER_SOURCE
     # Cloth simulation objects
-        waterCube.cpp
+    cloth.cpp
+    clothMesh.cpp
 
-        # Collision objects
+    # Collision objects
     collision/sphere.cpp
     collision/plane.cpp
 
     # Application
     main.cpp
-        waterSimulator.cpp
+    clothSimulator.cpp
 
     # Miscellaneous
     # png.cpp
@@ -20,7 +21,7 @@ set(CLOTHSIM_VIEWER_SOURCE
 
     # Camera
     camera.cpp
-        CubeMesh.cpp CubeMesh.h)
+        collision/rubber_duck.cpp collision/rubber_duck.h misc/duck_drawing.cpp misc/duck_drawing.h)
 
 # Windows-only sources
 if(WIN32)
