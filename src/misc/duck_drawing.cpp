@@ -22,47 +22,48 @@ namespace CGL {
     namespace Misc {
 
         DuckMesh::DuckMesh()
-//                : duck_num_vertices(6646)
-//                , duck_num_indices(13280)
-        : duck_num_vertices(verts.size())
-        , duck_num_indices(indices.size())
-                {
-          build_data();
+        {
         }
 
-//        int DuckMesh::s_index(int x, int y) {
-//          return ((x) * (sphere_num_lon + 1) + (y));
-//        }
-
         void DuckMesh::build_data() {
-
+          duck_num_indices = indices.size();
+          std::cout << "build_data 1" << std::endl;
           positions = MatrixXf(4, 3 * duck_num_indices);
           normals = MatrixXf(4, 3 * duck_num_indices);
           uvs = MatrixXf(2, 3 * duck_num_indices);
           tangents = MatrixXf(4, 3 * duck_num_indices);
 
-          for (int i = 0; i < duck_num_indices; i += 3) {
+          std::cout << "build_data 2" << std::endl;
+          for (int i = 1; i < duck_num_indices; i += 3) {
+            std::cout << "build_data 2.1" << std::endl;
             int vertex_idx1 = indices[i];
+            std::cout << "build_data 2.2" << std::endl;
             int vertex_idx2 = indices[i+1];
+            std::cout << "build_data 2.3" << std::endl;
             int vertex_idx3 = indices[i+2];
 
+            std::cout << "build_data 3" << std::endl;
             Vector3D vector1{verts[vertex_idx1 * 3], verts[vertex_idx1 * 3 + 1], verts[vertex_idx1 * 3 + 2]};
             Vector3D vector2{verts[vertex_idx2 * 3], verts[vertex_idx2 * 3 + 1], verts[vertex_idx2 * 3 + 2]};
             Vector3D vector3{verts[vertex_idx3 * 3], verts[vertex_idx3 * 3 + 1], verts[vertex_idx3 * 3 + 2]};
 
+            std::cout << "build_data 4" << std::endl;
             // Iterate through all the points and add it to the matrices
             positions.col(i    ) << vector1.x, vector1.y, vector1.z, 1.0;
             positions.col(i + 1) << vector2.x, vector2.y, vector2.z, 1.0;
             positions.col(i + 2) << vector3.x, vector3.y, vector3.z, 1.0;
 
+            std::cout << "build_data 5" << std::endl;
             normals.col(i    ) << 0.0, 0.0, 0.0, 0.0;
             normals.col(i + 1) << 0.0, 0.0, 0.0, 0.0;
             normals.col(i + 2) << 0.0, 0.0, 0.0, 0.0;
 
+            std::cout << "build_data 6" << std::endl;
             uvs.col(i    ) << 0.0, 0.0;
             uvs.col(i + 1) << 0.0, 0.0;
             uvs.col(i + 2) << 0.0, 0.0;
 
+            std::cout << "build_data 6" << std::endl;
             tangents.col(i    ) << 0.0, 0.0, 0.0, 0.0;
             tangents.col(i + 1) << 0.0, 0.0, 0.0, 0.0;
             tangents.col(i + 2) << 0.0, 0.0, 0.0, 0.0;

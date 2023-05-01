@@ -23,23 +23,15 @@ namespace CGL {
             DuckMesh();
             std::vector<double> verts;
             std::vector<int> indices;
+            int duck_num_indices;
 
             /**
              * Draws a duck with the given position and radius in opengl, using the
              * current modelview/projection matrices and color/material settings.
              */
             void draw_duck(GLShader &shader, const Vector3D &p);
-        private:
-
-            int s_index(int x, int y);
-
             void build_data();
-
-            int duck_num_lat;
-            int duck_num_lon;
-
-            int duck_num_vertices;
-            int duck_num_indices;
+        private:
 
             MatrixXf positions;
             MatrixXf normals;

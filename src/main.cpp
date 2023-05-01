@@ -37,8 +37,10 @@ using json = nlohmann::json;
 const string SPHERE = "sphere";
 const string PLANE = "plane";
 const string CLOTH = "cloth";
+const string INDICES = "indices";
+const string VERTS = "verts";
 
-const unordered_set<string> VALID_KEYS = {SPHERE, PLANE, CLOTH};
+const unordered_set<string> VALID_KEYS = {SPHERE, PLANE, CLOTH, INDICES, VERTS};
 
 ClothSimulator *app = nullptr;
 GLFWwindow *window = nullptr;
@@ -162,8 +164,8 @@ void incompleteObjectError(const char *object, const char *attribute) {
 }
 
 bool loadObjectsFromDuck(string filename, vector<CollisionObject *>* objects, Misc::DuckMesh* duckmesh) {
-  // , Misc::DuckMesh* duckmesh
   // Read JSON from file
+  cout << "Entered load objects from duck" << endl;
   ifstream i(filename);
   if (!i.good()) {
     return false;
@@ -173,15 +175,17 @@ bool loadObjectsFromDuck(string filename, vector<CollisionObject *>* objects, Mi
 
   duckmesh->verts = j["verts"].get<vector<double>>();
   duckmesh->indices = j["indices"].get<vector<int>>();
+  duckmesh->build_data();
   Duck* d = new Duck(Vector3D{0}, 0.2, duckmesh);
 //  vector<double> verts = j["verts"].get<vector<double>>();
 //  vector<int> indices = j["indices"].get<vector<int>>();
   objects->push_back(d);
   i.close();
+  cout << "Done with load objects from duck" << endl;
   return true;
 }
 
-bool loadObjectsFromFile(string filename, Cloth *cloth, ClothParameters *cp, vector<CollisionObject *>* objects, int sphere_num_lat, int sphere_num_lon) {
+bool loadObjectsFromFile(string filename, Cloth *cloth, ClothParameters *cp, vector<CollisionObject *>* objects, int sphere_num_lat, int sphere_num_lon, Misc::DuckMesh* duckmesh) {
   // Read JSON from file
   ifstream i(filename);
   if (!i.good()) {
@@ -204,8 +208,14 @@ bool loadObjectsFromFile(string filename, Cloth *cloth, ClothParameters *cp, vec
     // Retrieve object
     json object = it.value();
 
+    if (key == INDICES) {
+      loadObjectsFromDuck(filename, objects, duckmesh);
+    } else if (key == VERTS) {
+      continue;
+    }
+
     // Parse object depending on type (cloth, sphere, or plane)
-    if (key == CLOTH) {
+    else if (key == CLOTH) {
       // Cloth
       double width, height;
       int num_width_points, num_height_points;
@@ -839,22 +849,19 @@ int main(int argc, char **argv) {
     "../..",
     "../../.."
   };
+
   std::string project_root;
   bool found_project_root = find_project_root(search_paths, project_root);
-  
   Cloth cloth;
   ClothParameters cp;
   vector<CollisionObject *> objects;
   Misc::DuckMesh duckmesh;
-  
   int c;
   
   int sphere_num_lat = 40;
   int sphere_num_lon = 40;
-  
   std::string file_to_load_from;
   bool file_specified = false;
-  
   while ((c = getopt (argc, argv, "f:r:a:o:")) != -1) {
     switch (c) {
       case 'f': {
@@ -892,7 +899,6 @@ int main(int argc, char **argv) {
       }
     }
   }
-  
   if (!found_project_root) {
     std::cout << "Error: Could not find required file \"shaders/Default.vert\" anywhere!" << std::endl;
     return -1;
@@ -911,18 +917,12 @@ int main(int argc, char **argv) {
     def_fname << file_to_load_from;
     file_to_load_from = def_fname.str();
   }
-
   bool success;
-  if (file_to_load_from == "../scene/rubber_duck.json") {
-    success = loadObjectsFromDuck(file_to_load_from, &objects, &duckmesh);
-  } else {
-    success = loadObjectsFromFile(file_to_load_from, &cloth, &cp, &objects, sphere_num_lat, sphere_num_lon);
-  }
-  
+  success = loadObjectsFromFile(file_to_load_from, &cloth, &cp, &objects, sphere_num_lat, sphere_num_lon, &duckmesh);
+
   if (!success) {
     std::cout << "Warn: Unable to load from file: " << file_to_load_from << std::endl;
   }
-
   // *****************************************************
   // Converting .obj file to .json file
 //  std::cout << "OBJ to JSON converter" << std::endl;
