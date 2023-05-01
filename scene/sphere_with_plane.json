@@ -1,0 +1,26 @@
+{
+  "sphere": {
+    "origin": [0.5, 0.2, 0.5],
+    "radius": 0.2,
+    "friction": 0.3
+  },
+  "plane": {
+      "point": [0, 0.005, 0],
+      "normal": [0, 1, 0],
+      "friction": 0.5
+  },
+  "wcube": {
+    "damping": 0.2,
+    "density": 150.0,
+    "ks": 5000.0,
+    "relaxation_e": 1.0,
+    "rest_density": 998.20,
+    "smoothing_length": 1.0,
+    "width": 1,
+    "height": 1,
+    "num_particles": 20,
+    "cube_origin":  [0.25, 0.0, 0.25],
+    "cube_width": 0.5,
+    "cube_height": 0.7
+  }
+}
