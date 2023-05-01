@@ -77,6 +77,7 @@ struct WaterCube {
   ~WaterCube();
 
   void generateParticles();
+  void addParticles(int num_new_particles, Vector3D velocity);
 
   void simulate(double frames_per_sec, double simulation_steps, WaterCubeParameters *cp,
                 vector<Vector3D> external_accelerations,

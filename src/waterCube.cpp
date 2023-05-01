@@ -43,14 +43,32 @@ void WaterCube::generateParticles() {
         //x needs to be in the range from origin.x to origin.x + cube_width
         double x = generateRanBetween(cube_origin.x, cube_origin.x + cube_width);
         //y needs to be in the range from origin.y to origin.y + cube_width
-        double y = generateRanBetween(cube_origin.y, cube_origin.y + cube_height);
+        double y = generateRanBetween(cube_origin.y + (cube_height * 4 / 5), cube_origin.y + cube_height);
         //z needs to be in the range from origin.z to origin.z + cube_height
         double z = generateRanBetween(cube_origin.z, cube_origin.z + cube_width);
         Vector3D pos = Vector3D(x, y, z);
-        Vector3D vel = Vector3D(0,0,0);
+        Vector3D vel = Vector3D(0,-0.0001,0);
         Particle particle = Particle(pos, vel);
         water_particles.push_back(particle);
     }
+}
+
+void WaterCube::addParticles(int num_new_particles, Vector3D velocity) {
+
+    for(int i = 0; i < num_new_particles; i++){
+        //x needs to be in the range from origin.x to origin.x + cube_width
+        double x = generateRanBetween(cube_origin.x, cube_origin.x + cube_width);
+        //y needs to be in the range from origin.y to origin.y + cube_width
+        double y = cube_origin.y + cube_height - 0.0001;
+        //z needs to be in the range from origin.z to origin.z + cube_height
+        double z = generateRanBetween(cube_origin.z, cube_origin.z + cube_width);;
+        Vector3D pos = Vector3D(x, y, z);
+        Vector3D vel = velocity;
+        Particle particle = Particle(pos, vel);
+        water_particles.push_back(particle);
+    }
+    
+    this->num_particles += num_new_particles;
 }
 
 Vector3D getNormalOfPlane(Vector3D p1, Vector3D p2, Vector3D p3){
@@ -135,7 +153,15 @@ void WaterCube::simulate(double frames_per_sec, double simulation_steps, WaterCu
     double wind_velocity_x = (sin(t) + 0.3) / 2;
 //    cout << wind_velocity_x << endl;
     double wind_velocity_y = 0;
-
+    Vector3D new_velocity = Vector3D(wind_velocity_x, -0.0001, wind_velocity_y);
+    
+    if (ms % 50 == 0) {
+        addParticles(10, new_velocity);
+        cout << "there are " << num_particles << " particles" << endl;
+    }
+    
+//    // maintain variables to count stagnant particles in order to generate new ones
+//    int num_active_particles = 0;
 
     for(int i = 0; i < water_particles.size(); i++){
         Particle *pm = &water_particles[i];
@@ -148,6 +174,8 @@ void WaterCube::simulate(double frames_per_sec, double simulation_steps, WaterCu
         pm->position = curr_position + (pm->velocity * delta_t);
         pm->last_position = curr_position;
         
+//        cout << pm->velocity << endl;
+        
         // restart raindrop at top if hit floor
         if (pm->position.y < cube_origin.y) {
             //x needs to be in the range from origin.x to origin.x + cube_width
@@ -158,11 +186,21 @@ void WaterCube::simulate(double frames_per_sec, double simulation_steps, WaterCu
             double z = generateRanBetween(cube_origin.z, cube_origin.z + cube_width);
             pm->position = Vector3D(x, y, z);
             pm->last_position = pm->position;
-//            cout<<pm->velocity<<endl;
-            pm->velocity = Vector3D(wind_velocity_x,0,wind_velocity_y);
+            pm->velocity = new_velocity;
         }
+        
+//        // create new particle if current one is stagnant
+//        if (pm->velocity.y > -3) {
+//            num_active_particles += 1;
+//        }
     }
-//
+    
+//    // generate new particles
+//    cout << num_active_particles << endl;
+//    int new_to_add = 120 - num_active_particles;
+//    addParticles(new_to_add, new_velocity);
+//    cout << "added " << new_to_add << " new particles" << endl;
+    
 
 
 //    build_spatial_map();
@@ -173,13 +211,13 @@ void WaterCube::simulate(double frames_per_sec, double simulation_steps, WaterCu
 //    }
 
 
-//    //Handle collisions with plane
-//    for(int i = 0; i < water_particles.size(); i++) {
-//        Particle *pm = &water_particles[i];
-//        for (Plane *p: *borders) {
-//            p->collide(*pm);
-//        }
-//    }
+    //Handle collisions with plane
+    for(int i = 0; i < water_particles.size(); i++) {
+        Particle *pm = &water_particles[i];
+        for (Plane *p: *borders) {
+            p->collide(*pm);
+        }
+    }
 
     // Handle collisions with other primitives.
     for(int i = 0; i < water_particles.size(); i++) {
