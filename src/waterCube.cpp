@@ -9,6 +9,8 @@
 #include "CubeMesh.h"
 #include "misc/sphere_drawing.h"
 
+#include <chrono>
+#include <ctime>
 
 using namespace std;
 
@@ -117,6 +119,23 @@ void WaterCube::simulate(double frames_per_sec, double simulation_steps, WaterCu
         Particle *pm = &water_particles[i];
         pm->forces = extern_forces;
     }
+    
+//    double wind_velocity_x = generateRanBetween(-1, 1);
+//    double wind_velocity_y = generateRanBetween(-1, 1);
+    
+//    auto start = std::chrono::system_clock::now();
+//    std::time_t t = std::time(0);
+//    double wind_velocity_x = sin(t % 100);
+//    double wind_velocity_y = 0;
+    
+    // use sin() function and current time in milliseconds to generate smooth continuous wind gust velocities for rain particles
+    auto ms = std::chrono::duration_cast<std::chrono::milliseconds >(std::chrono::system_clock::now().time_since_epoch()).count();
+    double t = (ms * 1.0) / 1000.0;
+//    cout << "t: " << t << endl;
+    double wind_velocity_x = (sin(t) + 0.3) / 2;
+//    cout << wind_velocity_x << endl;
+    double wind_velocity_y = 0;
+
 
     for(int i = 0; i < water_particles.size(); i++){
         Particle *pm = &water_particles[i];
@@ -140,7 +159,7 @@ void WaterCube::simulate(double frames_per_sec, double simulation_steps, WaterCu
             pm->position = Vector3D(x, y, z);
             pm->last_position = pm->position;
 //            cout<<pm->velocity<<endl;
-            pm->velocity = Vector3D(0,0,0);
+            pm->velocity = Vector3D(wind_velocity_x,0,wind_velocity_y);
         }
     }
 //
