@@ -8,8 +8,14 @@
     "damping": 0.2,
     "density": 150.0,
     "ks": 5000.0,
+    "relaxation_e": 1.0,
+    "rest_density": 998.20,
+    "smoothing_length": 1.0,
     "width": 1,
     "height": 1,
-    "num_particles": 20
+    "num_particles": 120,
+    "cube_origin":  [0.05, 0, 0],
+    "cube_width": 2.0,
+    "cube_height": 2.0
   }
 }

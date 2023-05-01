@@ -20,7 +20,6 @@
 #include "json.hpp"
 #include "misc/file_utils.h"
 
-
 typedef uint32_t gid_t;
 
 using namespace std;

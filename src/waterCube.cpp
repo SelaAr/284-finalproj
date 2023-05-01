@@ -41,9 +41,9 @@ void WaterCube::generateParticles() {
         //x needs to be in the range from origin.x to origin.x + cube_width
         double x = generateRanBetween(cube_origin.x, cube_origin.x + cube_width);
         //y needs to be in the range from origin.y to origin.y + cube_width
-        double y = generateRanBetween(cube_origin.y, cube_origin.y + cube_width);
+        double y = generateRanBetween(cube_origin.y, cube_origin.y + cube_height);
         //z needs to be in the range from origin.z to origin.z + cube_height
-        double z = generateRanBetween(cube_origin.z, cube_origin.z + cube_height);
+        double z = generateRanBetween(cube_origin.z, cube_origin.z + cube_width);
         Vector3D pos = Vector3D(x, y, z);
         Vector3D vel = Vector3D(0,0,0);
         Particle particle = Particle(pos, vel);
@@ -76,15 +76,15 @@ void WaterCube::handleCollision(Particle p){
         p.velocity.y = p.velocity.y * -1 * elasticity;
         p.position.y = p.position.y + (cube_origin.y - p.position.y) + 2 * 0.005;
     }
-    if(pos.y > (cube_origin.y + cube_width)){
+    if(pos.y > (cube_origin.y + cube_height)){
         //Crosses back side of the cube
         p.velocity.y = p.velocity.y * -1 * elasticity;
-        p.position.y = p.position.y - (p.position.y - (cube_origin.y + cube_width)) - 2 * 0.005;
+        p.position.y = p.position.y - (p.position.y - (cube_origin.y + cube_height)) - 2 * 0.005;
     }
-    if(pos.z > (cube_origin.z + cube_height)){
+    if(pos.z > (cube_origin.z + cube_width)){
         //Crosses top
         p.velocity.z = p.velocity.z * -1 * elasticity;
-        p.position.z = p.position.z - (p.position.z - (cube_origin.z + cube_height)) - 2 * 0.005;
+        p.position.z = p.position.z - (p.position.z - (cube_origin.z + cube_width)) - 2 * 0.005;
     }
     if(pos.z < cube_origin.z){
         //Crosses bottom
@@ -128,8 +128,22 @@ void WaterCube::simulate(double frames_per_sec, double simulation_steps, WaterCu
         Vector3D curr_position = pm->position;
         pm->position = curr_position + (pm->velocity * delta_t);
         pm->last_position = curr_position;
+        
+        // restart raindrop at top if hit floor
+        if (pm->position.y < cube_origin.y) {
+            //x needs to be in the range from origin.x to origin.x + cube_width
+            double x = generateRanBetween(cube_origin.x, cube_origin.x + cube_width);
+            //y needs to be in the range from origin.y to origin.y + cube_width
+            double y = cube_origin.y + cube_height - 0.0001;
+            //z needs to be in the range from origin.z to origin.z + cube_height
+            double z = generateRanBetween(cube_origin.z, cube_origin.z + cube_width);
+            pm->position = Vector3D(x, y, z);
+            pm->last_position = pm->position;
+//            cout<<pm->velocity<<endl;
+            pm->velocity = Vector3D(0,0,0);
+        }
     }
-
+//
 
 
 //    build_spatial_map();
@@ -140,21 +154,21 @@ void WaterCube::simulate(double frames_per_sec, double simulation_steps, WaterCu
 //    }
 
 
-    //Handle collisions with plane
-    for(int i = 0; i < water_particles.size(); i++) {
-        Particle *pm = &water_particles[i];
-        for (Plane *p: *borders) {
-            p->collide(*pm);
-        }
-    }
-
-    // Handle collisions with other primitives.
+//    //Handle collisions with plane
 //    for(int i = 0; i < water_particles.size(); i++) {
 //        Particle *pm = &water_particles[i];
-//        for (CollisionObject *co: *collision_objects) {
-//            co->collide(*pm);
+//        for (Plane *p: *borders) {
+//            p->collide(*pm);
 //        }
 //    }
+
+    // Handle collisions with other primitives.
+    for(int i = 0; i < water_particles.size(); i++) {
+        Particle *pm = &water_particles[i];
+        for (CollisionObject *co: *collision_objects) {
+            co->collide(*pm);
+        }
+    }
 
 }
 
@@ -237,6 +251,7 @@ void WaterCube::reset() {
   for (int i = 0; i < water_particles.size(); i++) {
     pm->position = pm->start_position;
     pm->last_position = pm->start_position;
+    pm->velocity = 0;
     pm++;
   }
 }
@@ -250,21 +265,21 @@ void WaterCube::buildWaterCubeMesh(GLShader &shader) {
     //Front Bottom Right
     CubePoint p2 = CubePoint(Vector3D(cube_origin.x + cube_width, cube_origin.y,cube_origin.z));
     //Back Bottom Left
-    CubePoint p3 = CubePoint(Vector3D(cube_origin.x,cube_origin.y + cube_width,cube_origin.z));
+    CubePoint p3 = CubePoint(Vector3D(cube_origin.x,cube_origin.y + cube_height,cube_origin.z));
     //Back Bottom Right
-    CubePoint p4 = CubePoint(Vector3D(cube_origin.x + cube_width,cube_origin.y + cube_width,cube_origin.z));
+    CubePoint p4 = CubePoint(Vector3D(cube_origin.x + cube_width,cube_origin.y + cube_height,cube_origin.z));
     Plane * bottom = new Plane(p1.pos, getNormalOfPlane(p2.pos, p3.pos, p4.pos), 0.5);
     borders->push_back(bottom);
 
     //Plane 2:Top Side
     //Front Top Left
-    CubePoint p5 = CubePoint(Vector3D(cube_origin.x,cube_origin.y,cube_origin.z + cube_height));
+    CubePoint p5 = CubePoint(Vector3D(cube_origin.x,cube_origin.y,cube_origin.z + cube_width));
     //Front Top Right
-    CubePoint p6 = CubePoint(Vector3D(cube_origin.x + cube_width,cube_origin.y,cube_origin.z + cube_height));
+    CubePoint p6 = CubePoint(Vector3D(cube_origin.x + cube_width,cube_origin.y,cube_origin.z + cube_width));
     //Back Top Left
-    CubePoint p7 = CubePoint(Vector3D(cube_origin.x,cube_origin.y + cube_width,cube_origin.z + cube_height));
+    CubePoint p7 = CubePoint(Vector3D(cube_origin.x,cube_origin.y + cube_height,cube_origin.z + cube_width));
     //Back Top Right
-    CubePoint p8 = CubePoint(Vector3D(cube_origin.x + cube_width,cube_origin.y + cube_width,cube_origin.z + cube_height));
+    CubePoint p8 = CubePoint(Vector3D(cube_origin.x + cube_width,cube_origin.y + cube_height,cube_origin.z + cube_width));
     Plane * top = new Plane(p5.pos, getNormalOfPlane(p6.pos, p7.pos, p8.pos), 0.5);
     borders->push_back(top);
 
@@ -298,7 +313,7 @@ void WaterCube::buildWaterCubeMesh(GLShader &shader) {
     wCube.p7.mesh.draw_sphere(shader, wCube.p7.pos, 0.01);
     wCube.p8.mesh.draw_sphere(shader, wCube.p8.pos, 0.01);
 
-    std::cout << "BUILT WATER CUBE MESH" << std::endl;
+//    std::cout << "BUILT WATER CUBE MESH" << std::endl;
 
 
 //    CubeMesh *clothMesh = new CubeMesh();

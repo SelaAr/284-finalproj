@@ -13,10 +13,6 @@
 #include "misc/sphere_drawing.h"
 #include "collision/plane.h"
 
-#include "../flann/src/cpp/flann/flann.hpp"
-#include "../flann/src/cpp/flann/io/hdf5.h"
-
-
 using namespace CGL;
 using namespace std;
 
