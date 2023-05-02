@@ -40,8 +40,9 @@ const string CLOTH = "cloth";
 const string INDICES = "indices";
 const string VERTS = "verts";
 const string NORM_INDICES = "normalIndices";
+const string NORMS = "normals";
 
-const unordered_set<string> VALID_KEYS = {SPHERE, PLANE, CLOTH, INDICES, VERTS, NORM_INDICES};
+const unordered_set<string> VALID_KEYS = {SPHERE, PLANE, CLOTH, INDICES, VERTS, NORM_INDICES, NORMS};
 
 ClothSimulator *app = nullptr;
 GLFWwindow *window = nullptr;
@@ -176,7 +177,8 @@ bool loadObjectsFromDuck(string filename, vector<CollisionObject *>* objects, Mi
 
   duckmesh->verts = j["verts"].get<vector<double>>();
   duckmesh->indices = j["indices"].get<vector<int>>();
-//  duckmesh->normindices = j["normalIndices"].get<vector<int>>();
+  duckmesh->normindices = j["normalIndices"].get<vector<int>>();
+  duckmesh->norms = j["normals"].get<vector<double>>();
   duckmesh->build_data();
   Duck* d = new Duck(Vector3D{0}, 0.2, duckmesh);
 //  vector<double> verts = j["verts"].get<vector<double>>();
@@ -212,9 +214,7 @@ bool loadObjectsFromFile(string filename, Cloth *cloth, ClothParameters *cp, vec
 
     if (key == INDICES) {
       loadObjectsFromDuck(filename, objects, duckmesh);
-    } else if (key == VERTS) {
-      continue;
-    } else if (key == NORM_INDICES) {
+    } else if (key == VERTS || key == NORM_INDICES || key == NORMS) {
       continue;
     }
 

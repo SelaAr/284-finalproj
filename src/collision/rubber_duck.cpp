@@ -11,16 +11,11 @@
 using namespace nanogui;
 using namespace CGL;
 
-// Not using it right now
-// TODO: modify it for duck
 void Duck::collide(PointMass &pm) {
-//  if ((pm.position - origin).norm() <= radius) {
-//    // If it is inside the sphere
-//    Vector3D direction = (pm.position - origin).unit();
-//    Vector3D tangent = origin + direction * radius;
-//    Vector3D correction = tangent - pm.last_position;
-//    pm.position = pm.last_position + (correction * (1 - friction));
-//  }
+  vector<TriangleFace> faces = m_duck_mesh->faces;
+  for (auto &triangle_face: faces) {
+    triangle_face.collide(pm);
+  }
 }
 
 void Duck::render(GLShader &shader) {

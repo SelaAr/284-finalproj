@@ -18,20 +18,14 @@ public:
             : origin(origin),
               friction(friction), m_duck_mesh(d) {}
 
-
     void render(GLShader &shader);
     void collide(PointMass &pm);
 
 private:
     Vector3D origin;
-//    double radius;
-//    double radius2;
 
     double friction;
 
     Misc::DuckMesh* m_duck_mesh;
 };
-
-
-
 #endif //CLOTHSIM_RUBBER_DUCK_H

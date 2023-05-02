@@ -439,6 +439,30 @@ misc/sphere_drawing.cpp.s:
 	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/clothsim.dir/build.make src/CMakeFiles/clothsim.dir/misc/sphere_drawing.cpp.s
 .PHONY : misc/sphere_drawing.cpp.s
 
+misc/triangle_face.o: misc/triangle_face.cpp.o
+.PHONY : misc/triangle_face.o
+
+# target to build an object file
+misc/triangle_face.cpp.o:
+	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/clothsim.dir/build.make src/CMakeFiles/clothsim.dir/misc/triangle_face.cpp.o
+.PHONY : misc/triangle_face.cpp.o
+
+misc/triangle_face.i: misc/triangle_face.cpp.i
+.PHONY : misc/triangle_face.i
+
+# target to preprocess a source file
+misc/triangle_face.cpp.i:
+	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/clothsim.dir/build.make src/CMakeFiles/clothsim.dir/misc/triangle_face.cpp.i
+.PHONY : misc/triangle_face.cpp.i
+
+misc/triangle_face.s: misc/triangle_face.cpp.s
+.PHONY : misc/triangle_face.s
+
+# target to generate assembly for a file
+misc/triangle_face.cpp.s:
+	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/clothsim.dir/build.make src/CMakeFiles/clothsim.dir/misc/triangle_face.cpp.s
+.PHONY : misc/triangle_face.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -485,6 +509,9 @@ help:
 	@echo "... misc/sphere_drawing.o"
 	@echo "... misc/sphere_drawing.i"
 	@echo "... misc/sphere_drawing.s"
+	@echo "... misc/triangle_face.o"
+	@echo "... misc/triangle_face.i"
+	@echo "... misc/triangle_face.s"
 .PHONY : help
 
 

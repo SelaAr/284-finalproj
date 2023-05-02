@@ -5,6 +5,7 @@
 #include "duck_drawing.h"
 #include <cmath>
 #include <nanogui/nanogui.h>
+#include "triangle_face.h"
 
 #include "CGL/color.h"
 #include "CGL/vector3D.h"
@@ -13,7 +14,6 @@
 #define NORMAL_OFFSET 2
 #define VERTEX_OFFSET 5
 #define TANGEN_OFFSET 8
-// TODO: What is Vertex size
 #define VERTEX_SIZE 11
 
 using namespace nanogui;
@@ -34,18 +34,20 @@ namespace CGL {
           tangents = MatrixXf(4, 3 * duck_num_indices);
 
           std::cout << "build_data 2" << std::endl;
-          for (int i = 1; i < duck_num_indices; i += 3) {
+          for (int i = 0; i < duck_num_indices; i += 3) {
             std::cout << "build_data 2.1" << std::endl;
-            int vertex_idx1 = indices[i];
+            int vertex_idx1 = indices[i] - 1;
             std::cout << "build_data 2.2" << std::endl;
-            int vertex_idx2 = indices[i+1];
+            int vertex_idx2 = indices[i+1] - 1;
             std::cout << "build_data 2.3" << std::endl;
-            int vertex_idx3 = indices[i+2];
+            int vertex_idx3 = indices[i+2] - 1;
 
             std::cout << "build_data 3" << std::endl;
             Vector3D vector1{verts[vertex_idx1 * 3], verts[vertex_idx1 * 3 + 1], verts[vertex_idx1 * 3 + 2]};
             Vector3D vector2{verts[vertex_idx2 * 3], verts[vertex_idx2 * 3 + 1], verts[vertex_idx2 * 3 + 2]};
             Vector3D vector3{verts[vertex_idx3 * 3], verts[vertex_idx3 * 3 + 1], verts[vertex_idx3 * 3 + 2]};
+
+            faces.push_back(TriangleFace(vector1, vector2, vector3));
 
             std::cout << "build_data 4" << std::endl;
             // Iterate through all the points and add it to the matrices
@@ -53,10 +55,23 @@ namespace CGL {
             positions.col(i + 1) << vector2.x, vector2.y, vector2.z, 1.0;
             positions.col(i + 2) << vector3.x, vector3.y, vector3.z, 1.0;
 
+            std::cout << "build_data 2.1" << std::endl;
+            int norm_idx1 = normindices[i] - 1;
+            std::cout << "build_data 2.2" << std::endl;
+            int norm_idx2 = normindices[i+1] - 1;
+            std::cout << "build_data 2.3" << std::endl;
+            int norm_idx3 = normindices[i+2] - 1;
+
+            std::cout << "build_data 3" << std::endl;
+            Vector3D norm1{norms[norm_idx1 * 3], norms[norm_idx1 * 3 + 1], norms[norm_idx1 * 3 + 2]};
+            Vector3D norm2{norms[norm_idx2 * 3], norms[norm_idx2 * 3 + 1], norms[norm_idx2 * 3 + 2]};
+            Vector3D norm3{norms[norm_idx3 * 3], norms[norm_idx3 * 3 + 1], norms[norm_idx3 * 3 + 2]};
+
+
             std::cout << "build_data 5" << std::endl;
-            normals.col(i    ) << 0.0, 0.0, 0.0, 0.0;
-            normals.col(i + 1) << 0.0, 0.0, 0.0, 0.0;
-            normals.col(i + 2) << 0.0, 0.0, 0.0, 0.0;
+            normals.col(i    ) << norm1.x, norm1.y, norm1.z, 0.0;
+            normals.col(i + 1) << norm2.x, norm2.y, norm2.z, 0.0;
+            normals.col(i + 2) << norm3.x, norm3.y, norm3.z, 0.0;
 
             std::cout << "build_data 6" << std::endl;
             uvs.col(i    ) << 0.0, 0.0;

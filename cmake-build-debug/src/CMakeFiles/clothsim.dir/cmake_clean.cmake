@@ -23,6 +23,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/clothsim.dir/misc/file_utils.cpp.o.d"
   "CMakeFiles/clothsim.dir/misc/sphere_drawing.cpp.o"
   "CMakeFiles/clothsim.dir/misc/sphere_drawing.cpp.o.d"
+  "CMakeFiles/clothsim.dir/misc/triangle_face.cpp.o"
+  "CMakeFiles/clothsim.dir/misc/triangle_face.cpp.o.d"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -10,6 +10,8 @@
 #include <nanogui/nanogui.h>
 
 #include "CGL/CGL.h"
+#include "triangle_face.h"
+#include "triangle_face.cpp"
 
 using namespace nanogui;
 
@@ -23,6 +25,9 @@ namespace CGL {
             DuckMesh();
             std::vector<double> verts;
             std::vector<int> indices;
+            std::vector<int> normindices;
+            std::vector<double> norms;
+            std::vector<TriangleFace> faces;
             int duck_num_indices;
 
             /**
@@ -38,8 +43,6 @@ namespace CGL {
             MatrixXf uvs;
             MatrixXf tangents;
         };
-
-
     } // namespace Misc
 } // namespace CGL
 

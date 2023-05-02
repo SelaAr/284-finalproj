@@ -967,6 +967,12 @@
 		<Unit filename="/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/misc/sphere_drawing.h">
 			<Option target="clothsim"/>
 		</Unit>
+		<Unit filename="/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/misc/triangle_face.cpp">
+			<Option target="clothsim"/>
+		</Unit>
+		<Unit filename="/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/misc/triangle_face.h">
+			<Option target="clothsim"/>
+		</Unit>
 		<Unit filename="/Users/riddhibagadiaa/Documents/CS284A/final_proj/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
