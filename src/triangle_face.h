@@ -5,11 +5,11 @@
 #ifndef CLOTHSIM_TRIANGLE_FACE_H
 #define CLOTHSIM_TRIANGLE_FACE_H
 
-#include <nanogui/nanogui.h>
+#include "nanogui/nanogui.h"
 #include "CGL/color.h"
 #include "CGL/vector3D.h"
-#include "../clothMesh.h"
-#include "../misc/duck_drawing.h"
+#include "clothMesh.h"
+#include "misc/duck_drawing.h"
 using namespace CGL;
 using namespace std;
 

@@ -5,7 +5,8 @@
 #include "duck_drawing.h"
 #include <cmath>
 #include <nanogui/nanogui.h>
-#include "triangle_face.h"
+//#include "../triangle_face.h"
+#include "TriFace.h"
 
 #include "CGL/color.h"
 #include "CGL/vector3D.h"
@@ -47,7 +48,7 @@ namespace CGL {
             Vector3D vector2{verts[vertex_idx2 * 3], verts[vertex_idx2 * 3 + 1], verts[vertex_idx2 * 3 + 2]};
             Vector3D vector3{verts[vertex_idx3 * 3], verts[vertex_idx3 * 3 + 1], verts[vertex_idx3 * 3 + 2]};
 
-            faces.push_back(TriangleFace(vector1, vector2, vector3));
+            faces.push_back(TriFace(vector1, vector2, vector3));
 
             std::cout << "build_data 4" << std::endl;
             // Iterate through all the points and add it to the matrices

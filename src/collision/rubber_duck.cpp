@@ -7,12 +7,13 @@
 
 #include "../clothMesh.h"
 #include "../misc/duck_drawing.h"
+#include "../misc/TriFace.h"
 
 using namespace nanogui;
 using namespace CGL;
 
 void Duck::collide(PointMass &pm) {
-  vector<TriangleFace> faces = m_duck_mesh->faces;
+  vector<TriFace> faces = m_duck_mesh->faces;
   for (auto &triangle_face: faces) {
     triangle_face.collide(pm);
   }

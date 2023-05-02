@@ -367,6 +367,30 @@ main.cpp.s:
 	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/clothsim.dir/build.make src/CMakeFiles/clothsim.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+misc/TriFace.o: misc/TriFace.cpp.o
+.PHONY : misc/TriFace.o
+
+# target to build an object file
+misc/TriFace.cpp.o:
+	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/clothsim.dir/build.make src/CMakeFiles/clothsim.dir/misc/TriFace.cpp.o
+.PHONY : misc/TriFace.cpp.o
+
+misc/TriFace.i: misc/TriFace.cpp.i
+.PHONY : misc/TriFace.i
+
+# target to preprocess a source file
+misc/TriFace.cpp.i:
+	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/clothsim.dir/build.make src/CMakeFiles/clothsim.dir/misc/TriFace.cpp.i
+.PHONY : misc/TriFace.cpp.i
+
+misc/TriFace.s: misc/TriFace.cpp.s
+.PHONY : misc/TriFace.s
+
+# target to generate assembly for a file
+misc/TriFace.cpp.s:
+	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/clothsim.dir/build.make src/CMakeFiles/clothsim.dir/misc/TriFace.cpp.s
+.PHONY : misc/TriFace.cpp.s
+
 misc/duck_drawing.o: misc/duck_drawing.cpp.o
 .PHONY : misc/duck_drawing.o
 
@@ -439,29 +463,29 @@ misc/sphere_drawing.cpp.s:
 	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/clothsim.dir/build.make src/CMakeFiles/clothsim.dir/misc/sphere_drawing.cpp.s
 .PHONY : misc/sphere_drawing.cpp.s
 
-misc/triangle_face.o: misc/triangle_face.cpp.o
-.PHONY : misc/triangle_face.o
+triangle_face.o: triangle_face.cpp.o
+.PHONY : triangle_face.o
 
 # target to build an object file
-misc/triangle_face.cpp.o:
-	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/clothsim.dir/build.make src/CMakeFiles/clothsim.dir/misc/triangle_face.cpp.o
-.PHONY : misc/triangle_face.cpp.o
+triangle_face.cpp.o:
+	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/clothsim.dir/build.make src/CMakeFiles/clothsim.dir/triangle_face.cpp.o
+.PHONY : triangle_face.cpp.o
 
-misc/triangle_face.i: misc/triangle_face.cpp.i
-.PHONY : misc/triangle_face.i
+triangle_face.i: triangle_face.cpp.i
+.PHONY : triangle_face.i
 
 # target to preprocess a source file
-misc/triangle_face.cpp.i:
-	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/clothsim.dir/build.make src/CMakeFiles/clothsim.dir/misc/triangle_face.cpp.i
-.PHONY : misc/triangle_face.cpp.i
+triangle_face.cpp.i:
+	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/clothsim.dir/build.make src/CMakeFiles/clothsim.dir/triangle_face.cpp.i
+.PHONY : triangle_face.cpp.i
 
-misc/triangle_face.s: misc/triangle_face.cpp.s
-.PHONY : misc/triangle_face.s
+triangle_face.s: triangle_face.cpp.s
+.PHONY : triangle_face.s
 
 # target to generate assembly for a file
-misc/triangle_face.cpp.s:
-	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/clothsim.dir/build.make src/CMakeFiles/clothsim.dir/misc/triangle_face.cpp.s
-.PHONY : misc/triangle_face.cpp.s
+triangle_face.cpp.s:
+	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/clothsim.dir/build.make src/CMakeFiles/clothsim.dir/triangle_face.cpp.s
+.PHONY : triangle_face.cpp.s
 
 # Help Target
 help:
@@ -500,6 +524,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... misc/TriFace.o"
+	@echo "... misc/TriFace.i"
+	@echo "... misc/TriFace.s"
 	@echo "... misc/duck_drawing.o"
 	@echo "... misc/duck_drawing.i"
 	@echo "... misc/duck_drawing.s"
@@ -509,9 +536,9 @@ help:
 	@echo "... misc/sphere_drawing.o"
 	@echo "... misc/sphere_drawing.i"
 	@echo "... misc/sphere_drawing.s"
-	@echo "... misc/triangle_face.o"
-	@echo "... misc/triangle_face.i"
-	@echo "... misc/triangle_face.s"
+	@echo "... triangle_face.o"
+	@echo "... triangle_face.i"
+	@echo "... triangle_face.s"
 .PHONY : help
 
 

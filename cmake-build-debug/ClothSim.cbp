@@ -949,6 +949,12 @@
 		<Unit filename="/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/main.cpp">
 			<Option target="clothsim"/>
 		</Unit>
+		<Unit filename="/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/misc/TriFace.cpp">
+			<Option target="clothsim"/>
+		</Unit>
+		<Unit filename="/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/misc/TriFace.h">
+			<Option target="clothsim"/>
+		</Unit>
 		<Unit filename="/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/misc/duck_drawing.cpp">
 			<Option target="clothsim"/>
 		</Unit>
@@ -967,10 +973,10 @@
 		<Unit filename="/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/misc/sphere_drawing.h">
 			<Option target="clothsim"/>
 		</Unit>
-		<Unit filename="/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/misc/triangle_face.cpp">
+		<Unit filename="/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/triangle_face.cpp">
 			<Option target="clothsim"/>
 		</Unit>
-		<Unit filename="/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/misc/triangle_face.h">
+		<Unit filename="/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/triangle_face.h">
 			<Option target="clothsim"/>
 		</Unit>
 		<Unit filename="/Users/riddhibagadiaa/Documents/CS284A/final_proj/CMakeLists.txt">

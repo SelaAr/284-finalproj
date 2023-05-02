@@ -2,10 +2,10 @@
 // Created by Riddhi Bagadiaa on 01/05/23.
 //
 
-#include <nanogui/nanogui.h>
+#include "nanogui/nanogui.h"
 #include "triangle_face.h"
 #include "CGL/vector3D.h"
-#include "../misc/duck_drawing.h"
+#include "misc/duck_drawing.h"
 using namespace CGL;
 using namespace std;
 

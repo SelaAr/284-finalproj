@@ -21,7 +21,7 @@ set(CLOTHSIM_VIEWER_SOURCE
 
     # Camera
     camera.cpp
-        collision/rubber_duck.cpp collision/rubber_duck.h misc/duck_drawing.cpp misc/duck_drawing.h misc/triangle_face.cpp misc/triangle_face.h)
+        collision/rubber_duck.cpp collision/rubber_duck.h misc/duck_drawing.cpp misc/duck_drawing.h triangle_face.cpp triangle_face.h misc/TriFace.cpp misc/TriFace.h)
 
 # Windows-only sources
 if(WIN32)

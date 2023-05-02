@@ -10,8 +10,9 @@
 #include <nanogui/nanogui.h>
 
 #include "CGL/CGL.h"
-#include "triangle_face.h"
-#include "triangle_face.cpp"
+//#include "../triangle_face.h"
+//#include "../triangle_face.cpp"
+#include "TriFace.h"
 
 using namespace nanogui;
 
@@ -27,7 +28,7 @@ namespace CGL {
             std::vector<int> indices;
             std::vector<int> normindices;
             std::vector<double> norms;
-            std::vector<TriangleFace> faces;
+            std::vector<TriFace> faces;
             int duck_num_indices;
 
             /**

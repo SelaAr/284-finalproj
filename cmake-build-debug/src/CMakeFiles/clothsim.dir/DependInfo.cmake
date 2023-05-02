@@ -16,10 +16,11 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/collision/rubber_duck.cpp" "src/CMakeFiles/clothsim.dir/collision/rubber_duck.cpp.o" "gcc" "src/CMakeFiles/clothsim.dir/collision/rubber_duck.cpp.o.d"
   "/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/collision/sphere.cpp" "src/CMakeFiles/clothsim.dir/collision/sphere.cpp.o" "gcc" "src/CMakeFiles/clothsim.dir/collision/sphere.cpp.o.d"
   "/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/main.cpp" "src/CMakeFiles/clothsim.dir/main.cpp.o" "gcc" "src/CMakeFiles/clothsim.dir/main.cpp.o.d"
+  "/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/misc/TriFace.cpp" "src/CMakeFiles/clothsim.dir/misc/TriFace.cpp.o" "gcc" "src/CMakeFiles/clothsim.dir/misc/TriFace.cpp.o.d"
   "/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/misc/duck_drawing.cpp" "src/CMakeFiles/clothsim.dir/misc/duck_drawing.cpp.o" "gcc" "src/CMakeFiles/clothsim.dir/misc/duck_drawing.cpp.o.d"
   "/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/misc/file_utils.cpp" "src/CMakeFiles/clothsim.dir/misc/file_utils.cpp.o" "gcc" "src/CMakeFiles/clothsim.dir/misc/file_utils.cpp.o.d"
   "/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/misc/sphere_drawing.cpp" "src/CMakeFiles/clothsim.dir/misc/sphere_drawing.cpp.o" "gcc" "src/CMakeFiles/clothsim.dir/misc/sphere_drawing.cpp.o.d"
-  "/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/misc/triangle_face.cpp" "src/CMakeFiles/clothsim.dir/misc/triangle_face.cpp.o" "gcc" "src/CMakeFiles/clothsim.dir/misc/triangle_face.cpp.o.d"
+  "/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/triangle_face.cpp" "src/CMakeFiles/clothsim.dir/triangle_face.cpp.o" "gcc" "src/CMakeFiles/clothsim.dir/triangle_face.cpp.o.d"
   )
 
 # Targets to which this target links.

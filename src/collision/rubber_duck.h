@@ -8,6 +8,7 @@
 #include "../clothMesh.h"
 #include "../misc/duck_drawing.h"
 #include "collisionObject.h"
+#include "../misc/TriFace.h"
 
 using namespace CGL;
 using namespace std;
