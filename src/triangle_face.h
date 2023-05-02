@@ -5,6 +5,7 @@
 #ifndef CLOTHSIM_TRIANGLE_FACE_H
 #define CLOTHSIM_TRIANGLE_FACE_H
 
+#include <nanogui/nanogui.h>
 #include "CGL/color.h"
 #include "CGL/vector3D.h"
 #include "../clothMesh.h"
@@ -12,14 +13,18 @@
 using namespace CGL;
 using namespace std;
 
-    class TriangleFace {
+    struct TriangleFace{
     public:
         // Supply the desired number of vertices
-        TriangleFace(Vector3D vertex1, Vector3D vertex2, Vector3D vertex3);
+        TriangleFace(Vector3D vertex1, Vector3D vertex2, Vector3D vertex3)
+        : vertex1(vertex1), vertex2(vertex2), vertex3(vertex3) {
+          draw_normal();
+        }
 
         Vector3D vertex1;
         Vector3D vertex2;
         Vector3D vertex3;
+
         Vector3D normal;
         double friction = 0.3;
 
