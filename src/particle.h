@@ -34,6 +34,8 @@ struct Particle {
   Vector3D last_position;
   Vector3D forces;
   Vector3D velocity;
+    
+  long time_of_birth = std::chrono::duration_cast<std::chrono::milliseconds >(std::chrono::system_clock::now().time_since_epoch()).count();
 
   double density;
   double pressure;

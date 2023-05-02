@@ -71,6 +71,18 @@ void WaterCube::addParticles(int num_new_particles, Vector3D velocity) {
     this->num_particles += num_new_particles;
 }
 
+void WaterCube::respawn_particle(Particle *pm, Vector3D new_velocity) {
+    //x needs to be in the range from origin.x to origin.x + cube_width
+    double x = generateRanBetween(cube_origin.x, cube_origin.x + cube_width);
+    //y needs to be in the range from origin.y to origin.y + cube_width
+    double y = cube_origin.y + cube_height - 0.0001;
+    //z needs to be in the range from origin.z to origin.z + cube_height
+    double z = generateRanBetween(cube_origin.z, cube_origin.z + cube_width);
+    pm->position = Vector3D(x, y, z);
+    pm->last_position = pm->position;
+    pm->velocity = new_velocity;
+}
+
 Vector3D getNormalOfPlane(Vector3D p1, Vector3D p2, Vector3D p3){
     Vector3D a = p2 - p1;
     Vector3D b = p3 - p1;
@@ -138,25 +150,21 @@ void WaterCube::simulate(double frames_per_sec, double simulation_steps, WaterCu
         pm->forces = extern_forces;
     }
     
-//    double wind_velocity_x = generateRanBetween(-1, 1);
-//    double wind_velocity_y = generateRanBetween(-1, 1);
+    int PARTICLE_LIMIT = 250; // maximum limit to # of particles to render in total in scene
+    int NEW_GENERATION_PERIOD = 50; // period of time to generate new particles (in milliseconds)
+    int NUM_PARTICLES_TO_GEN = 10; // number of particles to generate each period of time above
+    int REBIRTH_PERIOD = 7500; // amount of time before rain particles disappear and regenerate from above (in milliseconds)
     
-//    auto start = std::chrono::system_clock::now();
-//    std::time_t t = std::time(0);
-//    double wind_velocity_x = sin(t % 100);
-//    double wind_velocity_y = 0;
     
     // use sin() function and current time in milliseconds to generate smooth continuous wind gust velocities for rain particles
     auto ms = std::chrono::duration_cast<std::chrono::milliseconds >(std::chrono::system_clock::now().time_since_epoch()).count();
     double t = (ms * 1.0) / 1000.0;
-//    cout << "t: " << t << endl;
     double wind_velocity_x = (sin(t) + 0.3) / 2;
-//    cout << wind_velocity_x << endl;
     double wind_velocity_y = 0;
     Vector3D new_velocity = Vector3D(wind_velocity_x, -0.0001, wind_velocity_y);
     
-    if (ms % 50 == 0) {
-        addParticles(10, new_velocity);
+    if (ms % NEW_GENERATION_PERIOD == 0 and this->num_particles < PARTICLE_LIMIT) {
+        addParticles(NUM_PARTICLES_TO_GEN, new_velocity);
         cout << "there are " << num_particles << " particles" << endl;
     }
     
@@ -176,32 +184,21 @@ void WaterCube::simulate(double frames_per_sec, double simulation_steps, WaterCu
         
 //        cout << pm->velocity << endl;
         
-        // restart raindrop at top if hit floor
-        if (pm->position.y < cube_origin.y) {
-            //x needs to be in the range from origin.x to origin.x + cube_width
-            double x = generateRanBetween(cube_origin.x, cube_origin.x + cube_width);
-            //y needs to be in the range from origin.y to origin.y + cube_width
-            double y = cube_origin.y + cube_height - 0.0001;
-            //z needs to be in the range from origin.z to origin.z + cube_height
-            double z = generateRanBetween(cube_origin.z, cube_origin.z + cube_width);
-            pm->position = Vector3D(x, y, z);
-            pm->last_position = pm->position;
-            pm->velocity = new_velocity;
+        // restart raindrop at top if time expires
+        long curr_time = std::chrono::duration_cast<std::chrono::milliseconds >(std::chrono::system_clock::now().time_since_epoch()).count();
+        if (curr_time - pm->time_of_birth > REBIRTH_PERIOD) {
+            respawn_particle(pm, new_velocity);
+            pm->time_of_birth = curr_time;
+//            cout << "respawning" << endl;
         }
         
-//        // create new particle if current one is stagnant
-//        if (pm->velocity.y > -3) {
-//            num_active_particles += 1;
-//        }
+        // restart raindrop at top if hit floor
+        if (pm->position.y < cube_origin.y - 0.1) {
+            respawn_particle(pm, new_velocity);
+            pm->time_of_birth = curr_time;
+            cout << "whoosh" << endl;
+        }
     }
-    
-//    // generate new particles
-//    cout << num_active_particles << endl;
-//    int new_to_add = 120 - num_active_particles;
-//    addParticles(new_to_add, new_velocity);
-//    cout << "added " << new_to_add << " new particles" << endl;
-    
-
 
 //    build_spatial_map();
 //
