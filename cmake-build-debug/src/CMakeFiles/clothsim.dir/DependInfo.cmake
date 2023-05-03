@@ -20,7 +20,6 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/misc/duck_drawing.cpp" "src/CMakeFiles/clothsim.dir/misc/duck_drawing.cpp.o" "gcc" "src/CMakeFiles/clothsim.dir/misc/duck_drawing.cpp.o.d"
   "/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/misc/file_utils.cpp" "src/CMakeFiles/clothsim.dir/misc/file_utils.cpp.o" "gcc" "src/CMakeFiles/clothsim.dir/misc/file_utils.cpp.o.d"
   "/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/misc/sphere_drawing.cpp" "src/CMakeFiles/clothsim.dir/misc/sphere_drawing.cpp.o" "gcc" "src/CMakeFiles/clothsim.dir/misc/sphere_drawing.cpp.o.d"
-  "/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/triangle_face.cpp" "src/CMakeFiles/clothsim.dir/triangle_face.cpp.o" "gcc" "src/CMakeFiles/clothsim.dir/triangle_face.cpp.o.d"
   )
 
 # Targets to which this target links.
