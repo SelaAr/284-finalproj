@@ -127,7 +127,8 @@ void WaterSimulator::load_shaders() {
       vert_shader = associated_vert_shader_path;
     }
 
-    std::shared_ptr<GLShader> nanogui_shader = make_shared<GLShader>();
+//    std::shared_ptr<GLShader> nanogui_shader = make_shared<GLShader>();
+    GLShader* nanogui_shader = new GLShader();
     nanogui_shader->initFromFiles(shader_name, vert_shader,
                                   m_project_root + "/shaders/" + shader_fname);
 
@@ -260,10 +261,7 @@ void WaterSimulator::drawContents() {
   // Bind the active shader
 
   const UserShader& active_shader = shaders[active_shader_idx];
-
-  GLShader &shader = *active_shader.nanogui_shader;
-  shader.bind();
-
+  const UserShader& collision_object_shader = shaders[5];
   // Prepare the camera projection matrix
 
   Matrix4f model;
@@ -273,12 +271,50 @@ void WaterSimulator::drawContents() {
   Matrix4f projection = getProjectionMatrix();
 
   Matrix4f viewProjection = projection * view;
+  Vector3D cam_pos = camera.position();
+
+  // *******************************************************************************
+  GLShader &object_shader = *collision_object_shader.nanogui_shader;
+  object_shader.bind();
+
+  cout << "Name of object shader is " << object_shader.name() << endl;
+
+  object_shader.setUniform("u_model", model);
+  object_shader.setUniform("u_view_projection", viewProjection);
+
+  object_shader.setUniform("u_color", color, false);
+  object_shader.setUniform("u_cam_pos", Vector3f(cam_pos.x, cam_pos.y, cam_pos.z), false);
+  object_shader.setUniform("u_light_pos", Vector3f(0.5, 2, 2), false);
+  object_shader.setUniform("u_light_intensity", Vector3f(3, 3, 3), false);
+  object_shader.setUniform("u_texture_1_size", Vector2f(m_gl_texture_1_size.x, m_gl_texture_1_size.y), false);
+  object_shader.setUniform("u_texture_2_size", Vector2f(m_gl_texture_2_size.x, m_gl_texture_2_size.y), false);
+  object_shader.setUniform("u_texture_3_size", Vector2f(m_gl_texture_3_size.x, m_gl_texture_3_size.y), false);
+  object_shader.setUniform("u_texture_4_size", Vector2f(m_gl_texture_4_size.x, m_gl_texture_4_size.y), false);
+  // Textures
+  object_shader.setUniform("u_texture_1", 1, false);
+  object_shader.setUniform("u_texture_2", 2, false);
+  object_shader.setUniform("u_texture_3", 3, false);
+  object_shader.setUniform("u_texture_4", 4, false);
+
+  object_shader.setUniform("u_normal_scaling", m_normal_scaling, false);
+  object_shader.setUniform("u_height_scaling", m_height_scaling, false);
+
+  object_shader.setUniform("u_texture_cubemap", 5, false);
+
+  for (CollisionObject *co : *collision_objects) {
+    co->render(object_shader);
+  }
+  // *******************************************************************************
+
+  GLShader &shader = *active_shader.nanogui_shader;
+  shader.bind();
+
+  cout << "Name of just shader is " << shader.name() << endl;
 
   shader.setUniform("u_model", model);
   shader.setUniform("u_view_projection", viewProjection);
 
   // Others
-  Vector3D cam_pos = camera.position();
   shader.setUniform("u_color", color, false);
   shader.setUniform("u_cam_pos", Vector3f(cam_pos.x, cam_pos.y, cam_pos.z), false);
   shader.setUniform("u_light_pos", Vector3f(0.5, 2, 2), false);
@@ -298,9 +334,6 @@ void WaterSimulator::drawContents() {
 
   shader.setUniform("u_texture_cubemap", 5, false);
 
-  for (CollisionObject *co : *collision_objects) {
-    co->render(shader);
-  }
   drawPhong(shader);
 }
 

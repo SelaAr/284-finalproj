@@ -165,7 +165,7 @@ void WaterCube::simulate(double frames_per_sec, double simulation_steps, WaterCu
 
   if (ms % NEW_GENERATION_PERIOD == 0 and this->num_particles < PARTICLE_LIMIT) {
     addParticles(NUM_PARTICLES_TO_GEN, new_velocity);
-    cout << "there are " << num_particles << " particles" << endl;
+//    cout << "there are " << num_particles << " particles" << endl;
   }
 
 //    // maintain variables to count stagnant particles in order to generate new ones
