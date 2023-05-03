@@ -153,7 +153,7 @@ void WaterCube::simulate(double frames_per_sec, double simulation_steps, WaterCu
   int PARTICLE_LIMIT = 250; // maximum limit to # of particles to render in total in scene
   int NEW_GENERATION_PERIOD = 75; // period of time to generate new particles (in milliseconds)
   int NUM_PARTICLES_TO_GEN = 10; // number of particles to generate each period of time above
-  int REBIRTH_PERIOD = 9000; // amount of time before rain particles disappear and regenerate from above (in milliseconds)
+  int REBIRTH_PERIOD = 900000; // amount of time before rain particles disappear and regenerate from above (in milliseconds)
 
 
   // use sin() function and current time in milliseconds to generate smooth continuous wind gust velocities for rain particles

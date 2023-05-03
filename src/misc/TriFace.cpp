@@ -41,7 +41,7 @@ void TriFace::collide(Particle &pm) {
         
         cout << angleSum << endl;
         // Check if the angles add up to 2 * pi radians (360 degrees)
-        if (angleSum >= 6.2) {
+        if (angleSum >= 5) {
             Vector3D correction = (tangent + (SURFACE_OFFSET * normal)) - pm.last_position;
             pm.position = pm.last_position + (correction * (1 - friction));
         }
