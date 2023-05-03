@@ -27,7 +27,7 @@ public:
     Vector3D normal;
     double friction = 0.3;
 
-    void collide(PointMass &pm);
+    void collide(Particle &pm);
     void draw_normal();
 
 private:

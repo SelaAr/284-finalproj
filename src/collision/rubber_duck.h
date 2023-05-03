@@ -20,7 +20,7 @@ public:
               friction(friction), m_duck_mesh(d) {}
 
     void render(GLShader &shader);
-    void collide(PointMass &pm);
+    void collide(Particle &pm);
 
 private:
     Vector3D origin;

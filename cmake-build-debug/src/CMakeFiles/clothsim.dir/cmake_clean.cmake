@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "../clothsim"
   "../clothsim.pdb"
+  "CMakeFiles/clothsim.dir/CubeMesh.cpp.o"
+  "CMakeFiles/clothsim.dir/CubeMesh.cpp.o.d"
   "CMakeFiles/clothsim.dir/camera.cpp.o"
   "CMakeFiles/clothsim.dir/camera.cpp.o.d"
   "CMakeFiles/clothsim.dir/cloth.cpp.o"
@@ -25,8 +27,10 @@ file(REMOVE_RECURSE
   "CMakeFiles/clothsim.dir/misc/file_utils.cpp.o.d"
   "CMakeFiles/clothsim.dir/misc/sphere_drawing.cpp.o"
   "CMakeFiles/clothsim.dir/misc/sphere_drawing.cpp.o.d"
-  "CMakeFiles/clothsim.dir/triangle_face.cpp.o"
-  "CMakeFiles/clothsim.dir/triangle_face.cpp.o.d"
+  "CMakeFiles/clothsim.dir/waterCube.cpp.o"
+  "CMakeFiles/clothsim.dir/waterCube.cpp.o.d"
+  "CMakeFiles/clothsim.dir/waterSimulator.cpp.o"
+  "CMakeFiles/clothsim.dir/waterSimulator.cpp.o.d"
 )
 
 # Per-language clean rules from dependency scanning.

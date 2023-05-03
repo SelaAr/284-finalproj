@@ -15,8 +15,8 @@
 #include "CGL/CGL.h"
 #include "collision/plane.h"
 #include "collision/sphere.h"
-#include "cloth.h"
-#include "clothSimulator.h"
+#include "waterCube.h"
+#include "waterSimulator.h"
 #include "json.hpp"
 #include "misc/file_utils.h"
 #include <iostream>
@@ -41,10 +41,11 @@ const string INDICES = "indices";
 const string VERTS = "verts";
 const string NORM_INDICES = "normalIndices";
 const string NORMS = "normals";
+const string WCUBE = "wcube";
 
-const unordered_set<string> VALID_KEYS = {SPHERE, PLANE, CLOTH, INDICES, VERTS, NORM_INDICES, NORMS};
+const unordered_set<string> VALID_KEYS = {SPHERE, PLANE, CLOTH, INDICES, VERTS, NORM_INDICES, NORMS, WCUBE};
 
-ClothSimulator *app = nullptr;
+WaterSimulator *app = nullptr;
 GLFWwindow *window = nullptr;
 Screen *screen = nullptr;
 
@@ -225,7 +226,6 @@ bool loadObjectsFromFile(string filename, Cloth *cloth, ClothParameters *cp, vec
       int num_width_points, num_height_points;
       float thickness;
       e_orientation orientation;
-      vector<vector<int>> pinned;
 
       auto it_width = object.find("width");
       if (it_width != object.end()) {
@@ -269,22 +269,12 @@ bool loadObjectsFromFile(string filename, Cloth *cloth, ClothParameters *cp, vec
         incompleteObjectError("cloth", "orientation");
       }
 
-      auto it_pinned = object.find("pinned");
-      if (it_pinned != object.end()) {
-        vector<json> points = *it_pinned;
-        for (auto pt : points) {
-          vector<int> point = pt;
-          pinned.push_back(point);
-        }
-      }
-
       cloth->width = width;
       cloth->height = height;
       cloth->num_width_points = num_width_points;
       cloth->num_height_points = num_height_points;
       cloth->thickness = thickness;
       cloth->orientation = orientation;
-      cloth->pinned = pinned;
 
       // Cloth parameters
       bool enable_structural_constraints, enable_shearing_constraints, enable_bending_constraints;

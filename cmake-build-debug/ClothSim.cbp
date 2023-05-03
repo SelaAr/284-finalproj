@@ -904,6 +904,12 @@
 		<Unit filename="/Users/riddhibagadiaa/Documents/CS284A/final_proj/ext/nanogui/src/window.cpp">
 			<Option target="nanogui-obj"/>
 		</Unit>
+		<Unit filename="/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/CubeMesh.cpp">
+			<Option target="clothsim"/>
+		</Unit>
+		<Unit filename="/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/CubeMesh.h">
+			<Option target="clothsim"/>
+		</Unit>
 		<Unit filename="/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/camera.cpp">
 			<Option target="clothsim"/>
 		</Unit>
@@ -973,10 +979,16 @@
 		<Unit filename="/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/misc/sphere_drawing.h">
 			<Option target="clothsim"/>
 		</Unit>
-		<Unit filename="/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/triangle_face.cpp">
+		<Unit filename="/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/waterCube.cpp">
 			<Option target="clothsim"/>
 		</Unit>
-		<Unit filename="/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/triangle_face.h">
+		<Unit filename="/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/waterCube.h">
+			<Option target="clothsim"/>
+		</Unit>
+		<Unit filename="/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/waterSimulator.cpp">
+			<Option target="clothsim"/>
+		</Unit>
+		<Unit filename="/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/waterSimulator.h">
 			<Option target="clothsim"/>
 		</Unit>
 		<Unit filename="/Users/riddhibagadiaa/Documents/CS284A/final_proj/CMakeLists.txt">

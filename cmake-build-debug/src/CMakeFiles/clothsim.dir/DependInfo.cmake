@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/CubeMesh.cpp" "src/CMakeFiles/clothsim.dir/CubeMesh.cpp.o" "gcc" "src/CMakeFiles/clothsim.dir/CubeMesh.cpp.o.d"
   "/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/camera.cpp" "src/CMakeFiles/clothsim.dir/camera.cpp.o" "gcc" "src/CMakeFiles/clothsim.dir/camera.cpp.o.d"
   "/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/cloth.cpp" "src/CMakeFiles/clothsim.dir/cloth.cpp.o" "gcc" "src/CMakeFiles/clothsim.dir/cloth.cpp.o.d"
   "/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/clothMesh.cpp" "src/CMakeFiles/clothsim.dir/clothMesh.cpp.o" "gcc" "src/CMakeFiles/clothsim.dir/clothMesh.cpp.o.d"
@@ -20,7 +21,8 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/misc/duck_drawing.cpp" "src/CMakeFiles/clothsim.dir/misc/duck_drawing.cpp.o" "gcc" "src/CMakeFiles/clothsim.dir/misc/duck_drawing.cpp.o.d"
   "/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/misc/file_utils.cpp" "src/CMakeFiles/clothsim.dir/misc/file_utils.cpp.o" "gcc" "src/CMakeFiles/clothsim.dir/misc/file_utils.cpp.o.d"
   "/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/misc/sphere_drawing.cpp" "src/CMakeFiles/clothsim.dir/misc/sphere_drawing.cpp.o" "gcc" "src/CMakeFiles/clothsim.dir/misc/sphere_drawing.cpp.o.d"
-  "/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/triangle_face.cpp" "src/CMakeFiles/clothsim.dir/triangle_face.cpp.o" "gcc" "src/CMakeFiles/clothsim.dir/triangle_face.cpp.o.d"
+  "/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/waterCube.cpp" "src/CMakeFiles/clothsim.dir/waterCube.cpp.o" "gcc" "src/CMakeFiles/clothsim.dir/waterCube.cpp.o.d"
+  "/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/waterSimulator.cpp" "src/CMakeFiles/clothsim.dir/waterSimulator.cpp.o" "gcc" "src/CMakeFiles/clothsim.dir/waterSimulator.cpp.o.d"
   )
 
 # Targets to which this target links.

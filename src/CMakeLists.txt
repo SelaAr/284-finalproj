@@ -5,6 +5,8 @@ set(CLOTHSIM_VIEWER_SOURCE
     # Cloth simulation objects
     cloth.cpp
     clothMesh.cpp
+        waterCube.cpp
+        CubeMesh.cpp
 
     # Collision objects
     collision/sphere.cpp
@@ -13,6 +15,7 @@ set(CLOTHSIM_VIEWER_SOURCE
     # Application
     main.cpp
     clothSimulator.cpp
+        waterSimulator.cpp
 
     # Miscellaneous
     # png.cpp
@@ -21,7 +24,7 @@ set(CLOTHSIM_VIEWER_SOURCE
 
     # Camera
     camera.cpp
-        collision/rubber_duck.cpp collision/rubber_duck.h misc/duck_drawing.cpp misc/duck_drawing.h triangle_face.cpp triangle_face.h misc/TriFace.cpp misc/TriFace.h)
+        collision/rubber_duck.cpp collision/rubber_duck.h misc/duck_drawing.cpp misc/duck_drawing.h misc/TriFace.cpp misc/TriFace.h waterCube.cpp waterCube.h waterSimulator.cpp waterSimulator.h CubeMesh.cpp CubeMesh.h)
 
 # Windows-only sources
 if(WIN32)

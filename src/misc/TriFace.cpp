@@ -17,7 +17,7 @@ void TriFace::draw_normal() {
   normal.normalize();
 }
 
-void TriFace::collide(PointMass &pm) {
+void TriFace::collide(Particle &pm) {
   Vector3D tangent = pm.position - (dot(pm.position - vertex1, normal) * normal);
   Vector3D direction = pm.last_position - tangent;
   double t = dot((vertex1 - pm.position), normal) / (dot(direction, normal));

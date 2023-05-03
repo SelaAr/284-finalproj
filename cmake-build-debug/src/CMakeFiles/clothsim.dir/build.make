@@ -97,10 +97,38 @@ src/CMakeFiles/clothsim.dir/clothMesh.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/clothsim.dir/clothMesh.cpp.s"
 	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/src && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/riddhibagadiaa/Documents/CS284A/final_proj/src/clothMesh.cpp -o CMakeFiles/clothsim.dir/clothMesh.cpp.s
 
+src/CMakeFiles/clothsim.dir/waterCube.cpp.o: src/CMakeFiles/clothsim.dir/flags.make
+src/CMakeFiles/clothsim.dir/waterCube.cpp.o: /Users/riddhibagadiaa/Documents/CS284A/final_proj/src/waterCube.cpp
+src/CMakeFiles/clothsim.dir/waterCube.cpp.o: src/CMakeFiles/clothsim.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/CMakeFiles/clothsim.dir/waterCube.cpp.o"
+	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/src && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/clothsim.dir/waterCube.cpp.o -MF CMakeFiles/clothsim.dir/waterCube.cpp.o.d -o CMakeFiles/clothsim.dir/waterCube.cpp.o -c /Users/riddhibagadiaa/Documents/CS284A/final_proj/src/waterCube.cpp
+
+src/CMakeFiles/clothsim.dir/waterCube.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/clothsim.dir/waterCube.cpp.i"
+	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/src && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/riddhibagadiaa/Documents/CS284A/final_proj/src/waterCube.cpp > CMakeFiles/clothsim.dir/waterCube.cpp.i
+
+src/CMakeFiles/clothsim.dir/waterCube.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/clothsim.dir/waterCube.cpp.s"
+	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/src && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/riddhibagadiaa/Documents/CS284A/final_proj/src/waterCube.cpp -o CMakeFiles/clothsim.dir/waterCube.cpp.s
+
+src/CMakeFiles/clothsim.dir/CubeMesh.cpp.o: src/CMakeFiles/clothsim.dir/flags.make
+src/CMakeFiles/clothsim.dir/CubeMesh.cpp.o: /Users/riddhibagadiaa/Documents/CS284A/final_proj/src/CubeMesh.cpp
+src/CMakeFiles/clothsim.dir/CubeMesh.cpp.o: src/CMakeFiles/clothsim.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/CMakeFiles/clothsim.dir/CubeMesh.cpp.o"
+	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/src && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/clothsim.dir/CubeMesh.cpp.o -MF CMakeFiles/clothsim.dir/CubeMesh.cpp.o.d -o CMakeFiles/clothsim.dir/CubeMesh.cpp.o -c /Users/riddhibagadiaa/Documents/CS284A/final_proj/src/CubeMesh.cpp
+
+src/CMakeFiles/clothsim.dir/CubeMesh.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/clothsim.dir/CubeMesh.cpp.i"
+	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/src && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/riddhibagadiaa/Documents/CS284A/final_proj/src/CubeMesh.cpp > CMakeFiles/clothsim.dir/CubeMesh.cpp.i
+
+src/CMakeFiles/clothsim.dir/CubeMesh.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/clothsim.dir/CubeMesh.cpp.s"
+	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/src && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/riddhibagadiaa/Documents/CS284A/final_proj/src/CubeMesh.cpp -o CMakeFiles/clothsim.dir/CubeMesh.cpp.s
+
 src/CMakeFiles/clothsim.dir/collision/sphere.cpp.o: src/CMakeFiles/clothsim.dir/flags.make
 src/CMakeFiles/clothsim.dir/collision/sphere.cpp.o: /Users/riddhibagadiaa/Documents/CS284A/final_proj/src/collision/sphere.cpp
 src/CMakeFiles/clothsim.dir/collision/sphere.cpp.o: src/CMakeFiles/clothsim.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/CMakeFiles/clothsim.dir/collision/sphere.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/CMakeFiles/clothsim.dir/collision/sphere.cpp.o"
 	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/src && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/clothsim.dir/collision/sphere.cpp.o -MF CMakeFiles/clothsim.dir/collision/sphere.cpp.o.d -o CMakeFiles/clothsim.dir/collision/sphere.cpp.o -c /Users/riddhibagadiaa/Documents/CS284A/final_proj/src/collision/sphere.cpp
 
 src/CMakeFiles/clothsim.dir/collision/sphere.cpp.i: cmake_force
@@ -114,7 +142,7 @@ src/CMakeFiles/clothsim.dir/collision/sphere.cpp.s: cmake_force
 src/CMakeFiles/clothsim.dir/collision/plane.cpp.o: src/CMakeFiles/clothsim.dir/flags.make
 src/CMakeFiles/clothsim.dir/collision/plane.cpp.o: /Users/riddhibagadiaa/Documents/CS284A/final_proj/src/collision/plane.cpp
 src/CMakeFiles/clothsim.dir/collision/plane.cpp.o: src/CMakeFiles/clothsim.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/CMakeFiles/clothsim.dir/collision/plane.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object src/CMakeFiles/clothsim.dir/collision/plane.cpp.o"
 	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/src && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/clothsim.dir/collision/plane.cpp.o -MF CMakeFiles/clothsim.dir/collision/plane.cpp.o.d -o CMakeFiles/clothsim.dir/collision/plane.cpp.o -c /Users/riddhibagadiaa/Documents/CS284A/final_proj/src/collision/plane.cpp
 
 src/CMakeFiles/clothsim.dir/collision/plane.cpp.i: cmake_force
@@ -128,7 +156,7 @@ src/CMakeFiles/clothsim.dir/collision/plane.cpp.s: cmake_force
 src/CMakeFiles/clothsim.dir/main.cpp.o: src/CMakeFiles/clothsim.dir/flags.make
 src/CMakeFiles/clothsim.dir/main.cpp.o: /Users/riddhibagadiaa/Documents/CS284A/final_proj/src/main.cpp
 src/CMakeFiles/clothsim.dir/main.cpp.o: src/CMakeFiles/clothsim.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/CMakeFiles/clothsim.dir/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object src/CMakeFiles/clothsim.dir/main.cpp.o"
 	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/src && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/clothsim.dir/main.cpp.o -MF CMakeFiles/clothsim.dir/main.cpp.o.d -o CMakeFiles/clothsim.dir/main.cpp.o -c /Users/riddhibagadiaa/Documents/CS284A/final_proj/src/main.cpp
 
 src/CMakeFiles/clothsim.dir/main.cpp.i: cmake_force
@@ -142,7 +170,7 @@ src/CMakeFiles/clothsim.dir/main.cpp.s: cmake_force
 src/CMakeFiles/clothsim.dir/clothSimulator.cpp.o: src/CMakeFiles/clothsim.dir/flags.make
 src/CMakeFiles/clothsim.dir/clothSimulator.cpp.o: /Users/riddhibagadiaa/Documents/CS284A/final_proj/src/clothSimulator.cpp
 src/CMakeFiles/clothsim.dir/clothSimulator.cpp.o: src/CMakeFiles/clothsim.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object src/CMakeFiles/clothsim.dir/clothSimulator.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object src/CMakeFiles/clothsim.dir/clothSimulator.cpp.o"
 	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/src && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/clothsim.dir/clothSimulator.cpp.o -MF CMakeFiles/clothsim.dir/clothSimulator.cpp.o.d -o CMakeFiles/clothsim.dir/clothSimulator.cpp.o -c /Users/riddhibagadiaa/Documents/CS284A/final_proj/src/clothSimulator.cpp
 
 src/CMakeFiles/clothsim.dir/clothSimulator.cpp.i: cmake_force
@@ -153,10 +181,24 @@ src/CMakeFiles/clothsim.dir/clothSimulator.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/clothsim.dir/clothSimulator.cpp.s"
 	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/src && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/riddhibagadiaa/Documents/CS284A/final_proj/src/clothSimulator.cpp -o CMakeFiles/clothsim.dir/clothSimulator.cpp.s
 
+src/CMakeFiles/clothsim.dir/waterSimulator.cpp.o: src/CMakeFiles/clothsim.dir/flags.make
+src/CMakeFiles/clothsim.dir/waterSimulator.cpp.o: /Users/riddhibagadiaa/Documents/CS284A/final_proj/src/waterSimulator.cpp
+src/CMakeFiles/clothsim.dir/waterSimulator.cpp.o: src/CMakeFiles/clothsim.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object src/CMakeFiles/clothsim.dir/waterSimulator.cpp.o"
+	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/src && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/clothsim.dir/waterSimulator.cpp.o -MF CMakeFiles/clothsim.dir/waterSimulator.cpp.o.d -o CMakeFiles/clothsim.dir/waterSimulator.cpp.o -c /Users/riddhibagadiaa/Documents/CS284A/final_proj/src/waterSimulator.cpp
+
+src/CMakeFiles/clothsim.dir/waterSimulator.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/clothsim.dir/waterSimulator.cpp.i"
+	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/src && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/riddhibagadiaa/Documents/CS284A/final_proj/src/waterSimulator.cpp > CMakeFiles/clothsim.dir/waterSimulator.cpp.i
+
+src/CMakeFiles/clothsim.dir/waterSimulator.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/clothsim.dir/waterSimulator.cpp.s"
+	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/src && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/riddhibagadiaa/Documents/CS284A/final_proj/src/waterSimulator.cpp -o CMakeFiles/clothsim.dir/waterSimulator.cpp.s
+
 src/CMakeFiles/clothsim.dir/misc/sphere_drawing.cpp.o: src/CMakeFiles/clothsim.dir/flags.make
 src/CMakeFiles/clothsim.dir/misc/sphere_drawing.cpp.o: /Users/riddhibagadiaa/Documents/CS284A/final_proj/src/misc/sphere_drawing.cpp
 src/CMakeFiles/clothsim.dir/misc/sphere_drawing.cpp.o: src/CMakeFiles/clothsim.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object src/CMakeFiles/clothsim.dir/misc/sphere_drawing.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object src/CMakeFiles/clothsim.dir/misc/sphere_drawing.cpp.o"
 	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/src && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/clothsim.dir/misc/sphere_drawing.cpp.o -MF CMakeFiles/clothsim.dir/misc/sphere_drawing.cpp.o.d -o CMakeFiles/clothsim.dir/misc/sphere_drawing.cpp.o -c /Users/riddhibagadiaa/Documents/CS284A/final_proj/src/misc/sphere_drawing.cpp
 
 src/CMakeFiles/clothsim.dir/misc/sphere_drawing.cpp.i: cmake_force
@@ -170,7 +212,7 @@ src/CMakeFiles/clothsim.dir/misc/sphere_drawing.cpp.s: cmake_force
 src/CMakeFiles/clothsim.dir/misc/file_utils.cpp.o: src/CMakeFiles/clothsim.dir/flags.make
 src/CMakeFiles/clothsim.dir/misc/file_utils.cpp.o: /Users/riddhibagadiaa/Documents/CS284A/final_proj/src/misc/file_utils.cpp
 src/CMakeFiles/clothsim.dir/misc/file_utils.cpp.o: src/CMakeFiles/clothsim.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object src/CMakeFiles/clothsim.dir/misc/file_utils.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object src/CMakeFiles/clothsim.dir/misc/file_utils.cpp.o"
 	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/src && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/clothsim.dir/misc/file_utils.cpp.o -MF CMakeFiles/clothsim.dir/misc/file_utils.cpp.o.d -o CMakeFiles/clothsim.dir/misc/file_utils.cpp.o -c /Users/riddhibagadiaa/Documents/CS284A/final_proj/src/misc/file_utils.cpp
 
 src/CMakeFiles/clothsim.dir/misc/file_utils.cpp.i: cmake_force
@@ -184,7 +226,7 @@ src/CMakeFiles/clothsim.dir/misc/file_utils.cpp.s: cmake_force
 src/CMakeFiles/clothsim.dir/camera.cpp.o: src/CMakeFiles/clothsim.dir/flags.make
 src/CMakeFiles/clothsim.dir/camera.cpp.o: /Users/riddhibagadiaa/Documents/CS284A/final_proj/src/camera.cpp
 src/CMakeFiles/clothsim.dir/camera.cpp.o: src/CMakeFiles/clothsim.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object src/CMakeFiles/clothsim.dir/camera.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object src/CMakeFiles/clothsim.dir/camera.cpp.o"
 	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/src && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/clothsim.dir/camera.cpp.o -MF CMakeFiles/clothsim.dir/camera.cpp.o.d -o CMakeFiles/clothsim.dir/camera.cpp.o -c /Users/riddhibagadiaa/Documents/CS284A/final_proj/src/camera.cpp
 
 src/CMakeFiles/clothsim.dir/camera.cpp.i: cmake_force
@@ -198,7 +240,7 @@ src/CMakeFiles/clothsim.dir/camera.cpp.s: cmake_force
 src/CMakeFiles/clothsim.dir/collision/rubber_duck.cpp.o: src/CMakeFiles/clothsim.dir/flags.make
 src/CMakeFiles/clothsim.dir/collision/rubber_duck.cpp.o: /Users/riddhibagadiaa/Documents/CS284A/final_proj/src/collision/rubber_duck.cpp
 src/CMakeFiles/clothsim.dir/collision/rubber_duck.cpp.o: src/CMakeFiles/clothsim.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object src/CMakeFiles/clothsim.dir/collision/rubber_duck.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object src/CMakeFiles/clothsim.dir/collision/rubber_duck.cpp.o"
 	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/src && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/clothsim.dir/collision/rubber_duck.cpp.o -MF CMakeFiles/clothsim.dir/collision/rubber_duck.cpp.o.d -o CMakeFiles/clothsim.dir/collision/rubber_duck.cpp.o -c /Users/riddhibagadiaa/Documents/CS284A/final_proj/src/collision/rubber_duck.cpp
 
 src/CMakeFiles/clothsim.dir/collision/rubber_duck.cpp.i: cmake_force
@@ -212,7 +254,7 @@ src/CMakeFiles/clothsim.dir/collision/rubber_duck.cpp.s: cmake_force
 src/CMakeFiles/clothsim.dir/misc/duck_drawing.cpp.o: src/CMakeFiles/clothsim.dir/flags.make
 src/CMakeFiles/clothsim.dir/misc/duck_drawing.cpp.o: /Users/riddhibagadiaa/Documents/CS284A/final_proj/src/misc/duck_drawing.cpp
 src/CMakeFiles/clothsim.dir/misc/duck_drawing.cpp.o: src/CMakeFiles/clothsim.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object src/CMakeFiles/clothsim.dir/misc/duck_drawing.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object src/CMakeFiles/clothsim.dir/misc/duck_drawing.cpp.o"
 	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/src && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/clothsim.dir/misc/duck_drawing.cpp.o -MF CMakeFiles/clothsim.dir/misc/duck_drawing.cpp.o.d -o CMakeFiles/clothsim.dir/misc/duck_drawing.cpp.o -c /Users/riddhibagadiaa/Documents/CS284A/final_proj/src/misc/duck_drawing.cpp
 
 src/CMakeFiles/clothsim.dir/misc/duck_drawing.cpp.i: cmake_force
@@ -223,24 +265,10 @@ src/CMakeFiles/clothsim.dir/misc/duck_drawing.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/clothsim.dir/misc/duck_drawing.cpp.s"
 	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/src && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/riddhibagadiaa/Documents/CS284A/final_proj/src/misc/duck_drawing.cpp -o CMakeFiles/clothsim.dir/misc/duck_drawing.cpp.s
 
-src/CMakeFiles/clothsim.dir/triangle_face.cpp.o: src/CMakeFiles/clothsim.dir/flags.make
-src/CMakeFiles/clothsim.dir/triangle_face.cpp.o: /Users/riddhibagadiaa/Documents/CS284A/final_proj/src/triangle_face.cpp
-src/CMakeFiles/clothsim.dir/triangle_face.cpp.o: src/CMakeFiles/clothsim.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object src/CMakeFiles/clothsim.dir/triangle_face.cpp.o"
-	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/src && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/clothsim.dir/triangle_face.cpp.o -MF CMakeFiles/clothsim.dir/triangle_face.cpp.o.d -o CMakeFiles/clothsim.dir/triangle_face.cpp.o -c /Users/riddhibagadiaa/Documents/CS284A/final_proj/src/triangle_face.cpp
-
-src/CMakeFiles/clothsim.dir/triangle_face.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/clothsim.dir/triangle_face.cpp.i"
-	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/src && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/riddhibagadiaa/Documents/CS284A/final_proj/src/triangle_face.cpp > CMakeFiles/clothsim.dir/triangle_face.cpp.i
-
-src/CMakeFiles/clothsim.dir/triangle_face.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/clothsim.dir/triangle_face.cpp.s"
-	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/src && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/riddhibagadiaa/Documents/CS284A/final_proj/src/triangle_face.cpp -o CMakeFiles/clothsim.dir/triangle_face.cpp.s
-
 src/CMakeFiles/clothsim.dir/misc/TriFace.cpp.o: src/CMakeFiles/clothsim.dir/flags.make
 src/CMakeFiles/clothsim.dir/misc/TriFace.cpp.o: /Users/riddhibagadiaa/Documents/CS284A/final_proj/src/misc/TriFace.cpp
 src/CMakeFiles/clothsim.dir/misc/TriFace.cpp.o: src/CMakeFiles/clothsim.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object src/CMakeFiles/clothsim.dir/misc/TriFace.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object src/CMakeFiles/clothsim.dir/misc/TriFace.cpp.o"
 	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/src && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/clothsim.dir/misc/TriFace.cpp.o -MF CMakeFiles/clothsim.dir/misc/TriFace.cpp.o.d -o CMakeFiles/clothsim.dir/misc/TriFace.cpp.o -c /Users/riddhibagadiaa/Documents/CS284A/final_proj/src/misc/TriFace.cpp
 
 src/CMakeFiles/clothsim.dir/misc/TriFace.cpp.i: cmake_force
@@ -255,16 +283,18 @@ src/CMakeFiles/clothsim.dir/misc/TriFace.cpp.s: cmake_force
 clothsim_OBJECTS = \
 "CMakeFiles/clothsim.dir/cloth.cpp.o" \
 "CMakeFiles/clothsim.dir/clothMesh.cpp.o" \
+"CMakeFiles/clothsim.dir/waterCube.cpp.o" \
+"CMakeFiles/clothsim.dir/CubeMesh.cpp.o" \
 "CMakeFiles/clothsim.dir/collision/sphere.cpp.o" \
 "CMakeFiles/clothsim.dir/collision/plane.cpp.o" \
 "CMakeFiles/clothsim.dir/main.cpp.o" \
 "CMakeFiles/clothsim.dir/clothSimulator.cpp.o" \
+"CMakeFiles/clothsim.dir/waterSimulator.cpp.o" \
 "CMakeFiles/clothsim.dir/misc/sphere_drawing.cpp.o" \
 "CMakeFiles/clothsim.dir/misc/file_utils.cpp.o" \
 "CMakeFiles/clothsim.dir/camera.cpp.o" \
 "CMakeFiles/clothsim.dir/collision/rubber_duck.cpp.o" \
 "CMakeFiles/clothsim.dir/misc/duck_drawing.cpp.o" \
-"CMakeFiles/clothsim.dir/triangle_face.cpp.o" \
 "CMakeFiles/clothsim.dir/misc/TriFace.cpp.o"
 
 # External object files for target clothsim
@@ -272,23 +302,25 @@ clothsim_EXTERNAL_OBJECTS =
 
 clothsim: src/CMakeFiles/clothsim.dir/cloth.cpp.o
 clothsim: src/CMakeFiles/clothsim.dir/clothMesh.cpp.o
+clothsim: src/CMakeFiles/clothsim.dir/waterCube.cpp.o
+clothsim: src/CMakeFiles/clothsim.dir/CubeMesh.cpp.o
 clothsim: src/CMakeFiles/clothsim.dir/collision/sphere.cpp.o
 clothsim: src/CMakeFiles/clothsim.dir/collision/plane.cpp.o
 clothsim: src/CMakeFiles/clothsim.dir/main.cpp.o
 clothsim: src/CMakeFiles/clothsim.dir/clothSimulator.cpp.o
+clothsim: src/CMakeFiles/clothsim.dir/waterSimulator.cpp.o
 clothsim: src/CMakeFiles/clothsim.dir/misc/sphere_drawing.cpp.o
 clothsim: src/CMakeFiles/clothsim.dir/misc/file_utils.cpp.o
 clothsim: src/CMakeFiles/clothsim.dir/camera.cpp.o
 clothsim: src/CMakeFiles/clothsim.dir/collision/rubber_duck.cpp.o
 clothsim: src/CMakeFiles/clothsim.dir/misc/duck_drawing.cpp.o
-clothsim: src/CMakeFiles/clothsim.dir/triangle_face.cpp.o
 clothsim: src/CMakeFiles/clothsim.dir/misc/TriFace.cpp.o
 clothsim: src/CMakeFiles/clothsim.dir/build.make
 clothsim: CGL/src/libCGL.a
 clothsim: ext/nanogui/libnanogui.dylib
 clothsim: /usr/local/lib/libfreetype.dylib
 clothsim: src/CMakeFiles/clothsim.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX executable ../clothsim"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Linking CXX executable ../clothsim"
 	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/clothsim.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

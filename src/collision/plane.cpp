@@ -10,7 +10,7 @@ using namespace CGL;
 
 #define SURFACE_OFFSET 0.0001
 
-void Plane::collide(PointMass &pm) {
+void Plane::collide(Particle &pm) {
   // TODO (Part 3): Handle collisions with planes.
   Vector3D tangent = pm.position - (dot(pm.position - point, normal) * normal);
   Vector3D direction = pm.last_position - tangent;

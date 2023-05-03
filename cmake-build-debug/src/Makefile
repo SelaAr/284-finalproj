@@ -175,6 +175,30 @@ clothsim/fast:
 	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/clothsim.dir/build.make src/CMakeFiles/clothsim.dir/build
 .PHONY : clothsim/fast
 
+CubeMesh.o: CubeMesh.cpp.o
+.PHONY : CubeMesh.o
+
+# target to build an object file
+CubeMesh.cpp.o:
+	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/clothsim.dir/build.make src/CMakeFiles/clothsim.dir/CubeMesh.cpp.o
+.PHONY : CubeMesh.cpp.o
+
+CubeMesh.i: CubeMesh.cpp.i
+.PHONY : CubeMesh.i
+
+# target to preprocess a source file
+CubeMesh.cpp.i:
+	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/clothsim.dir/build.make src/CMakeFiles/clothsim.dir/CubeMesh.cpp.i
+.PHONY : CubeMesh.cpp.i
+
+CubeMesh.s: CubeMesh.cpp.s
+.PHONY : CubeMesh.s
+
+# target to generate assembly for a file
+CubeMesh.cpp.s:
+	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/clothsim.dir/build.make src/CMakeFiles/clothsim.dir/CubeMesh.cpp.s
+.PHONY : CubeMesh.cpp.s
+
 camera.o: camera.cpp.o
 .PHONY : camera.o
 
@@ -463,29 +487,53 @@ misc/sphere_drawing.cpp.s:
 	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/clothsim.dir/build.make src/CMakeFiles/clothsim.dir/misc/sphere_drawing.cpp.s
 .PHONY : misc/sphere_drawing.cpp.s
 
-triangle_face.o: triangle_face.cpp.o
-.PHONY : triangle_face.o
+waterCube.o: waterCube.cpp.o
+.PHONY : waterCube.o
 
 # target to build an object file
-triangle_face.cpp.o:
-	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/clothsim.dir/build.make src/CMakeFiles/clothsim.dir/triangle_face.cpp.o
-.PHONY : triangle_face.cpp.o
+waterCube.cpp.o:
+	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/clothsim.dir/build.make src/CMakeFiles/clothsim.dir/waterCube.cpp.o
+.PHONY : waterCube.cpp.o
 
-triangle_face.i: triangle_face.cpp.i
-.PHONY : triangle_face.i
+waterCube.i: waterCube.cpp.i
+.PHONY : waterCube.i
 
 # target to preprocess a source file
-triangle_face.cpp.i:
-	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/clothsim.dir/build.make src/CMakeFiles/clothsim.dir/triangle_face.cpp.i
-.PHONY : triangle_face.cpp.i
+waterCube.cpp.i:
+	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/clothsim.dir/build.make src/CMakeFiles/clothsim.dir/waterCube.cpp.i
+.PHONY : waterCube.cpp.i
 
-triangle_face.s: triangle_face.cpp.s
-.PHONY : triangle_face.s
+waterCube.s: waterCube.cpp.s
+.PHONY : waterCube.s
 
 # target to generate assembly for a file
-triangle_face.cpp.s:
-	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/clothsim.dir/build.make src/CMakeFiles/clothsim.dir/triangle_face.cpp.s
-.PHONY : triangle_face.cpp.s
+waterCube.cpp.s:
+	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/clothsim.dir/build.make src/CMakeFiles/clothsim.dir/waterCube.cpp.s
+.PHONY : waterCube.cpp.s
+
+waterSimulator.o: waterSimulator.cpp.o
+.PHONY : waterSimulator.o
+
+# target to build an object file
+waterSimulator.cpp.o:
+	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/clothsim.dir/build.make src/CMakeFiles/clothsim.dir/waterSimulator.cpp.o
+.PHONY : waterSimulator.cpp.o
+
+waterSimulator.i: waterSimulator.cpp.i
+.PHONY : waterSimulator.i
+
+# target to preprocess a source file
+waterSimulator.cpp.i:
+	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/clothsim.dir/build.make src/CMakeFiles/clothsim.dir/waterSimulator.cpp.i
+.PHONY : waterSimulator.cpp.i
+
+waterSimulator.s: waterSimulator.cpp.s
+.PHONY : waterSimulator.s
+
+# target to generate assembly for a file
+waterSimulator.cpp.s:
+	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/clothsim.dir/build.make src/CMakeFiles/clothsim.dir/waterSimulator.cpp.s
+.PHONY : waterSimulator.cpp.s
 
 # Help Target
 help:
@@ -500,6 +548,9 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... clothsim"
+	@echo "... CubeMesh.o"
+	@echo "... CubeMesh.i"
+	@echo "... CubeMesh.s"
 	@echo "... camera.o"
 	@echo "... camera.i"
 	@echo "... camera.s"
@@ -536,9 +587,12 @@ help:
 	@echo "... misc/sphere_drawing.o"
 	@echo "... misc/sphere_drawing.i"
 	@echo "... misc/sphere_drawing.s"
-	@echo "... triangle_face.o"
-	@echo "... triangle_face.i"
-	@echo "... triangle_face.s"
+	@echo "... waterCube.o"
+	@echo "... waterCube.i"
+	@echo "... waterCube.s"
+	@echo "... waterSimulator.o"
+	@echo "... waterSimulator.i"
+	@echo "... waterSimulator.s"
 .PHONY : help
 
 

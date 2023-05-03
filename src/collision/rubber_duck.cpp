@@ -12,7 +12,7 @@
 using namespace nanogui;
 using namespace CGL;
 
-void Duck::collide(PointMass &pm) {
+void Duck::collide(Particle &pm) {
   vector<TriFace> faces = m_duck_mesh->faces;
   for (auto &triangle_face: faces) {
     triangle_face.collide(pm);
