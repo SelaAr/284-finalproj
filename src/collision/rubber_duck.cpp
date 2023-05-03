@@ -5,7 +5,7 @@
 #include "rubber_duck.h"
 #include <nanogui/nanogui.h>
 
-#include "../clothMesh.h"
+#include "../CubeMesh.h"
 #include "../misc/duck_drawing.h"
 #include "../misc/TriFace.h"
 

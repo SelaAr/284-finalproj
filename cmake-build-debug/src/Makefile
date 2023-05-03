@@ -223,78 +223,6 @@ camera.cpp.s:
 	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/clothsim.dir/build.make src/CMakeFiles/clothsim.dir/camera.cpp.s
 .PHONY : camera.cpp.s
 
-cloth.o: cloth.cpp.o
-.PHONY : cloth.o
-
-# target to build an object file
-cloth.cpp.o:
-	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/clothsim.dir/build.make src/CMakeFiles/clothsim.dir/cloth.cpp.o
-.PHONY : cloth.cpp.o
-
-cloth.i: cloth.cpp.i
-.PHONY : cloth.i
-
-# target to preprocess a source file
-cloth.cpp.i:
-	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/clothsim.dir/build.make src/CMakeFiles/clothsim.dir/cloth.cpp.i
-.PHONY : cloth.cpp.i
-
-cloth.s: cloth.cpp.s
-.PHONY : cloth.s
-
-# target to generate assembly for a file
-cloth.cpp.s:
-	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/clothsim.dir/build.make src/CMakeFiles/clothsim.dir/cloth.cpp.s
-.PHONY : cloth.cpp.s
-
-clothMesh.o: clothMesh.cpp.o
-.PHONY : clothMesh.o
-
-# target to build an object file
-clothMesh.cpp.o:
-	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/clothsim.dir/build.make src/CMakeFiles/clothsim.dir/clothMesh.cpp.o
-.PHONY : clothMesh.cpp.o
-
-clothMesh.i: clothMesh.cpp.i
-.PHONY : clothMesh.i
-
-# target to preprocess a source file
-clothMesh.cpp.i:
-	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/clothsim.dir/build.make src/CMakeFiles/clothsim.dir/clothMesh.cpp.i
-.PHONY : clothMesh.cpp.i
-
-clothMesh.s: clothMesh.cpp.s
-.PHONY : clothMesh.s
-
-# target to generate assembly for a file
-clothMesh.cpp.s:
-	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/clothsim.dir/build.make src/CMakeFiles/clothsim.dir/clothMesh.cpp.s
-.PHONY : clothMesh.cpp.s
-
-clothSimulator.o: clothSimulator.cpp.o
-.PHONY : clothSimulator.o
-
-# target to build an object file
-clothSimulator.cpp.o:
-	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/clothsim.dir/build.make src/CMakeFiles/clothsim.dir/clothSimulator.cpp.o
-.PHONY : clothSimulator.cpp.o
-
-clothSimulator.i: clothSimulator.cpp.i
-.PHONY : clothSimulator.i
-
-# target to preprocess a source file
-clothSimulator.cpp.i:
-	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/clothsim.dir/build.make src/CMakeFiles/clothsim.dir/clothSimulator.cpp.i
-.PHONY : clothSimulator.cpp.i
-
-clothSimulator.s: clothSimulator.cpp.s
-.PHONY : clothSimulator.s
-
-# target to generate assembly for a file
-clothSimulator.cpp.s:
-	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/clothsim.dir/build.make src/CMakeFiles/clothsim.dir/clothSimulator.cpp.s
-.PHONY : clothSimulator.cpp.s
-
 collision/plane.o: collision/plane.cpp.o
 .PHONY : collision/plane.o
 
@@ -554,15 +482,6 @@ help:
 	@echo "... camera.o"
 	@echo "... camera.i"
 	@echo "... camera.s"
-	@echo "... cloth.o"
-	@echo "... cloth.i"
-	@echo "... cloth.s"
-	@echo "... clothMesh.o"
-	@echo "... clothMesh.i"
-	@echo "... clothMesh.s"
-	@echo "... clothSimulator.o"
-	@echo "... clothSimulator.i"
-	@echo "... clothSimulator.s"
 	@echo "... collision/plane.o"
 	@echo "... collision/plane.i"
 	@echo "... collision/plane.s"

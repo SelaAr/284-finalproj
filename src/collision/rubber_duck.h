@@ -5,7 +5,7 @@
 #ifndef CLOTHSIM_RUBBER_DUCK_H
 #define CLOTHSIM_RUBBER_DUCK_H
 
-#include "../clothMesh.h"
+#include "../CubeMesh.h"
 #include "../misc/duck_drawing.h"
 #include "collisionObject.h"
 #include "../misc/TriFace.h"

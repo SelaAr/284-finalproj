@@ -4,7 +4,7 @@
 
 #include "TriFace.h"
 #include "CGL/vector3D.h"
-#include "../clothMesh.h"
+#include "../CubeMesh.h"
 #include "../particle.h"
 #include <iostream>
 

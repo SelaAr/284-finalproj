@@ -10,9 +10,6 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/CubeMesh.cpp" "src/CMakeFiles/clothsim.dir/CubeMesh.cpp.o" "gcc" "src/CMakeFiles/clothsim.dir/CubeMesh.cpp.o.d"
   "/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/camera.cpp" "src/CMakeFiles/clothsim.dir/camera.cpp.o" "gcc" "src/CMakeFiles/clothsim.dir/camera.cpp.o.d"
-  "/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/cloth.cpp" "src/CMakeFiles/clothsim.dir/cloth.cpp.o" "gcc" "src/CMakeFiles/clothsim.dir/cloth.cpp.o.d"
-  "/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/clothMesh.cpp" "src/CMakeFiles/clothsim.dir/clothMesh.cpp.o" "gcc" "src/CMakeFiles/clothsim.dir/clothMesh.cpp.o.d"
-  "/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/clothSimulator.cpp" "src/CMakeFiles/clothsim.dir/clothSimulator.cpp.o" "gcc" "src/CMakeFiles/clothsim.dir/clothSimulator.cpp.o.d"
   "/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/collision/plane.cpp" "src/CMakeFiles/clothsim.dir/collision/plane.cpp.o" "gcc" "src/CMakeFiles/clothsim.dir/collision/plane.cpp.o.d"
   "/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/collision/rubber_duck.cpp" "src/CMakeFiles/clothsim.dir/collision/rubber_duck.cpp.o" "gcc" "src/CMakeFiles/clothsim.dir/collision/rubber_duck.cpp.o.d"
   "/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/collision/sphere.cpp" "src/CMakeFiles/clothsim.dir/collision/sphere.cpp.o" "gcc" "src/CMakeFiles/clothsim.dir/collision/sphere.cpp.o.d"

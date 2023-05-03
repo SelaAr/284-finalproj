@@ -916,24 +916,6 @@
 		<Unit filename="/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/camera.h">
 			<Option target="clothsim"/>
 		</Unit>
-		<Unit filename="/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/cloth.cpp">
-			<Option target="clothsim"/>
-		</Unit>
-		<Unit filename="/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/cloth.h">
-			<Option target="clothsim"/>
-		</Unit>
-		<Unit filename="/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/clothMesh.cpp">
-			<Option target="clothsim"/>
-		</Unit>
-		<Unit filename="/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/clothMesh.h">
-			<Option target="clothsim"/>
-		</Unit>
-		<Unit filename="/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/clothSimulator.cpp">
-			<Option target="clothsim"/>
-		</Unit>
-		<Unit filename="/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/clothSimulator.h">
-			<Option target="clothsim"/>
-		</Unit>
 		<Unit filename="/Users/riddhibagadiaa/Documents/CS284A/final_proj/src/collision/plane.cpp">
 			<Option target="clothsim"/>
 		</Unit>

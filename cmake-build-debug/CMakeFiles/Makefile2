@@ -182,7 +182,7 @@ src/clean: src/CMakeFiles/clothsim.dir/clean
 ext/nanogui/CMakeFiles/nanogui-obj.dir/all:
 	$(MAKE) $(MAKESILENT) -f ext/nanogui/CMakeFiles/nanogui-obj.dir/build.make ext/nanogui/CMakeFiles/nanogui-obj.dir/depend
 	$(MAKE) $(MAKESILENT) -f ext/nanogui/CMakeFiles/nanogui-obj.dir/build.make ext/nanogui/CMakeFiles/nanogui-obj.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/CMakeFiles --progress-num=45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77 "Built target nanogui-obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/CMakeFiles --progress-num=42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74 "Built target nanogui-obj"
 .PHONY : ext/nanogui/CMakeFiles/nanogui-obj.dir/all
 
 # Build rule for subdir invocation for target.
@@ -209,7 +209,7 @@ ext/nanogui/CMakeFiles/nanogui.dir/all: ext/nanogui/CMakeFiles/nanogui-obj.dir/a
 ext/nanogui/CMakeFiles/nanogui.dir/all: ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/all
 	$(MAKE) $(MAKESILENT) -f ext/nanogui/CMakeFiles/nanogui.dir/build.make ext/nanogui/CMakeFiles/nanogui.dir/depend
 	$(MAKE) $(MAKESILENT) -f ext/nanogui/CMakeFiles/nanogui.dir/build.make ext/nanogui/CMakeFiles/nanogui.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/CMakeFiles --progress-num=44 "Built target nanogui"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/CMakeFiles --progress-num=41 "Built target nanogui"
 .PHONY : ext/nanogui/CMakeFiles/nanogui.dir/all
 
 # Build rule for subdir invocation for target.
@@ -235,7 +235,7 @@ ext/nanogui/CMakeFiles/nanogui.dir/clean:
 ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/all:
 	$(MAKE) $(MAKESILENT) -f ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/build.make ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/depend
 	$(MAKE) $(MAKESILENT) -f ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/build.make ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/CMakeFiles --progress-num=31,32,33,34,35,36,37,38,39,40,41,42,43 "Built target glfw_objects"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/CMakeFiles --progress-num=28,29,30,31,32,33,34,35,36,37,38,39,40 "Built target glfw_objects"
 .PHONY : ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/all
 
 # Build rule for subdir invocation for target.
@@ -261,7 +261,7 @@ ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/clean:
 ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw.dir/all: ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/all
 	$(MAKE) $(MAKESILENT) -f ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw.dir/build.make ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw.dir/depend
 	$(MAKE) $(MAKESILENT) -f ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw.dir/build.make ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/CMakeFiles --progress-num=30 "Built target glfw"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/CMakeFiles --progress-num=27 "Built target glfw"
 .PHONY : ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw.dir/all
 
 # Build rule for subdir invocation for target.
@@ -314,12 +314,12 @@ src/CMakeFiles/clothsim.dir/all: ext/nanogui/CMakeFiles/nanogui.dir/all
 src/CMakeFiles/clothsim.dir/all: CGL/src/CMakeFiles/CGL.dir/all
 	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/clothsim.dir/build.make src/CMakeFiles/clothsim.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/clothsim.dir/build.make src/CMakeFiles/clothsim.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/CMakeFiles --progress-num=14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29 "Built target clothsim"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/CMakeFiles --progress-num=14,15,16,17,18,19,20,21,22,23,24,25,26 "Built target clothsim"
 .PHONY : src/CMakeFiles/clothsim.dir/all
 
 # Build rule for subdir invocation for target.
 src/CMakeFiles/clothsim.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/CMakeFiles 76
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/CMakeFiles 73
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/clothsim.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/CMakeFiles 0
 .PHONY : src/CMakeFiles/clothsim.dir/rule
