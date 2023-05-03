@@ -79,7 +79,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : " -std=c++11 -m64 -g -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk -fcolor-diagnostics"
+					"fragment" : " -std=c++11 -m64 -g -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk -fcolor-diagnostics"
 				},
 				{
 					"fragment" : "-Wno-deprecated-declarations -Wno-c++11-extensions"
@@ -108,15 +108,11 @@
 			[
 				{
 					"backtrace" : 6,
-					"path" : "/Users/riddhibagadiaa/Documents/CS284A/final_proj/ext/nanogui/include"
+					"path" : "/Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/include"
 				},
 				{
 					"backtrace" : 7,
-					"path" : "/Users/riddhibagadiaa/Documents/CS284A/final_proj/CGL/include"
-				},
-				{
-					"backtrace" : 8,
-					"path" : "/Library/Frameworks/Mono.framework/Headers"
+					"path" : "/Users/selaroach/Desktop/cs184/try/284-finalproj5/CGL/include"
 				},
 				{
 					"backtrace" : 8,
@@ -124,19 +120,19 @@
 				},
 				{
 					"backtrace" : 8,
-					"path" : "/Users/riddhibagadiaa/Documents/CS284A/final_proj/ext/nanogui/ext/glad/include"
+					"path" : "/Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/ext/glad/include"
 				},
 				{
 					"backtrace" : 8,
-					"path" : "/Users/riddhibagadiaa/Documents/CS284A/final_proj/ext/nanogui/ext/glfw/include"
+					"path" : "/Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/ext/glfw/include"
 				},
 				{
 					"backtrace" : 8,
-					"path" : "/Users/riddhibagadiaa/Documents/CS284A/final_proj/ext/nanogui/ext/nanovg/src"
+					"path" : "/Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/ext/nanovg/src"
 				},
 				{
 					"backtrace" : 8,
-					"path" : "/Users/riddhibagadiaa/Documents/CS284A/final_proj/ext/nanogui/ext/eigen"
+					"path" : "/Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/ext/eigen"
 				}
 			],
 			"language" : "CXX",
@@ -178,7 +174,7 @@
 		[
 			{
 				"backtrace" : 2,
-				"path" : "/Users/riddhibagadiaa/Documents/CS284A/final_proj"
+				"path" : "/Users/selaroach/Desktop/cs184/try/284-finalproj5"
 			}
 		],
 		"prefix" : 
@@ -199,7 +195,7 @@
 				"role" : "flags"
 			},
 			{
-				"fragment" : "-Wl,-rpath,/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/ext/nanogui",
+				"fragment" : "-Wl,-rpath,/Users/selaroach/Desktop/cs184/try/284-finalproj5/cmake-build-debug/ext/nanogui",
 				"role" : "libraries"
 			},
 			{

@@ -4,7 +4,7 @@
 # compile C with /Library/Developer/CommandLineTools/usr/bin/cc
 C_DEFINES = -D_GLFW_USE_CONFIG_H
 
-C_INCLUDES = -I/Users/riddhibagadiaa/Documents/CS284A/final_proj/ext/nanogui/ext/glfw/include -I/Users/riddhibagadiaa/Documents/CS284A/final_proj/ext/nanogui/ext/glfw/src -I/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/ext/nanogui/ext_build/glfw/src
+C_INCLUDES = -I/Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/ext/glfw/include -I/Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/ext/glfw/src -I/Users/selaroach/Desktop/cs184/try/284-finalproj5/cmake-build-debug/ext/nanogui/ext_build/glfw/src
 
-C_FLAGS =  -Wno-deprecated-declarations -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk -fPIC -fcolor-diagnostics -Wall -Wno-deprecated-declarations -fno-common
+C_FLAGS =  -Wno-deprecated-declarations -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk -fPIC -fcolor-diagnostics -Wall -Wno-deprecated-declarations -fno-common
 

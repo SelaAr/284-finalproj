@@ -104,7 +104,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : " -Wno-deprecated-declarations -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk -fPIC -fcolor-diagnostics"
+					"fragment" : " -Wno-deprecated-declarations -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk -fPIC -fcolor-diagnostics"
 				},
 				{
 					"backtrace" : 2,
@@ -130,15 +130,15 @@
 			[
 				{
 					"backtrace" : 5,
-					"path" : "/Users/riddhibagadiaa/Documents/CS284A/final_proj/ext/nanogui/ext/glfw/include"
+					"path" : "/Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/ext/glfw/include"
 				},
 				{
 					"backtrace" : 6,
-					"path" : "/Users/riddhibagadiaa/Documents/CS284A/final_proj/ext/nanogui/ext/glfw/src"
+					"path" : "/Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/ext/glfw/src"
 				},
 				{
 					"backtrace" : 6,
-					"path" : "/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/ext/nanogui/ext_build/glfw/src"
+					"path" : "/Users/selaroach/Desktop/cs184/try/284-finalproj5/cmake-build-debug/ext/nanogui/ext_build/glfw/src"
 				}
 			],
 			"language" : "C",

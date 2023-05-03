@@ -277,9 +277,11 @@ bool loadObjectsFromFile(string filename, WaterCube *waterCube, WaterCubeParamet
       waterCube->wCube = Cube();
       std::vector<Plane *> * vec = new std::vector<Plane*>();
       waterCube->borders = vec;
+      waterCube->id_count = 0;
 
         // Cloth parameters
-              double damping, density, ks, relaxation_e, rest_density, smoothing_length;
+              double damping, density, ks, relaxation_e, rest_density, smoothing_length, elasticity;
+              int iters;
 
               auto it_damping = object.find("damping");
               if (it_damping != object.end()) {
@@ -325,12 +327,28 @@ bool loadObjectsFromFile(string filename, WaterCube *waterCube, WaterCubeParamet
               } else {
                   incompleteObjectError("wcube", "smoothing_length");
               }
+
+            auto it_elasticity = object.find("elasticity");
+            if (it_elasticity != object.end()) {
+                elasticity = *it_elasticity;
+            } else {
+                incompleteObjectError("wcube", "elasticity");
+            }
+
+            auto it_iters = object.find("iters");
+            if (it_iters != object.end()) {
+                iters = *it_iters;
+            } else {
+                incompleteObjectError("wcube", "iters");
+            }
               cp->density = density;
               cp->damping = damping;
               cp->ks = ks;
               cp->relaxation_e = relaxation_e;
               cp->rest_density = rest_density;
               cp->smoothing_length = smoothing_length;
+            cp->elasticity = elasticity;
+            cp->iters = iters;
     } else if (key == SPHERE) {
       Vector3D origin;
       double radius, friction;

@@ -13,9 +13,10 @@ using namespace CGL;
 class Halfedge;
 
 struct Particle {
-    Particle(Vector3D position, Vector3D velocity)
+    Particle(Vector3D position, Vector3D velocity, int id, double mass)
             : start_position(position), position(position),
-              last_position(position), velocity(velocity){}
+              last_position(position), velocity(velocity),
+              id(id), mass(mass) {}
     //, mass(mass), size(size)
 
     Vector3D normal();
@@ -26,7 +27,8 @@ struct Particle {
 
     // static values
     Vector3D start_position;
-//  double mass;
+    int id;
+    double mass;
 //  double size;
 
     // dynamic values
@@ -37,10 +39,10 @@ struct Particle {
 
     long time_of_birth = std::chrono::duration_cast<std::chrono::milliseconds >(std::chrono::system_clock::now().time_since_epoch()).count();
 
-    double density;
-    double pressure;
-    double viscosity;
-    double vorticity;
+//    double density;
+//    double pressure;
+//    double viscosity;
+//    double vorticity;
 
     //since it is a sphere
 

@@ -53,10 +53,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/riddhibagadiaa/Documents/CS284A/final_proj
+CMAKE_SOURCE_DIR = /Users/selaroach/Desktop/cs184/try/284-finalproj5
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/selaroach/Desktop/cs184/try/284-finalproj5/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw.dir/depend.make
@@ -74,19 +74,19 @@ glfw_OBJECTS =
 
 # External object files for target glfw
 glfw_EXTERNAL_OBJECTS = \
-"/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/context.c.o" \
-"/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/init.c.o" \
-"/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/input.c.o" \
-"/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/monitor.c.o" \
-"/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/vulkan.c.o" \
-"/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/window.c.o" \
-"/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/cocoa_init.m.o" \
-"/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/cocoa_joystick.m.o" \
-"/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/cocoa_monitor.m.o" \
-"/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/cocoa_window.m.o" \
-"/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/cocoa_time.c.o" \
-"/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/posix_tls.c.o" \
-"/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/nsgl_context.m.o"
+"/Users/selaroach/Desktop/cs184/try/284-finalproj5/cmake-build-debug/ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/context.c.o" \
+"/Users/selaroach/Desktop/cs184/try/284-finalproj5/cmake-build-debug/ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/init.c.o" \
+"/Users/selaroach/Desktop/cs184/try/284-finalproj5/cmake-build-debug/ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/input.c.o" \
+"/Users/selaroach/Desktop/cs184/try/284-finalproj5/cmake-build-debug/ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/monitor.c.o" \
+"/Users/selaroach/Desktop/cs184/try/284-finalproj5/cmake-build-debug/ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/vulkan.c.o" \
+"/Users/selaroach/Desktop/cs184/try/284-finalproj5/cmake-build-debug/ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/window.c.o" \
+"/Users/selaroach/Desktop/cs184/try/284-finalproj5/cmake-build-debug/ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/cocoa_init.m.o" \
+"/Users/selaroach/Desktop/cs184/try/284-finalproj5/cmake-build-debug/ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/cocoa_joystick.m.o" \
+"/Users/selaroach/Desktop/cs184/try/284-finalproj5/cmake-build-debug/ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/cocoa_monitor.m.o" \
+"/Users/selaroach/Desktop/cs184/try/284-finalproj5/cmake-build-debug/ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/cocoa_window.m.o" \
+"/Users/selaroach/Desktop/cs184/try/284-finalproj5/cmake-build-debug/ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/cocoa_time.c.o" \
+"/Users/selaroach/Desktop/cs184/try/284-finalproj5/cmake-build-debug/ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/posix_tls.c.o" \
+"/Users/selaroach/Desktop/cs184/try/284-finalproj5/cmake-build-debug/ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/nsgl_context.m.o"
 
 ext/nanogui/ext_build/glfw/src/libglfw.dylib: ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/context.c.o
 ext/nanogui/ext_build/glfw/src/libglfw.dylib: ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/init.c.o
@@ -103,18 +103,18 @@ ext/nanogui/ext_build/glfw/src/libglfw.dylib: ext/nanogui/ext_build/glfw/src/CMa
 ext/nanogui/ext_build/glfw/src/libglfw.dylib: ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/nsgl_context.m.o
 ext/nanogui/ext_build/glfw/src/libglfw.dylib: ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw.dir/build.make
 ext/nanogui/ext_build/glfw/src/libglfw.dylib: ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Linking C shared library libglfw.dylib"
-	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/ext/nanogui/ext_build/glfw/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/glfw.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/selaroach/Desktop/cs184/try/284-finalproj5/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Linking C shared library libglfw.dylib"
+	cd /Users/selaroach/Desktop/cs184/try/284-finalproj5/cmake-build-debug/ext/nanogui/ext_build/glfw/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/glfw.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw.dir/build: ext/nanogui/ext_build/glfw/src/libglfw.dylib
 .PHONY : ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw.dir/build
 
 ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw.dir/clean:
-	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/ext/nanogui/ext_build/glfw/src && $(CMAKE_COMMAND) -P CMakeFiles/glfw.dir/cmake_clean.cmake
+	cd /Users/selaroach/Desktop/cs184/try/284-finalproj5/cmake-build-debug/ext/nanogui/ext_build/glfw/src && $(CMAKE_COMMAND) -P CMakeFiles/glfw.dir/cmake_clean.cmake
 .PHONY : ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw.dir/clean
 
 ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw.dir/depend:
-	cd /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/riddhibagadiaa/Documents/CS284A/final_proj /Users/riddhibagadiaa/Documents/CS284A/final_proj/ext/nanogui/ext/glfw/src /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/ext/nanogui/ext_build/glfw/src /Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/selaroach/Desktop/cs184/try/284-finalproj5/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/selaroach/Desktop/cs184/try/284-finalproj5 /Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/ext/glfw/src /Users/selaroach/Desktop/cs184/try/284-finalproj5/cmake-build-debug /Users/selaroach/Desktop/cs184/try/284-finalproj5/cmake-build-debug/ext/nanogui/ext_build/glfw/src /Users/selaroach/Desktop/cs184/try/284-finalproj5/cmake-build-debug/ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw.dir/depend
 

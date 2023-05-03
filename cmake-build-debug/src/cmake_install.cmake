@@ -1,4 +1,4 @@
-# Install script for directory: /Users/riddhibagadiaa/Documents/CS284A/final_proj/src
+# Install script for directory: /Users/selaroach/Desktop/cs184/try/284-finalproj5/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,21 +39,21 @@ endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/Users/riddhibagadiaa/Documents/CS284A/final_proj/clothsim")
+   "/Users/selaroach/Desktop/cs184/try/284-finalproj5/clothsim")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-  file(INSTALL DESTINATION "/Users/riddhibagadiaa/Documents/CS284A/final_proj" TYPE EXECUTABLE FILES "/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/clothsim")
-  if(EXISTS "$ENV{DESTDIR}/Users/riddhibagadiaa/Documents/CS284A/final_proj/clothsim" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}/Users/riddhibagadiaa/Documents/CS284A/final_proj/clothsim")
+  file(INSTALL DESTINATION "/Users/selaroach/Desktop/cs184/try/284-finalproj5" TYPE EXECUTABLE FILES "/Users/selaroach/Desktop/cs184/try/284-finalproj5/cmake-build-debug/clothsim")
+  if(EXISTS "$ENV{DESTDIR}/Users/selaroach/Desktop/cs184/try/284-finalproj5/clothsim" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}/Users/selaroach/Desktop/cs184/try/284-finalproj5/clothsim")
     execute_process(COMMAND /usr/bin/install_name_tool
-      -delete_rpath "/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/ext/nanogui"
-      "$ENV{DESTDIR}/Users/riddhibagadiaa/Documents/CS284A/final_proj/clothsim")
+      -delete_rpath "/Users/selaroach/Desktop/cs184/try/284-finalproj5/cmake-build-debug/ext/nanogui"
+      "$ENV{DESTDIR}/Users/selaroach/Desktop/cs184/try/284-finalproj5/clothsim")
     if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/Library/Developer/CommandLineTools/usr/bin/strip" -u -r "$ENV{DESTDIR}/Users/riddhibagadiaa/Documents/CS284A/final_proj/clothsim")
+      execute_process(COMMAND "/Library/Developer/CommandLineTools/usr/bin/strip" -u -r "$ENV{DESTDIR}/Users/selaroach/Desktop/cs184/try/284-finalproj5/clothsim")
     endif()
   endif()
 endif()

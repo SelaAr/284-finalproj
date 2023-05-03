@@ -186,7 +186,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : " -Wno-deprecated-declarations -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk -fPIC -fcolor-diagnostics"
+					"fragment" : " -Wno-deprecated-declarations -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk -fPIC -fcolor-diagnostics"
 				},
 				{
 					"backtrace" : 2,
@@ -236,31 +236,31 @@
 			[
 				{
 					"backtrace" : 8,
-					"path" : "/Users/riddhibagadiaa/Documents/CS284A/final_proj/ext/nanogui/ext/glad/include"
+					"path" : "/Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/ext/glad/include"
 				},
 				{
 					"backtrace" : 9,
-					"path" : "/Users/riddhibagadiaa/Documents/CS284A/final_proj/ext/nanogui/ext/eigen"
+					"path" : "/Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/ext/eigen"
 				},
 				{
 					"backtrace" : 9,
-					"path" : "/Users/riddhibagadiaa/Documents/CS284A/final_proj/ext/nanogui/ext/glfw/include"
+					"path" : "/Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/ext/glfw/include"
 				},
 				{
 					"backtrace" : 9,
-					"path" : "/Users/riddhibagadiaa/Documents/CS284A/final_proj/ext/nanogui/ext/nanovg/src"
+					"path" : "/Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/ext/nanovg/src"
 				},
 				{
 					"backtrace" : 9,
-					"path" : "/Users/riddhibagadiaa/Documents/CS284A/final_proj/ext/nanogui/include"
+					"path" : "/Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/include"
 				},
 				{
 					"backtrace" : 9,
-					"path" : "/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/ext/nanogui"
+					"path" : "/Users/selaroach/Desktop/cs184/try/284-finalproj5/cmake-build-debug/ext/nanogui"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/riddhibagadiaa/Documents/CS284A/final_proj/ext/nanogui/ext/coro"
+					"path" : "/Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/ext/coro"
 				}
 			],
 			"language" : "C",
@@ -274,7 +274,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : " -std=c++11 -m64 -g -Wall -Wextra -std=c++14 -stdlib=libc++ -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk -fPIC -fcolor-diagnostics"
+					"fragment" : " -std=c++11 -m64 -g -Wall -Wextra -std=c++14 -stdlib=libc++ -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk -fPIC -fcolor-diagnostics"
 				},
 				{
 					"backtrace" : 2,
@@ -324,31 +324,31 @@
 			[
 				{
 					"backtrace" : 8,
-					"path" : "/Users/riddhibagadiaa/Documents/CS284A/final_proj/ext/nanogui/ext/glad/include"
+					"path" : "/Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/ext/glad/include"
 				},
 				{
 					"backtrace" : 9,
-					"path" : "/Users/riddhibagadiaa/Documents/CS284A/final_proj/ext/nanogui/ext/eigen"
+					"path" : "/Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/ext/eigen"
 				},
 				{
 					"backtrace" : 9,
-					"path" : "/Users/riddhibagadiaa/Documents/CS284A/final_proj/ext/nanogui/ext/glfw/include"
+					"path" : "/Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/ext/glfw/include"
 				},
 				{
 					"backtrace" : 9,
-					"path" : "/Users/riddhibagadiaa/Documents/CS284A/final_proj/ext/nanogui/ext/nanovg/src"
+					"path" : "/Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/ext/nanovg/src"
 				},
 				{
 					"backtrace" : 9,
-					"path" : "/Users/riddhibagadiaa/Documents/CS284A/final_proj/ext/nanogui/include"
+					"path" : "/Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/include"
 				},
 				{
 					"backtrace" : 9,
-					"path" : "/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/ext/nanogui"
+					"path" : "/Users/selaroach/Desktop/cs184/try/284-finalproj5/cmake-build-debug/ext/nanogui"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/riddhibagadiaa/Documents/CS284A/final_proj/ext/nanogui/ext/coro"
+					"path" : "/Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/ext/coro"
 				}
 			],
 			"language" : "CXX",

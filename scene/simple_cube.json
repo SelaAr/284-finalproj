@@ -11,7 +11,9 @@
     "num_particles": 120,
     "cube_origin":  [0.0, 0.0, 0.0],
     "cube_width": 1,
-    "cube_height": 1.5
+    "cube_height": 1.5,
+    "iters": 2,
+    "elasticity": 0.1
   },
   "indices": [1, 7,  5,
       1,  3,  7,

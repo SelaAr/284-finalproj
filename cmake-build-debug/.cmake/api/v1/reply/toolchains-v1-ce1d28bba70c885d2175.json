@@ -11,20 +11,20 @@
 					"includeDirectories" : 
 					[
 						"/usr/include",
-						"/Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include"
+						"/Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include"
 					],
 					"linkDirectories" : 
 					[
-						"/Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/lib"
+						"/Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/lib"
 					],
 					"linkFrameworkDirectories" : 
 					[
-						"/Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/System/Library/Frameworks"
+						"/Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/System/Library/Frameworks"
 					],
 					"linkLibraries" : []
 				},
 				"path" : "/Library/Developer/CommandLineTools/usr/bin/cc",
-				"version" : "10.0.1.10010046"
+				"version" : "14.0.0.14000029"
 			},
 			"language" : "C",
 			"sourceFileExtensions" : 
@@ -42,20 +42,20 @@
 					"includeDirectories" : 
 					[
 						"/usr/include",
-						"/Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include"
+						"/Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include"
 					],
 					"linkDirectories" : 
 					[
-						"/Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/lib"
+						"/Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/lib"
 					],
 					"linkFrameworkDirectories" : 
 					[
-						"/Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/System/Library/Frameworks"
+						"/Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/System/Library/Frameworks"
 					],
 					"linkLibraries" : []
 				},
 				"path" : "/Library/Developer/CommandLineTools/usr/bin/c++",
-				"version" : "10.0.1.10010046"
+				"version" : "14.0.0.14000029"
 			},
 			"language" : "CXX",
 			"sourceFileExtensions" : 

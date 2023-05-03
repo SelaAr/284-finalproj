@@ -5,13 +5,13 @@
 # compile CXX with /Library/Developer/CommandLineTools/usr/bin/c++
 C_DEFINES = -DCORO_SJLJ -DGLAD_GLAPI_EXPORT -DNANOGUI_GLAD -DNANOGUI_SHARED -DNVG_SHARED -Dnanogui_EXPORTS
 
-C_INCLUDES = -I/Users/riddhibagadiaa/Documents/CS284A/final_proj/ext/nanogui/ext/glad/include -I/Users/riddhibagadiaa/Documents/CS284A/final_proj/ext/nanogui/ext/eigen -I/Users/riddhibagadiaa/Documents/CS284A/final_proj/ext/nanogui/ext/glfw/include -I/Users/riddhibagadiaa/Documents/CS284A/final_proj/ext/nanogui/ext/nanovg/src -I/Users/riddhibagadiaa/Documents/CS284A/final_proj/ext/nanogui/include -I/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/ext/nanogui -I/Users/riddhibagadiaa/Documents/CS284A/final_proj/ext/nanogui/ext/coro
+C_INCLUDES = -I/Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/ext/glad/include -I/Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/ext/eigen -I/Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/ext/glfw/include -I/Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/ext/nanovg/src -I/Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/include -I/Users/selaroach/Desktop/cs184/try/284-finalproj5/cmake-build-debug/ext/nanogui -I/Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/ext/coro
 
-C_FLAGS =  -Wno-deprecated-declarations -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk -fPIC -fcolor-diagnostics -fobjc-arc
+C_FLAGS =  -Wno-deprecated-declarations -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk -fPIC -fcolor-diagnostics -fobjc-arc
 
 CXX_DEFINES = -DCORO_SJLJ -DGLAD_GLAPI_EXPORT -DNANOGUI_GLAD -DNANOGUI_SHARED -DNVG_SHARED -Dnanogui_EXPORTS
 
-CXX_INCLUDES = -I/Users/riddhibagadiaa/Documents/CS284A/final_proj/ext/nanogui/ext/glad/include -I/Users/riddhibagadiaa/Documents/CS284A/final_proj/ext/nanogui/ext/eigen -I/Users/riddhibagadiaa/Documents/CS284A/final_proj/ext/nanogui/ext/glfw/include -I/Users/riddhibagadiaa/Documents/CS284A/final_proj/ext/nanogui/ext/nanovg/src -I/Users/riddhibagadiaa/Documents/CS284A/final_proj/ext/nanogui/include -I/Users/riddhibagadiaa/Documents/CS284A/final_proj/cmake-build-debug/ext/nanogui -I/Users/riddhibagadiaa/Documents/CS284A/final_proj/ext/nanogui/ext/coro
+CXX_INCLUDES = -I/Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/ext/glad/include -I/Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/ext/eigen -I/Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/ext/glfw/include -I/Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/ext/nanovg/src -I/Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/include -I/Users/selaroach/Desktop/cs184/try/284-finalproj5/cmake-build-debug/ext/nanogui -I/Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/ext/coro
 
-CXX_FLAGS =  -std=c++11 -m64 -g -Wall -Wextra -std=c++14 -stdlib=libc++ -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk -fPIC -fcolor-diagnostics -fobjc-arc
+CXX_FLAGS =  -std=c++11 -m64 -g -Wall -Wextra -std=c++14 -stdlib=libc++ -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk -fPIC -fcolor-diagnostics -fobjc-arc
 

@@ -55,8 +55,9 @@ struct Cube{
 struct WaterCubeParameters {
     WaterCubeParameters() {}
     WaterCubeParameters(double damping,
-                        double density, double ks, double relaxation_e, double rest_density, double smoothing_length)
-            :damping(damping), density(density), ks(ks), relaxation_e(relaxation_e), rest_density(rest_density), smoothing_length(smoothing_length) {}
+                        double density, double ks, double relaxation_e, double rest_density, double smoothing_length, double elasticity, int iters)
+            :damping(damping), density(density), ks(ks), relaxation_e(relaxation_e), rest_density(rest_density),
+            smoothing_length(smoothing_length), elasticity(elasticity), iters(iters) {}
     ~WaterCubeParameters() {}
 
     // Global simulation parameters
@@ -66,17 +67,20 @@ struct WaterCubeParameters {
     // Mass-spring parameters
     double density;
     double ks;
+    double mass;
 
     //Updated parameters
     double relaxation_e; //e
     double rest_density; //rho_0
     double smoothing_length; //h
+    double elasticity;
+    int iters;
 
 };
 
 struct WaterCube {
     WaterCube() {}
-    WaterCube(Vector3D cube_origin, double cube_width, double cube_height, int num_particles, Cube wCube, std::vector<Plane *> * borders);
+    WaterCube(Vector3D cube_origin, double cube_width, double cube_height, int num_particles, Cube wCube, std::vector<Plane *> * borders, int id_count);
     ~WaterCube();
 
     void generateParticles();
@@ -94,7 +98,10 @@ struct WaterCube {
     void self_collide(Particle &pm, double simulation_steps);
     float hash_position(Vector3D pos);
     void handleCollision(Particle p);
-    void getNeighbors(double h, int H);
+    void getNeighborsSpatialMap(Particle &pm, WaterCubeParameters *cp);
+    int hash_positionNoBounds(Vector3D pos, double h);
+    void build_spatial_map_2(WaterCubeParameters *cp);
+    bool inBounds(Vector3D p, double h);
 
     // Cube
     Cube wCube;
@@ -107,11 +114,22 @@ struct WaterCube {
 
     vector<Particle> water_particles;
     std::vector<Plane *> * borders;
-
+    int id_count;
     double width;
     double height;
 
     // Spatial hashing
     unordered_map<float, vector<Particle *> *> map;
+
+    //Kernels
+    double poly6Kernel(Vector3D r, float h);
+    double spikyKernel(Vector3D r, float h);
+    Vector3D poly6GradKernel(Vector3D r, float h);
+    Vector3D spikyGradKernel(Vector3D r, float h);
+
+    //Position Based Fluids Functions
+    Vector3D calculateGradientConstraint(Particle pi, Particle pk, float h, double rho_0);
+    float calcuateLambdaI(Particle pi, double e, double rho_0, float h);
+    float artificialPressure(Particle pi, Particle pj, float k, int n, float delta_q, float h);
 };
 #endif //CLOTHSIM_WATERCUBE_H

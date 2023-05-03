@@ -14,7 +14,7 @@
 
 using namespace std;
 
-WaterCube::WaterCube(Vector3D cube_origin, double cube_width, double cube_height, int num_particles, Cube wCube, std::vector<Plane *> * borders) {
+WaterCube::WaterCube(Vector3D cube_origin, double cube_width, double cube_height, int num_particles, Cube wCube, std::vector<Plane *> * borders,  int id_count) {
   //Boundaries
   this->cube_origin = cube_origin;
   this->cube_width = cube_width;
@@ -22,6 +22,8 @@ WaterCube::WaterCube(Vector3D cube_origin, double cube_width, double cube_height
   this->num_particles = num_particles;
   this->wCube = wCube;
   this->borders = borders;
+  this->id_count = id_count;
+
 
   generateParticles();
 }
@@ -48,7 +50,11 @@ void WaterCube::generateParticles() {
     double z = generateRanBetween(cube_origin.z, cube_origin.z + cube_width);
     Vector3D pos = Vector3D(x, y, z);
     Vector3D vel = Vector3D(0,-0.0001,0);
-    Particle particle = Particle(pos, vel);
+    double mass = 18.01;
+    Particle particle = Particle(pos, vel, id_count, mass);
+    id_count += 1;
+    std::vector<Particle *> * v = new std::vector<Particle*>();
+    particle.neighbors = *v;
     water_particles.push_back(particle);
   }
 }
@@ -64,7 +70,11 @@ void WaterCube::addParticles(int num_new_particles, Vector3D velocity) {
     double z = generateRanBetween(cube_origin.z, cube_origin.z + cube_width);;
     Vector3D pos = Vector3D(x, y, z);
     Vector3D vel = velocity;
-    Particle particle = Particle(pos, vel);
+    double mass = 18.01;
+    Particle particle = Particle(pos, vel, id_count, mass);
+    id_count += 1;
+    std::vector<Particle *> * v = new std::vector<Particle*>();
+    particle.neighbors = *v;
     water_particles.push_back(particle);
   }
 
@@ -125,24 +135,189 @@ void WaterCube::handleCollision(Particle p){
   }
 }
 
-//h is the smoothing length
-//H is the subdivision factor
-void WaterCube::getNeighbors(double h, int H){
-  //Partition space equally into bins
-  //EX. Cube is 0.5 by 0.5
 
+void WaterCube::build_spatial_map_2(WaterCubeParameters *cp) {
+    for (const auto &entry : map) {
+        delete(entry.second);
+    }
+    map.clear();
+
+
+    for(int i = 0; i < water_particles.size(); i++) {
+        Particle *pm = &water_particles[i];
+        int cell = hash_positionNoBounds(pm->position, cp->smoothing_length);
+        if(map[cell] != nullptr){
+            map[cell]->push_back(pm);
+        }else{
+            std::vector<Particle *> * vec = new std::vector<Particle*>();
+            vec->push_back(pm);
+            map[cell] = vec;
+        }
+    }
 }
+
+int WaterCube::hash_positionNoBounds(Vector3D pos, double h) {
+    int x = std::floor(pos.x/(h * 1.0f));
+    int y = std::floor(pos.y/(h * 1.0f));
+    int z = std::floor(pos.z/(h * 1.0f));
+    return std::abs((x * 92837111) ^ (y * 689287499) ^ (z * 283923481));
+}
+
+
+
+bool WaterCube::inBounds(Vector3D p, double h){
+    if(p.x < cube_origin.x || p.x >= cube_origin.x + h ||
+       p.y < cube_origin.y || p.y >= cube_origin.y + h ||
+       p.z < cube_origin.z || p.z >= cube_origin.z + h){
+        return false;
+    }
+    return true;
+}
+
+
+void WaterCube::getNeighborsSpatialMap(Particle &pm, WaterCubeParameters *cp){
+    build_spatial_map_2(cp);
+    double h = cp->smoothing_length;
+
+    int pmCell = hash_positionNoBounds(pm.position, h);
+    //Get current cell coordinates
+    double numY = std::floor(pm.position.y/h) * h;
+    double numX = std::floor(pm.position.x/h) * h;
+    double numZ = std::floor(pm.position.z/h) * h;
+
+
+    //Get Max 27 surrounding cells including current cell
+    vector<Vector3D> gridCells;
+    for(double x = numX - h; x <= numX + h; x += h){
+        for(double y = numY - h; y <= numY + h; y += h){
+            for(double z = numZ - h; z <= numZ +h; z += h){
+                Vector3D pCell = Vector3D(x, y, z);
+                //Check if cell is within bounds
+                if(inBounds(pCell, h)){
+                    gridCells.push_back(pCell);
+                    // std::cout << pCell << std::endl;
+                }
+            }
+        }
+    }
+
+    //Go through the gridCells and get the neighbors
+    for(int i = 0; i < gridCells.size(); i++){
+        Vector3D neighborCell = gridCells[i];
+        int nCell = hash_positionNoBounds(pm.position, h);
+        std::vector<Particle *> neighbors = *map[nCell];
+        for(int j = 0; j < neighbors.size(); j++){
+            Particle *n = neighbors.at(j);
+            if (pm.id != n->id && (pm.position - n->position).norm() <= h) {
+                std::cout << "PUSHED BACK NEIGHBOR" << std::endl;
+                pm.neighbors.push_back(n);
+            }
+        }
+    }
+}
+
+
+
+/*KERNELS */
+double WaterCube::poly6Kernel(Vector3D r, float h){
+    double r_norm = r.norm();
+    float scaling_factor = 315.0/(64.0 * M_PI * std::pow(h, 9));
+    if(r_norm >= 0 && r_norm <= h){
+        return scaling_factor * std::pow(std::pow(h, 2) - std::pow(r_norm, 2), 3.0);
+    }else{
+        return 0.0f;
+    }
+}
+
+Vector3D WaterCube::poly6GradKernel(Vector3D r, float h){
+    double r_norm = r.norm();
+    float scaling_factor = (945.0f/(32.0f * M_PI * std::pow(h, 9.0f)));
+    if(std::pow(r_norm, 2.0f) > std::pow(h,2.0f)){
+        return Vector3D(0.0f, 0.0f, 0.0f);
+    }
+    return -1.0f * r * scaling_factor * std::pow((std::pow(h, 2.0f) - std::pow(r_norm, 2.0f)), 2.0f);
+}
+
+double WaterCube::spikyKernel(Vector3D r, float h){
+    double r_norm = r.norm();
+    float scaling_factor = 15.0/(M_PI * std::pow(h, 6));
+    if(r_norm >= 0 && r_norm <= h){
+        return scaling_factor * std::pow(h - r_norm, 3);
+    }else{
+        return 0.0f;
+    }
+}
+
+Vector3D WaterCube::spikyGradKernel(Vector3D r, float h){
+    double r_norm = r.norm();
+    float scaling_factor = 45.0f/(M_PI * std::pow(h, 6) * std::max(r_norm, 1e-24));
+    if(r_norm >= 0 && r_norm <= h){
+        return -r * scaling_factor * std::max(r_norm, 1e-24) * std::pow(h - r_norm, 2);
+    }else{
+        return Vector3D(0.0, 0.0, 0.0);
+    }
+}
+
+
+/*Position Based Fluids Equations */
+
+// Calculates the gradient of the constraint function
+Vector3D WaterCube::calculateGradientConstraint(Particle pi, Particle pk, float h, double rho_0){
+    if(pi.id == pk.id){
+        Vector3D sum = Vector3D(0.0, 0.0, 0.0);
+        for(int i = 0; i < pi.neighbors.size(); i++){
+            Particle *pj = pi.neighbors.at(i);
+            sum += spikyGradKernel(pi.position - pj->position, h);
+        }
+        return (1.0f/rho_0) * sum;
+    }
+
+    return -1.0f * (1.0f/rho_0) * spikyGradKernel(pi.position - pk.position, h);
+}
+
+//Calculates lambda_i = -1 * Ci(p1,...,pn) / sumK |gradient pk Ci| ^2
+float WaterCube::calcuateLambdaI(Particle pi, double e, double rho_0, float h){
+
+    //Step 1: Calculate Ci(p1,...,pn) = (rho_i/rho_0) - 1
+    float rho_i = 0.0f;
+    for(int i = 0; i < pi.neighbors.size(); i++){
+        Particle *pj = pi.neighbors.at(i);
+        rho_i += pj->mass * poly6Kernel(pi.position - pj->position, h);
+    }
+
+    float density_constraint = (rho_i/rho_0) - 1.0f;
+
+    //Step 2: sumK |gradient pk Ci| ^2 + relaxation e
+    float grad_sum = 0.0;
+    for(int k = 0; k < pi.neighbors.size(); k++){
+        Particle *pk = pi.neighbors.at(k);
+        Vector3D grad = calculateGradientConstraint(pi, *pk, h, rho_0);
+        //Tried to use the .norm() here
+        grad_sum += std::pow(grad.norm(), 2);
+    }
+    grad_sum += e;
+
+    //Step 3: Plug in above to lambda i
+    float lambdaI = (-1.0f * density_constraint)/grad_sum;
+    return lambdaI;
+}
+
+//constant = 0.1, n = 4, delta_q = 0.2h
+float WaterCube::artificialPressure(Particle pi, Particle pj, float k, int n, float delta_q, float h){
+    return -1 * k * std::pow((poly6Kernel(pi.position - pj.position, h)/(poly6Kernel(delta_q * h * Vector3D(1,0,0), h))), n);
+}
+
 
 void WaterCube::simulate(double frames_per_sec, double simulation_steps, WaterCubeParameters *cp,
                          vector<Vector3D> external_accelerations,
                          vector<CollisionObject *> *collision_objects) {
-  double volume = std::pow(cube_width, 3);
-  double mass = (cp->rest_density *  volume) / num_particles;
+  //double volume = std::pow(cube_width, 3);
+  //double mass = (cp->rest_density *  volume) / num_particles;
   double delta_t = 1.0f / frames_per_sec / simulation_steps;
 
   Vector3D extern_forces = Vector3D(0.0,0.0,0.0);
   for (int i = 0; i < external_accelerations.size(); i++) {
-    extern_forces += external_accelerations[i] * mass;
+    extern_forces += external_accelerations[i] * cp->mass;
   }
 
   for (int i = 0; i < water_particles.size(); i++) {
@@ -174,13 +349,13 @@ void WaterCube::simulate(double frames_per_sec, double simulation_steps, WaterCu
   for(int i = 0; i < water_particles.size(); i++){
     Particle *pm = &water_particles[i];
     //Update velocity
-    Vector3D acc = (pm->forces/mass);
-    pm->velocity = pm->velocity + (acc * delta_t);
+    //Vector3D acc = (pm->forces/mass);
+    pm->velocity = pm->velocity + delta_t * pm->forces;
 
     // Update position
-    Vector3D curr_position = pm->position;
-    pm->position = curr_position + (pm->velocity * delta_t);
-    pm->last_position = curr_position;
+    //Vector3D curr_position = pm->position;
+    pm->position = pm->last_position + delta_t * pm->velocity;
+    //pm->last_position = curr_position;
 
 //        cout << pm->velocity << endl;
 
@@ -200,30 +375,96 @@ void WaterCube::simulate(double frames_per_sec, double simulation_steps, WaterCu
     }
   }
 
-//    build_spatial_map();
-//
-//    for(int i = 0; i < water_particles.size(); i++) {
-//        Particle *pm = &water_particles[i];
-//        self_collide(*pm, simulation_steps);
-//    }
-
-
-  //Handle collisions with plane
-  for(int i = 0; i < water_particles.size(); i++) {
-    Particle *pm = &water_particles[i];
-    for (Plane *p: *borders) {
-      p->collide(*pm);
+   //build_spatial_map();
+    for (int i = 0; i < water_particles.size(); i++) {
+        Particle *pm = &water_particles[i];
+        getNeighborsSpatialMap(*pm, cp);
     }
-  }
 
-  // Handle collisions with other primitives.
-  for(int i = 0; i < water_particles.size(); i++) {
-    Particle *pm = &water_particles[i];
-    for (CollisionObject *co: *collision_objects) {
-      co->collide(*pm);
+    int iter = 0;
+    while(iter < cp->iters) {
+        //Calculate lambda i
+        vector<double> lambdas;
+        for (int i = 0; i < water_particles.size(); i++) {
+            Particle *pi = &water_particles[i];
+            double lambda_i = calcuateLambdaI(*pi, cp->relaxation_e, cp->rest_density, cp->smoothing_length);
+            lambdas.push_back(lambda_i);
+        }
+        //Calculate delta_pi
+        std::vector<Vector3D> *delta_pis = new std::vector<Vector3D>();
+        for (int i = 0; i < water_particles.size(); i++) {
+            Particle *pi = &water_particles[i];
+            double *l = &lambdas[i];
+            double lambdaI = *l;
+            Vector3D sum = Vector3D(0.0, 0.0, 0.0);
+            for (int j = 0; j < pi->neighbors.size(); j++) {
+                Particle *pj = pi->neighbors.at(j);
+                double *jl = &lambdas[j];
+                double lambdaJ = *jl;
+                float sCorr = artificialPressure(*pi, *pj, 0.1, 4, 0.3, cp->smoothing_length);
+                sum += (lambdaI + lambdaJ + sCorr) * spikyGradKernel(pi->position - pj->position, cp->smoothing_length);
+            }
+            sum = sum * (1.0f / cp->rest_density);
+            delta_pis->push_back(sum);
+            // Collision and Detection
+            for (Plane *p: *borders) {
+                Vector3D normal = p->normal;
+                Vector3D point = p->point;
+                Vector3D tangent = pi->position - (dot(pi->position - point, normal) * normal);
+                Vector3D direction = pi->last_position - tangent;
+                double t = dot((point - pi->position), normal) / (dot(direction, normal));
+                if (t >= 0) {
+                    //Technique 2 implemented from SPH:Toward Flood Simulations
+                    double additive_factor = 0.45 * (cp->smoothing_length / (delta_t * pi->velocity.norm()));
+                    pi->velocity = pi->velocity - ((1 + additive_factor) * (dot(pi->velocity, normal) * normal));
+                   //std::cout << pi->velocity << std::endl;
+                    pi->position = pi->position + delta_t * pi->velocity;
+
+                }
+            }
+
+            // Handle collisions with other primitives.
+            for (CollisionObject *co: *collision_objects) {
+                co->collide(*pi);
+            }
+        }
+        //update particle position
+        for (int i = 0; i < water_particles.size(); i++) {
+            Particle *pm = &water_particles[i];
+            Vector3D delta_pi = delta_pis->at(i);
+            pm->position = pm->position + delta_pi;
+        }
+        iter += 1;
     }
-  }
 
+    for(int i = 0; i < water_particles.size(); i++) {
+        Particle *pm = &water_particles[i];
+        //Update velocity
+        pm->velocity = (1.0/delta_t) * (pm->position - pm->last_position);
+
+        //Apply vorticity confinement and XSPH Viscosity
+        Vector3D wi = Vector3D(0.0, 0.0, 0.0);
+        double sum_visc = 0.0;
+        for(int j = 0; j < pm->neighbors.size(); j++) {
+            Particle *pj = pm->neighbors.at(j);
+            Vector3D vij = pj->velocity - pm->velocity;
+
+            //Step 1: Calculate vorticity at a particle's location
+            wi += cross(vij, spikyGradKernel(pm->position - pj->position, cp->smoothing_length));
+
+            //Calc XSPH Viscosity
+            sum_visc += dot(vij, poly6Kernel(pm->position - pj->position, cp->smoothing_length));
+        }
+        //Step 2: Calculate a corrective force
+        Vector3D ni = poly6GradKernel(wi, cp->smoothing_length);
+        Vector3D N = ni/(ni.norm());
+        Vector3D vorticity = cp->relaxation_e * (cross(N, wi));
+        pm->forces += vorticity;
+
+        pm->velocity = pm->velocity + (0.01 * sum_visc);
+        //Update position
+        pm->last_position = pm->position;
+    }
 }
 
 void WaterCube::build_spatial_map() {
