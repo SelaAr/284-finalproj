@@ -36,14 +36,13 @@ using json = nlohmann::json;
 
 const string SPHERE = "sphere";
 const string PLANE = "plane";
-const string CLOTH = "cloth";
+const string WCUBE = "wcube";
 const string INDICES = "indices";
 const string VERTS = "verts";
 const string NORM_INDICES = "normalIndices";
 const string NORMS = "normals";
-const string WCUBE = "wcube";
 
-const unordered_set<string> VALID_KEYS = {SPHERE, PLANE, CLOTH, INDICES, VERTS, NORM_INDICES, NORMS, WCUBE};
+const unordered_set<string> VALID_KEYS = {SPHERE, PLANE, WCUBE, INDICES, VERTS, NORM_INDICES, NORMS, WCUBE};
 
 WaterSimulator *app = nullptr;
 GLFWwindow *window = nullptr;
@@ -190,7 +189,7 @@ bool loadObjectsFromDuck(string filename, vector<CollisionObject *>* objects, Mi
   return true;
 }
 
-bool loadObjectsFromFile(string filename, Cloth *cloth, ClothParameters *cp, vector<CollisionObject *>* objects, int sphere_num_lat, int sphere_num_lon, Misc::DuckMesh* duckmesh) {
+bool loadObjectsFromFile(string filename, WaterCube *waterCube, WaterCubeParameters *cp, vector<CollisionObject *>* objects, int sphere_num_lat, int sphere_num_lon, Misc::DuckMesh* duckmesh) {
   // Read JSON from file
   ifstream i(filename);
   if (!i.good()) {
@@ -220,114 +219,118 @@ bool loadObjectsFromFile(string filename, Cloth *cloth, ClothParameters *cp, vec
     }
 
     // Parse object depending on type (cloth, sphere, or plane)
-    else if (key == CLOTH) {
+    else if (key == WCUBE) {
       // Cloth
-      double width, height;
-      int num_width_points, num_height_points;
-      float thickness;
-      e_orientation orientation;
+        double width, height, cube_width, cube_height;
+        int num_particles;
+        Vector3D cube_origin;
 
       auto it_width = object.find("width");
       if (it_width != object.end()) {
-        width = *it_width;
+          width = *it_width;
       } else {
-        incompleteObjectError("cloth", "width");
+          incompleteObjectError("wcube", "width");
       }
 
       auto it_height = object.find("height");
       if (it_height != object.end()) {
-        height = *it_height;
+          height = *it_height;
       } else {
-        incompleteObjectError("cloth", "height");
+          incompleteObjectError("wcube", "height");
       }
 
-      auto it_num_width_points = object.find("num_width_points");
-      if (it_num_width_points != object.end()) {
-        num_width_points = *it_num_width_points;
+      auto it_num_particles = object.find("num_particles");
+      if (it_num_particles != object.end()) {
+          num_particles = *it_num_particles;
       } else {
-        incompleteObjectError("cloth", "num_width_points");
+          incompleteObjectError("wcube", "num_particles");
       }
 
-      auto it_num_height_points = object.find("num_height_points");
-      if (it_num_height_points != object.end()) {
-        num_height_points = *it_num_height_points;
+      auto it_cube_origin = object.find("cube_origin");
+      if (it_cube_origin != object.end()) {
+          vector<double> vec_origin = *it_cube_origin;
+          cube_origin = Vector3D(vec_origin[0], vec_origin[1], vec_origin[2]);
       } else {
-        incompleteObjectError("cloth", "num_height_points");
+          incompleteObjectError("wcube", "cube_origin");
       }
 
-      auto it_thickness = object.find("thickness");
-      if (it_thickness != object.end()) {
-        thickness = *it_thickness;
+      auto it_cube_width = object.find("cube_width");
+      if (it_cube_width != object.end()) {
+          cube_width = *it_cube_width;
       } else {
-        incompleteObjectError("cloth", "thickness");
+          incompleteObjectError("wcube", "cube_width");
       }
 
-      auto it_orientation = object.find("orientation");
-      if (it_orientation != object.end()) {
-        orientation = *it_orientation;
+      auto it_cube_height = object.find("cube_height");
+      if (it_cube_height != object.end()) {
+          cube_height = *it_cube_height;
       } else {
-        incompleteObjectError("cloth", "orientation");
+          incompleteObjectError("wcube", "cube_height");
       }
 
-      cloth->width = width;
-      cloth->height = height;
-      cloth->num_width_points = num_width_points;
-      cloth->num_height_points = num_height_points;
-      cloth->thickness = thickness;
-      cloth->orientation = orientation;
+      waterCube->width = width;
+      waterCube->height = height;
+      waterCube->num_particles = num_particles;
+      waterCube->cube_origin = cube_origin;
+      waterCube->cube_width = cube_width;
+      waterCube->cube_height = cube_height;
+      waterCube->wCube = Cube();
+      std::vector<Plane *> * vec = new std::vector<Plane*>();
+      waterCube->borders = vec;
 
-      // Cloth parameters
-      bool enable_structural_constraints, enable_shearing_constraints, enable_bending_constraints;
-      double damping, density, ks;
+        // Cloth parameters
+              double damping, density, ks, relaxation_e, rest_density, smoothing_length;
 
-      auto it_enable_structural = object.find("enable_structural");
-      if (it_enable_structural != object.end()) {
-        enable_structural_constraints = *it_enable_structural;
-      } else {
-        incompleteObjectError("cloth", "enable_structural");
-      }
+              auto it_damping = object.find("damping");
+              if (it_damping != object.end()) {
+                  damping = *it_damping;
+              } else {
+                  incompleteObjectError("wcube", "damping");
+              }
 
-      auto it_enable_shearing = object.find("enable_shearing");
-      if (it_enable_shearing != object.end()) {
-        enable_shearing_constraints = *it_enable_shearing;
-      } else {
-        incompleteObjectError("cloth", "it_enable_shearing");
-      }
+              auto it_density = object.find("density");
+              if (it_density != object.end()) {
+                  density = *it_density;
+              } else {
+                  incompleteObjectError("wcube", "density");
+              }
 
-      auto it_enable_bending = object.find("enable_bending");
-      if (it_enable_bending != object.end()) {
-        enable_bending_constraints = *it_enable_bending;
-      } else {
-        incompleteObjectError("cloth", "it_enable_bending");
-      }
+              auto it_ks = object.find("ks");
+              if (it_ks != object.end()) {
+                  ks = *it_ks;
+              } else {
+                  incompleteObjectError("wcube", "ks");
+              }
 
-      auto it_damping = object.find("damping");
-      if (it_damping != object.end()) {
-        damping = *it_damping;
-      } else {
-        incompleteObjectError("cloth", "damping");
-      }
 
-      auto it_density = object.find("density");
-      if (it_density != object.end()) {
-        density = *it_density;
-      } else {
-        incompleteObjectError("cloth", "density");
-      }
+              auto it_relaxation_e = object.find("relaxation_e");
+              if (it_relaxation_e != object.end()) {
+                  relaxation_e = *it_relaxation_e;
+              } else {
+                  incompleteObjectError("wcube", "relaxation_e");
+              }
 
-      auto it_ks = object.find("ks");
-      if (it_ks != object.end()) {
-        ks = *it_ks;
-      } else {
-        incompleteObjectError("cloth", "ks");
-      }
 
-      cp->enable_structural_constraints = enable_structural_constraints;
-      cp->enable_shearing_constraints = enable_shearing_constraints;
-      cp->enable_bending_constraints = enable_bending_constraints;
-      cp->density = density;
-      cp->damping = damping;
-      cp->ks = ks;
+              auto it_rest_density = object.find("rest_density");
+              if (it_rest_density != object.end()) {
+                  rest_density = *it_rest_density;
+              } else {
+                  incompleteObjectError("wcube", "rest_density");
+              }
+
+
+              auto it_smoothing_length = object.find("smoothing_length");
+              if (it_smoothing_length != object.end()) {
+                  smoothing_length = *it_smoothing_length;
+              } else {
+                  incompleteObjectError("wcube", "smoothing_length");
+              }
+              cp->density = density;
+              cp->damping = damping;
+              cp->ks = ks;
+              cp->relaxation_e = relaxation_e;
+              cp->rest_density = rest_density;
+              cp->smoothing_length = smoothing_length;
     } else if (key == SPHERE) {
       Vector3D origin;
       double radius, friction;
@@ -838,16 +841,16 @@ void polygroup_to_json(polygroup& pg, const char* jsonFilename)
 int main(int argc, char **argv) {
   // Attempt to find project root
   std::vector<std::string> search_paths = {
-    ".",
-    "..",
-    "../..",
-    "../../.."
+    "./",
+    "../",
+    "../../",
+    "../../../"
   };
 
   std::string project_root;
   bool found_project_root = find_project_root(search_paths, project_root);
-  Cloth cloth;
-  ClothParameters cp;
+    WaterCube waterCube;
+    WaterCubeParameters cp;
   vector<CollisionObject *> objects;
   Misc::DuckMesh duckmesh;
   int c;
@@ -912,7 +915,7 @@ int main(int argc, char **argv) {
     file_to_load_from = def_fname.str();
   }
   bool success;
-  success = loadObjectsFromFile(file_to_load_from, &cloth, &cp, &objects, sphere_num_lat, sphere_num_lon, &duckmesh);
+  success = loadObjectsFromFile(file_to_load_from, &waterCube, &cp, &objects, sphere_num_lat, sphere_num_lon, &duckmesh);
 
   if (!success) {
     std::cout << "Warn: Unable to load from file: " << file_to_load_from << std::endl;
@@ -949,16 +952,18 @@ int main(int argc, char **argv) {
 
   createGLContexts();
 
-  // Initialize the Cloth object
-  cloth.buildGrid();
-  cloth.buildClothMesh();
+    // Initialize the WaterCube object
+    waterCube.generateParticles();
 
-  // Initialize the ClothSimulator object
-  app = new ClothSimulator(project_root, screen);
-  app->loadCloth(&cloth);
-  app->loadClothParameters(&cp);
-  app->loadCollisionObjects(&objects);
-  app->init();
+    std::cout << "POINTS GENERATED" << std::endl;
+
+    // Initialize the WaterSimulator object
+    app = new WaterSimulator(project_root, screen);
+    app->loadWaterCube(&waterCube);
+    app->loadWaterCubeParameters(&cp);
+    app->loadCollisionObjects(&objects);
+  //  app->loadCube(&cubeW);
+    app->init();
 
   // Call this after all the widgets have been defined
 

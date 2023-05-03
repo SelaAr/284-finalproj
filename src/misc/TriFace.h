@@ -8,6 +8,7 @@
 #include "CGL/color.h"
 #include "CGL/vector3D.h"
 #include "../clothMesh.h"
+#include "../particle.h"
 
 using namespace CGL;
 using namespace std;
