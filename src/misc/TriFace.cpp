@@ -17,6 +17,7 @@ void TriFace::draw_normal() {
 
   this->normal = cross((vertex2 - vertex1), (vertex3 - vertex1));
   normal.normalize();
+    this->normal = this->normal * -1.0;
 }
 
 void TriFace::collide(Particle &pm) {
@@ -38,8 +39,9 @@ void TriFace::collide(Particle &pm) {
         // Calculate the sum of the angles
         float angleSum = angle1 + angle2 + angle3;
         
+        cout << angleSum << endl;
         // Check if the angles add up to 2 * pi radians (360 degrees)
-        if (angleSum >= 6) {
+        if (angleSum >= 6.2) {
             Vector3D correction = (tangent + (SURFACE_OFFSET * normal)) - pm.last_position;
             pm.position = pm.last_position + (correction * (1 - friction));
         }
