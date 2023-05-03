@@ -1,37 +1,71 @@
 #version 330
 
-// (Every uniform is available here.)
-
-uniform mat4 u_view_projection;
-uniform mat4 u_model;
-
-uniform float u_normal_scaling;
-uniform float u_height_scaling;
-
+uniform vec4 u_color;
 uniform vec3 u_cam_pos;
 uniform vec3 u_light_pos;
 uniform vec3 u_light_intensity;
 
-// Feel free to add your own textures. If you need more than 4,
-// you will need to modify the skeleton.
-uniform sampler2D u_texture_1;
-uniform sampler2D u_texture_2;
-uniform sampler2D u_texture_3;
-uniform sampler2D u_texture_4;
-
-// Environment map! Take a look at GLSL documentation to see how to
-// sample from this.
 uniform samplerCube u_texture_cubemap;
+
 
 in vec4 v_position;
 in vec4 v_normal;
-in vec4 v_tangent;
 in vec2 v_uv;
 
 out vec4 out_color;
 
-void main() {
-  // Your awesome shader here!
-  out_color = (vec4(1, 1, 1, 0) + v_normal) / 2;
+vec4 mirror() {
+  // YOUR CODE HERE
+
+  vec3 outgoing = u_cam_pos - v_position.xyz;
+
+  vec3 reflected = 2 * (dot(outgoing, v_normal.xyz)) * v_normal.xyz - outgoing;
+  
+
+  vec4 ret = texture(u_texture_cubemap, reflected);
   out_color.a = 1;
+  return ret;
+}
+
+vec4 phong() {
+  // YOUR CODE HERE
+  // ka = 0.1, kd = u_color, ks = 0.5, Ia = vector of ones, and p = 100
+
+
+  vec4 ka = vec4(0.1, 0.1, 0.1, 0.1);
+  vec4 kd = vec4(0.0, 0.4, 1.0, 0.5);
+  vec4 ks = vec4(0.5, 0.5, 0.5, 0.5);
+  vec4 Ia = vec4(1.0,1.0,1.0,1.0);
+  float p = 100.0;
+
+
+  vec4 first_term = ka * Ia;
+
+  vec4 l = vec4(u_light_pos, 1.0) - v_position;
+  float r_squared = length(l) * length(l);
+
+
+  vec4 second_term = kd * (vec4(u_light_intensity, 0.0) /r_squared)  * max(0.0, dot(normalize(v_normal),normalize(l)));
+
+  vec4 v = vec4(u_cam_pos, 1.0) - v_position;
+
+  vec4 h = normalize(normalize(l) + normalize(v));
+
+  float power_term = pow(max(0.0, dot(normalize(h), normalize(v_normal))), p);
+  vec4 third_term = ks * (vec4(u_light_intensity, 0.0) /r_squared) * power_term;
+
+  vec4 ret = first_term + second_term + third_term;
+
+
+  ret.a = 1;
+  return ret;
+}
+
+
+void main() {
+  vec4 mirror = mirror();
+  vec4 phong = phong();
+
+  out_color = (0.01 * mirror) + (0.99 * phong);
+  out_color.a = 0.4;
 }
