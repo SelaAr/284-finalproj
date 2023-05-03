@@ -180,7 +180,7 @@ bool loadObjectsFromDuck(string filename, vector<CollisionObject *>* objects, Mi
   duckmesh->normindices = j["normalIndices"].get<vector<int>>();
   duckmesh->norms = j["normals"].get<vector<double>>();
   duckmesh->build_data();
-  Duck* d = new Duck(Vector3D{0}, 0.2, duckmesh);
+    Duck* d = new Duck(Vector3D{0,0,0}, 0.2, duckmesh);
 //  vector<double> verts = j["verts"].get<vector<double>>();
 //  vector<int> indices = j["indices"].get<vector<int>>();
   objects->push_back(d);
