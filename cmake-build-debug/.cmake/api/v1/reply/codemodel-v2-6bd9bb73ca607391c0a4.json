@@ -198,7 +198,7 @@
 				{
 					"directoryIndex" : 6,
 					"id" : "clothsim::@145eef247bfb46b6828c",
-					"jsonFile" : "target-clothsim-Debug-72cfabe20f6b0ca116b9.json",
+					"jsonFile" : "target-clothsim-Debug-7a719627352c3f56a221.json",
 					"name" : "clothsim",
 					"projectIndex" : 0
 				},
@@ -219,7 +219,7 @@
 				{
 					"directoryIndex" : 1,
 					"id" : "nanogui::@f32fc89d7586c0a8572c",
-					"jsonFile" : "target-nanogui-Debug-46823c01b244358a0c50.json",
+					"jsonFile" : "target-nanogui-Debug-50c1e2eccfd5622a05ca.json",
 					"name" : "nanogui",
 					"projectIndex" : 1
 				},
