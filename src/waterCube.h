@@ -13,6 +13,10 @@
 #include "misc/sphere_drawing.h"
 #include "collision/plane.h"
 
+//#include "../flann/src/cpp/flann/flann.hpp"
+//#include "../flann/src/cpp/flann/io/hdf5.h"
+//#include "../flann/src/cpp/flann/util/matrix.h"
+
 
 using namespace CGL;
 using namespace std;
@@ -51,21 +55,26 @@ struct Cube{
 
 struct WaterCubeParameters {
     WaterCubeParameters() {}
-    WaterCubeParameters(float rest_density, float viscosity, float surface_tension, float threshold, float gas_stiffness,
-                        float restitution, float smoothing_length)
-            :rest_density(rest_density), viscosity(viscosity), surface_tension(surface_tension),
-             threshold(threshold),gas_stiffness(gas_stiffness),restitution(restitution), smoothing_length(smoothing_length){}
+    WaterCubeParameters(double damping,
+                        double density, double ks, double relaxation_e, double rest_density, double smoothing_length, double elasticity, int iters)
+            :damping(damping), density(density), ks(ks), relaxation_e(relaxation_e), rest_density(rest_density),
+             smoothing_length(smoothing_length), elasticity(elasticity), iters(iters)  {}
     ~WaterCubeParameters() {}
 
-    //SPH PARAMETERS
-    float rest_density;
-    float viscosity;
-    float surface_tension;
-    float threshold;
-    float gas_stiffness;
-    float restitution;
-    float smoothing_length;
+    // Global simulation parameters
+
     double damping;
+
+    // Mass-spring parameters
+    double density;
+    double ks;
+
+    //Updated parameters
+    double relaxation_e; //e
+    double rest_density; //rho_0
+    double smoothing_length; //h
+    double elasticity;
+    int iters;
 };
 
 struct WaterCube {
@@ -73,20 +82,14 @@ struct WaterCube {
     WaterCube(Vector3D cube_origin, double cube_width, double cube_height, int num_particles, Cube wCube, std::vector<Plane *> * borders, int id_count);
     ~WaterCube();
 
-
     void generateParticles();
-    void generateFormedParticles();
-    void addParticles(int num_new_particles, Vector3D velocity);
-    void respawn_particle(Particle *pm, Vector3D new_velocity);
 
     void simulate(double frames_per_sec, double simulation_steps, WaterCubeParameters *cp,
                   vector<Vector3D> external_accelerations,
-                  vector<CollisionObject *> *collision_objects, int currStep);
+                  vector<CollisionObject *> *collision_objects);
 
     void reset();
     void buildWaterCube(GLShader &shader);
-    void createCube(Vector3D origin, double width, double height, GLShader &shader);
-    void release();
 
     bool inBounds(Vector3D p, double h);
     int hash_position(Vector3D pos, double h);
@@ -114,17 +117,12 @@ struct WaterCube {
     // Cube
     Cube wCube;
     Vector3D cube_origin;
-    Vector3D larger_cube_origin;
     double cube_width;
     double cube_height;
-    double larger_cube_width;
-    double larger_cube_height;
     int num_particles;
-    int next_prime;
 
     //radius of particles
     float radius;
-    float mass;
 
     vector<Particle> water_particles;
     std::vector<Plane *> * borders;
@@ -137,18 +135,6 @@ struct WaterCube {
     double spikyKernel(Vector3D r, float h);
     Vector3D poly6GradKernel(Vector3D r, float h);
     Vector3D spikyGradKernel(Vector3D r, float h);
-
-    //SPH specific
-    double viscWKernel(Vector3D r, float h);
-    Vector3D viscGradWKernel(Vector3D r, float h);
-    double viscGrad2WKernel(Vector3D r, float h);
-    double pressSpikyWKernel(Vector3D r, float h);
-    double poly6W2Kernel(Vector3D r, float h);
-
-
-    //SPH Functions
-    float estimate_density(Particle pi, double rho_0, float h);
-
 
     //Position Based Fluids Functions
     Vector3D calculateGradientConstraint(Particle pi, Particle pk, float h, double rho_0);

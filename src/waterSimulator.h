@@ -1,9 +1,5 @@
-//
-// Created by Riddhi Bagadiaa on 02/05/23.
-//
-
-#ifndef CLOTHSIM_WATERSIMULATOR_H
-#define CLOTHSIM_WATERSIMULATOR_H
+#ifndef CGL_WaterCube_SIMULATOR_H
+#define CGL_WaterCube_SIMULATOR_H
 
 #include <nanogui/nanogui.h>
 #include <memory>
@@ -154,5 +150,4 @@ struct UserShader {
 
 };
 
-
-#endif //CLOTHSIM_WATERSIMULATOR_H
+#endif // CGL_WaterCube_SIM_H

@@ -181,10 +181,10 @@ bool loadObjectsFromFile(string filename, WaterCube *waterCube, WaterCubeParamet
 
         // Parse object depending on type (waterCube, sphere, or plane)
         if (key == WCUBE) {
-            double width, height, cube_width, cube_height, larger_cube_width, larger_cube_height;
-            int num_particles, next_prime;
-            Vector3D cube_origin, larger_cube_origin;
-            float mass, radius;
+            double width, height, cube_width, cube_height;
+            int num_particles;
+            Vector3D cube_origin;
+            float radius;
 
             auto it_width = object.find("width");
             if (it_width != object.end()) {
@@ -229,47 +229,11 @@ bool loadObjectsFromFile(string filename, WaterCube *waterCube, WaterCubeParamet
                 incompleteObjectError("wcube", "cube_height");
             }
 
-            auto it_larger_cube_origin = object.find("larger_cube_origin");
-            if (it_larger_cube_origin != object.end()) {
-                vector<double> vec_origin = *it_larger_cube_origin;
-                larger_cube_origin = Vector3D(vec_origin[0], vec_origin[1], vec_origin[2]);
-            } else {
-                incompleteObjectError("wcube", "larger_cube_origin");
-            }
-
-            auto it_larger_cube_width = object.find("larger_cube_width");
-            if (it_larger_cube_width != object.end()) {
-                larger_cube_width = *it_larger_cube_width;
-            } else {
-                incompleteObjectError("wcube", "larger_cube_width");
-            }
-
-            auto it_larger_cube_height = object.find("larger_cube_height");
-            if (it_larger_cube_height != object.end()) {
-                larger_cube_height = *it_larger_cube_height;
-            } else {
-                incompleteObjectError("wcube", "larger_cube_height");
-            }
-
             auto it_radius = object.find("radius");
             if (it_radius != object.end()) {
                 radius = *it_radius;
             } else {
                 incompleteObjectError("wcube", "radius");
-            }
-
-            auto it_mass = object.find("mass");
-            if (it_mass != object.end()) {
-                mass = *it_mass;
-            } else {
-                incompleteObjectError("wcube", "mass");
-            }
-
-            auto it_next_prime = object.find("next_prime");
-            if (it_next_prime != object.end()) {
-                next_prime = *it_next_prime;
-            } else {
-                incompleteObjectError("wcube", "next_prime");
             }
 
 
@@ -279,21 +243,15 @@ bool loadObjectsFromFile(string filename, WaterCube *waterCube, WaterCubeParamet
             waterCube->cube_origin = cube_origin;
             waterCube->cube_width = cube_width;
             waterCube->cube_height = cube_height;
-            waterCube->larger_cube_origin = larger_cube_origin;
-            waterCube->larger_cube_width = larger_cube_width;
-            waterCube->larger_cube_height = larger_cube_height;
             waterCube->wCube = Cube();
             std::vector<Plane *> * vec = new std::vector<Plane*>();
             waterCube->borders = vec;
             waterCube->id_count = 0;
             waterCube->radius = radius;
-            waterCube->mass = mass;
-            waterCube->next_prime = next_prime;
 
-
-            // SPH parameters
-            float rest_density, viscosity, surface_tension, threshold, gas_stiffness, restitution, smoothing_length;
-            double damping;
+            // Cloth parameters
+            double damping, ks,  density, relaxation_e, rest_density, elasticity;
+            int iters;
 
             auto it_damping = object.find("damping");
             if (it_damping != object.end()) {
@@ -302,6 +260,27 @@ bool loadObjectsFromFile(string filename, WaterCube *waterCube, WaterCubeParamet
                 incompleteObjectError("wcube", "damping");
             }
 
+            auto it_density = object.find("density");
+            if (it_density != object.end()) {
+                density = *it_density;
+            } else {
+                incompleteObjectError("wcube", "density");
+            }
+
+            auto it_ks = object.find("ks");
+            if (it_ks != object.end()) {
+                ks = *it_ks;
+            } else {
+                incompleteObjectError("wcube", "ks");
+            }
+
+
+            auto it_relaxation_e = object.find("relaxation_e");
+            if (it_relaxation_e != object.end()) {
+                relaxation_e = *it_relaxation_e;
+            } else {
+                incompleteObjectError("wcube", "relaxation_e");
+            }
 
 
             auto it_rest_density = object.find("rest_density");
@@ -311,57 +290,28 @@ bool loadObjectsFromFile(string filename, WaterCube *waterCube, WaterCubeParamet
                 incompleteObjectError("wcube", "rest_density");
             }
 
-            auto it_viscosity = object.find("viscosity");
-            if (it_viscosity != object.end()) {
-                viscosity = *it_viscosity;
+            auto it_elasticity = object.find("elasticity");
+            if (it_elasticity != object.end()) {
+                elasticity = *it_elasticity;
             } else {
-                incompleteObjectError("wcube", "viscosity");
+                incompleteObjectError("wcube", "elasticity");
             }
 
-            auto it_surface_tension = object.find("surface_tension");
-            if (it_surface_tension != object.end()) {
-                surface_tension = *it_surface_tension;
+            auto it_iters = object.find("iters");
+            if (it_iters != object.end()) {
+                iters = *it_iters;
             } else {
-                incompleteObjectError("wcube", "surface_tension");
+                incompleteObjectError("wcube", "iters");
             }
 
-            auto it_threshold = object.find("threshold");
-            if (it_threshold != object.end()) {
-                threshold = *it_threshold;
-            } else {
-                incompleteObjectError("wcube", "threshold");
-            }
-
-            auto it_gas_stiffness = object.find("gas_stiffness");
-            if (it_gas_stiffness != object.end()) {
-                gas_stiffness = *it_gas_stiffness;
-            } else {
-                incompleteObjectError("wcube", "gas_stiffness");
-            }
-
-            auto it_restitution  = object.find("restitution");
-            if (it_restitution  != object.end()) {
-                restitution  = *it_restitution ;
-            } else {
-                incompleteObjectError("wcube", "restitution ");
-            }
-
-            auto it_smoothing_length = object.find("smoothing_length");
-            if (it_smoothing_length != object.end()) {
-                smoothing_length = *it_smoothing_length;
-            } else {
-                incompleteObjectError("wcube", "smoothing_length");
-            }
-
-            cp->rest_density = rest_density;
-            cp->viscosity = viscosity;
-            cp->surface_tension = surface_tension;
-            cp->threshold = threshold;
-            cp->gas_stiffness = gas_stiffness;
-            cp->restitution = restitution;
-            cp->smoothing_length = smoothing_length;
+            cp->density = density;
             cp->damping = damping;
-
+            cp->ks = ks;
+            cp->relaxation_e = relaxation_e;
+            cp->rest_density = rest_density;
+            cp->smoothing_length = 2.0f * waterCube->radius;
+            cp->elasticity = elasticity;
+            cp->iters = iters;
 
         }else if (key == SPHERE) {
             Vector3D origin;

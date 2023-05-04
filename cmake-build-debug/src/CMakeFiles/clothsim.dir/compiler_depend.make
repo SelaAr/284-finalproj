@@ -6707,30 +6707,20 @@ src/CMakeFiles/clothsim.dir/waterCube.cpp.o: /Users/selaroach/Desktop/cs184/try/
   /Users/selaroach/Desktop/cs184/try/284-finalproj5/src/CubeMesh.h
 
 src/CMakeFiles/clothsim.dir/waterSimulator.cpp.o: /Users/selaroach/Desktop/cs184/try/284-finalproj5/src/waterSimulator.cpp \
-  /Users/selaroach/Desktop/cs184/try/284-finalproj5/src/waterSimulator.h \
-  /Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/include/nanogui/nanogui.h \
-  /Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/include/nanogui/common.h \
-  /Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/ext/eigen/Eigen/Core \
-  /Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/ext/eigen/Eigen/src/Core/util/DisableStupidWarnings.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/new \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__availability \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cmath \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__config \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__config_site \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/pthread.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstddef \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/version \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stddef.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/__stddef_max_align_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__nullptr \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdlib \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/stdlib.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/stdlib.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/Availability.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/AvailabilityVersions.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/AvailabilityInternal.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/math.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/math.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/cdefs.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/_symbol_aliasing.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/_posix_availability.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/Availability.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/AvailabilityVersions.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/AvailabilityInternal.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/stdlib.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/stdlib.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/_types.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/_types.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/machine/_types.h \
@@ -6789,18 +6779,23 @@ src/CMakeFiles/clothsim.dir/waterSimulator.cpp.o: /Users/selaroach/Desktop/cs184
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/malloc/_malloc.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/_types/_dev_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/_types/_mode_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/exception \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__memory/addressof.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__undef_macros \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/type_traits \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstddef \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/version \
+  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stddef.h \
+  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/__stddef_max_align_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__nullptr \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__utility/forward.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__utility/move.h \
-  /Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/ext/eigen/Eigen/src/Core/util/Macros.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/complex \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cmath \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/math.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/math.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__undef_macros \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/limits \
+  /Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/ext/glad/include/glad/glad.h \
+  /Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/ext/glad/include/KHR/khrplatform.h \
+  /Users/selaroach/Desktop/cs184/try/284-finalproj5/CGL/include/CGL/vector3D.h \
+  /Users/selaroach/Desktop/cs184/try/284-finalproj5/CGL/include/CGL/CGL.h \
+  /Users/selaroach/Desktop/cs184/try/284-finalproj5/CGL/include/CGL/misc.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/algorithm \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__debug \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/iosfwd \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__mbstate_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/wchar.h \
@@ -6828,15 +6823,7 @@ src/CMakeFiles/clothsim.dir/waterSimulator.cpp.o: /Users/selaroach/Desktop/cs184
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/ctype.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/_ctype.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/runetype.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/stdexcept \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/sstream \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/istream \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/ostream \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/bitset \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__bit_reference \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__bits \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/algorithm \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__debug \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstring \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/string.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/string.h \
@@ -6854,8 +6841,13 @@ src/CMakeFiles/clothsim.dir/waterSimulator.cpp.o: /Users/selaroach/Desktop/cs184
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__functional_base \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__functional/operations.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__functional/reference_wrapper.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__memory/addressof.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__memory/allocator_arg_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__memory/uses_allocator.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/exception \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__availability \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdlib \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/new \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/typeinfo \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdint \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/utility \
@@ -6891,6 +6883,7 @@ src/CMakeFiles/clothsim.dir/waterSimulator.cpp.o: /Users/selaroach/Desktop/cs184
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__memory/shared_ptr.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__memory/allocation_guard.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__memory/allocator.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/stdexcept \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__memory/unique_ptr.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__functional/hash.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__memory/auto_ptr.h \
@@ -7068,6 +7061,9 @@ src/CMakeFiles/clothsim.dir/waterSimulator.cpp.o: /Users/selaroach/Desktop/cs184
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__algorithm/transform.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__algorithm/unique_copy.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__algorithm/unique.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/ostream \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/bitset \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__bit_reference \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/string \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdio \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/string_view \
@@ -7131,6 +7127,14 @@ src/CMakeFiles/clothsim.dir/waterSimulator.cpp.o: /Users/selaroach/Desktop/cs184
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/_types/_fsfilcnt_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/_types/_nl_item.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__bsd_locale_defaults.h \
+  /Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/include/nanogui/nanogui.h \
+  /Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/include/nanogui/common.h \
+  /Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/ext/eigen/Eigen/Core \
+  /Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/ext/eigen/Eigen/src/Core/util/DisableStupidWarnings.h \
+  /Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/ext/eigen/Eigen/src/Core/util/Macros.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/complex \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/sstream \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/istream \
   /Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/ext/eigen/Eigen/src/Core/util/MKL_support.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/mmintrin.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/emmintrin.h \
@@ -7280,8 +7284,6 @@ src/CMakeFiles/clothsim.dir/waterSimulator.cpp.o: /Users/selaroach/Desktop/cs184
   /Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/include/nanogui/imageview.h \
   /Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/include/nanogui/glutil.h \
   /Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/include/nanogui/opengl.h \
-  /Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/ext/glad/include/glad/glad.h \
-  /Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/ext/glad/include/KHR/khrplatform.h \
   /Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/ext/glfw/include/GLFW/glfw3.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/System/Library/Frameworks/OpenGL.framework/Headers/gl.h \
   /Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/ext/nanovg/src/nanovg.h \
@@ -7341,11 +7343,9 @@ src/CMakeFiles/clothsim.dir/waterSimulator.cpp.o: /Users/selaroach/Desktop/cs184
   /Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/include/nanogui/tabwidget.h \
   /Users/selaroach/Desktop/cs184/try/284-finalproj5/ext/nanogui/include/nanogui/glcanvas.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/iostream \
+  /Users/selaroach/Desktop/cs184/try/284-finalproj5/src/waterSimulator.h \
   /Users/selaroach/Desktop/cs184/try/284-finalproj5/src/camera.h \
   /Users/selaroach/Desktop/cs184/try/284-finalproj5/CGL/include/CGL/matrix3x3.h \
-  /Users/selaroach/Desktop/cs184/try/284-finalproj5/CGL/include/CGL/CGL.h \
-  /Users/selaroach/Desktop/cs184/try/284-finalproj5/CGL/include/CGL/misc.h \
-  /Users/selaroach/Desktop/cs184/try/284-finalproj5/CGL/include/CGL/vector3D.h \
   /Users/selaroach/Desktop/cs184/try/284-finalproj5/src/misc/camera_info.h \
   /Users/selaroach/Desktop/cs184/try/284-finalproj5/src/misc/collada_info.h \
   /Users/selaroach/Desktop/cs184/try/284-finalproj5/CGL/include/CGL/matrix4x4.h \

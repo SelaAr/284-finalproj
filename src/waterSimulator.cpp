@@ -246,12 +246,12 @@ void WaterSimulator::drawContents() {
 
     if (!is_paused) {
         vector<Vector3D> external_accelerations = {gravity};
-        // waterCube -> release();
+
         for (int i = 0; i < simulation_steps; i++) {
-//          std::cout << "SIMULATION STEP:" << std::endl;
-//          std::cout << i << std::endl;
-//          std::cout << "-----------------" << std::endl;
-            waterCube->simulate(frames_per_sec, simulation_steps, cp, external_accelerations, collision_objects, i);
+            std::cout << "SIMULATION STEP:" << std::endl;
+            std::cout << i << std::endl;
+            std::cout << "-----------------" << std::endl;
+            waterCube->simulate(frames_per_sec, simulation_steps, cp, external_accelerations, collision_objects);
         }
     }
 
@@ -518,28 +518,28 @@ void WaterSimulator::initGUI(Screen *screen) {
         layout->setSpacing(0, 10);
         panel->setLayout(layout);
 
-//        new Label(panel, "density :", "sans-bold");
-//
-//        FloatBox<double> *fb = new FloatBox<double>(panel);
-//        fb->setEditable(true);
-//        fb->setFixedSize(Vector2i(100, 20));
-//        fb->setFontSize(14);
-//        fb->setValue(cp->density / 10);
-//        fb->setUnits("g/cm^2");
-//        fb->setSpinnable(true);
-//        fb->setCallback([this](float value) { cp->density = (double)(value * 10); });
-//
-//        new Label(panel, "ks :", "sans-bold");
-//
-//        fb = new FloatBox<double>(panel);
-//        fb->setEditable(true);
-//        fb->setFixedSize(Vector2i(100, 20));
-//        fb->setFontSize(14);
-//        fb->setValue(cp->ks);
-//        fb->setUnits("N/m");
-//        fb->setSpinnable(true);
-//        fb->setMinValue(0);
-//        fb->setCallback([this](float value) { cp->ks = value; });
+        new Label(panel, "density :", "sans-bold");
+
+        FloatBox<double> *fb = new FloatBox<double>(panel);
+        fb->setEditable(true);
+        fb->setFixedSize(Vector2i(100, 20));
+        fb->setFontSize(14);
+        fb->setValue(cp->density / 10);
+        fb->setUnits("g/cm^2");
+        fb->setSpinnable(true);
+        fb->setCallback([this](float value) { cp->density = (double)(value * 10); });
+
+        new Label(panel, "ks :", "sans-bold");
+
+        fb = new FloatBox<double>(panel);
+        fb->setEditable(true);
+        fb->setFixedSize(Vector2i(100, 20));
+        fb->setFontSize(14);
+        fb->setValue(cp->ks);
+        fb->setUnits("N/m");
+        fb->setSpinnable(true);
+        fb->setMinValue(0);
+        fb->setCallback([this](float value) { cp->ks = value; });
     }
 
     // Simulation constants
@@ -576,33 +576,33 @@ void WaterSimulator::initGUI(Screen *screen) {
         num_steps->setCallback([this](int value) { simulation_steps = value; });
     }
 
-//    // Damping slider and textbox
-//
-//    new Label(window, "Damping", "sans-bold");
-//
-//    {
-//        Widget *panel = new Widget(window);
-//        panel->setLayout(
-//                new BoxLayout(Orientation::Horizontal, Alignment::Middle, 0, 5));
-//
-//        Slider *slider = new Slider(panel);
-//        slider->setValue(cp->damping);
-//        slider->setFixedWidth(105);
-//
-//        TextBox *percentage = new TextBox(panel);
-//        percentage->setFixedWidth(75);
-//        percentage->setValue(to_string(cp->damping));
-//        percentage->setUnits("%");
-//        percentage->setFontSize(14);
-//
-//        slider->setCallback([percentage](float value) {
-//            percentage->setValue(std::to_string(value));
-//        });
-//        slider->setFinalCallback([&](float value) {
-//            cp->damping = (double)value;
-//            // cout << "Final slider value: " << (int)(value * 100) << endl;
-//        });
-//    }
+    // Damping slider and textbox
+
+    new Label(window, "Damping", "sans-bold");
+
+    {
+        Widget *panel = new Widget(window);
+        panel->setLayout(
+                new BoxLayout(Orientation::Horizontal, Alignment::Middle, 0, 5));
+
+        Slider *slider = new Slider(panel);
+        slider->setValue(cp->damping);
+        slider->setFixedWidth(105);
+
+        TextBox *percentage = new TextBox(panel);
+        percentage->setFixedWidth(75);
+        percentage->setValue(to_string(cp->damping));
+        percentage->setUnits("%");
+        percentage->setFontSize(14);
+
+        slider->setCallback([percentage](float value) {
+            percentage->setValue(std::to_string(value));
+        });
+        slider->setFinalCallback([&](float value) {
+            cp->damping = (double)value;
+            // cout << "Final slider value: " << (int)(value * 100) << endl;
+        });
+    }
 
     // Gravity
 
