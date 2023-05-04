@@ -3696,15 +3696,7 @@ src/CMakeFiles/clothsim.dir/main.cpp.o: /Users/selaroach/Desktop/cs184/try/284-f
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/forward_list \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/numeric \
   /Users/selaroach/Desktop/cs184/try/284-finalproj5/src/misc/file_utils.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/set \
-  /Users/selaroach/Desktop/cs184/try/284-finalproj5/src/misc/duck_drawing.h \
-  /Users/selaroach/Desktop/cs184/try/284-finalproj5/src/misc/TriFace.h \
-  /Users/selaroach/Desktop/cs184/try/284-finalproj5/CGL/include/CGL/color.h \
-  /Users/selaroach/Desktop/cs184/try/284-finalproj5/src/clothMesh.h \
-  /Users/selaroach/Desktop/cs184/try/284-finalproj5/src/particle.h \
-  /Users/selaroach/Desktop/cs184/try/284-finalproj5/src/collision/rubber_duck.h \
-  /Users/selaroach/Desktop/cs184/try/284-finalproj5/src/misc/duck_drawing.h \
-  /Users/selaroach/Desktop/cs184/try/284-finalproj5/src/misc/TriFace.h
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/set
 
 src/CMakeFiles/clothsim.dir/misc/TriFace.cpp.o: /Users/selaroach/Desktop/cs184/try/284-finalproj5/src/misc/TriFace.cpp \
   /Users/selaroach/Desktop/cs184/try/284-finalproj5/src/misc/TriFace.h \

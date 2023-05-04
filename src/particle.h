@@ -13,48 +13,38 @@ using namespace CGL;
 class Halfedge;
 
 struct Particle {
-    Particle(Vector3D position, Vector3D velocity, int id, double mass)
+    Particle(Vector3D position, Vector3D velocity, int id, float mass, float density, double radius)
             : start_position(position), position(position),
               last_position(position), velocity(velocity),
-              id(id), mass(mass) {}
-    //, mass(mass), size(size)
+              id(id), mass(mass), density(density), radius(radius){}
 
-    Vector3D normal();
-//  Vector3D velocity(double delta_t) {
-//    return (position - last_position) / delta_t;
-//  }
-
-
-    // static values
     Vector3D start_position;
-    int id;
-    double mass;
-//  double size;
-
-    // dynamic values
     Vector3D position;
     Vector3D last_position;
     Vector3D forces;
-    Vector3D velocity;
+    Vector3D velocity_minus; //Velocity of t minus 1/2 timestep
+    Vector3D velocity_plus;  //Velocity of t plus 1/2 timestep
+    Vector3D velocity; //(velocity_minus + velocity_plus)/2
 
-    long time_of_birth = std::chrono::duration_cast<std::chrono::milliseconds >(std::chrono::system_clock::now().time_since_epoch()).count();
+    Vector3D internal_forces;
+    Vector3D external_forces;
 
-//    double density;
-//    double pressure;
-//    double viscosity;
-//    double vorticity;
 
-    //since it is a sphere
+    int id;
+    float mass;
+    float density;
+    float pressure;
+
 
     // mesh reference
     Misc::SphereMesh mesh;
+    double radius;
 
     // collisions with other water particles
     std::vector<Particle *> neighbors;
 
-    // TODO: Delete
-    // mesh reference
-    Halfedge *halfedge;
+    // For rain simulation
+    //long time_of_birth = std::chrono::duration_cast<std::chrono::milliseconds >(std::chrono::system_clock::now().time_since_epoch()).count();
 };
 
 #endif /* PARTICLE_H */

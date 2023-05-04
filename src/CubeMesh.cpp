@@ -8,6 +8,6 @@
 using namespace CGL;
 using namespace std;
 
-Vector3D Particle::normal() {
-
-}
+//Vector3D Particle::normal() {
+//
+//}
